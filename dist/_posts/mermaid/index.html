@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mermaid - Bookends</title>
+  <link rel="stylesheet" href="../../assets/main.css">
+  <link rel="stylesheet" href="../../assets/highlight.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <script src="../../assets/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: false, theme: 'neutral' });</script>
+</head>
+<body class="category-page">
+  <div class="page-container">
+    <header class="topbar">
+      <button class="tb-btn" id="btn-filetree" title="目录">&#x2261;</button>
+      <a href="../../" class="tb-back" title="返回首页">&#x2190;</a>
+      <span class="tb-title">Mermaid</span>
+      <span class="tb-count">2 篇</span>
+    </header>
+
+    <div class="main-area">
+      <aside class="file-tree" id="filetree">
+        <ul class="file-tree-posts">
+    <li class="post-item active"><a href="#post-0">Mermaid</a></li>
+<li class="post-item"><a href="#post-1">test</a></li>
+  </ul>
+      </aside>
+
+      <main class="post-area" id="postarea">
+        
+    <div id="post-0" class="post-article" data-headings="[]">
+      <p>这是 Mermaid 常用语法速查表，将流程图、序列图、类图等核心语法整合在一张表中，方便你在 Typora 里随时查阅。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">图表类型</th>
+<th style="text-align:left">语法要点 / 代码示例</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>流程图</strong></td>
+<td style="text-align:left"><code>graph TD</code> / <code>flowchart LR</code></td>
+<td style="text-align:left">方向：TD(上→下)、LR(左→右)、RL、BT</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>A[矩形]</code> <code>B(圆角)</code> <code>C([体育场])</code> <code>D[[子程序]]</code> <code>E[(数据库)]</code> <code>F((圆形))</code> <code>G&gt;旗帜]</code> <code>H{菱形}</code></td>
+<td style="text-align:left">节点形状</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>A --&gt; B</code> / <code>A --- B</code> / <code>A -.-&gt; B</code> / <code>A ==&gt; B</code></td>
+<td style="text-align:left">连线：实线箭头、无箭头、虚线箭头、粗箭头</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>A -- 文字 --&gt; B</code> 或 `A --&gt;</td>
+<td style="text-align:left">文字</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>subgraph 标题 ... end</code></td>
+<td style="text-align:left">子图分组</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>style A fill:#f9f,stroke:#333</code></td>
+<td style="text-align:left">节点样式（可逗号分隔多个节点）</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>classDef myStyle fill:#eee;</code> 然后 <code>class A,B myStyle</code></td>
+<td style="text-align:left">定义并应用类样式</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>序列图</strong></td>
+<td style="text-align:left"><code>sequenceDiagram</code></td>
+<td style="text-align:left">图表类型声明</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>participant A</code> 或 <code>actor A</code></td>
+<td style="text-align:left">参与者（actor 为人形图标）</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>A-&gt;&gt;B: 消息</code> (实线实心箭头)</td>
+<td style="text-align:left">同步消息</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>A--&gt;&gt;B: 返回</code> (虚线实心箭头)</td>
+<td style="text-align:left">返回消息</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>A-&gt;B: 消息</code> (实线箭头)</td>
+<td style="text-align:left">同步消息</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>A--B: 异步</code> (虚线箭头)</td>
+<td style="text-align:left">异步消息</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>A-xB: 丢失</code> (末尾×)</td>
+<td style="text-align:left">消息丢失</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>activate A</code> / <code>deactivate A</code> 或 <code>A-&gt;&gt;+B: 激活</code> <code>B--&gt;&gt;-A: 停用</code></td>
+<td style="text-align:left">激活条</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>Note right of A: 注释</code> 或 <code>Note over A,B: 跨越注释</code></td>
+<td style="text-align:left">注释（位置：left/right/over）</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>loop 循环描述 ... end</code></td>
+<td style="text-align:left">循环</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>alt 条件1 ... else 条件2 ... end</code></td>
+<td style="text-align:left">条件分支</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>rect rgb(200,200,200) ... end</code></td>
+<td style="text-align:left">背景高亮块</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>类图</strong></td>
+<td style="text-align:left"><code>classDiagram</code></td>
+<td style="text-align:left">图表类型</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>class Animal {</code><br><code>  +String name</code><br><code>  +int age</code><br><code>  +makeSound() void</code><br><code>}</code></td>
+<td style="text-align:left">定义类（+公共，-私有，#保护）</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">`A &lt;</td>
+<td style="text-align:left">-- B` : 继承</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>A *-- B</code> : 组合</td>
+<td style="text-align:left">实心菱形</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>A o-- B</code> : 聚合</td>
+<td style="text-align:left">空心菱形</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>A --&gt; B</code> : 关联</td>
+<td style="text-align:left">实线箭头</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>A ..&gt; B</code> : 依赖</td>
+<td style="text-align:left">虚线箭头</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">`A ..</td>
+<td style="text-align:left">&gt; B` : 实现</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>A --&gt; B : 标签</code></td>
+<td style="text-align:left">关系上添加文字</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>状态图</strong></td>
+<td style="text-align:left"><code>stateDiagram-v2</code></td>
+<td style="text-align:left">图表类型</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>[*]</code></td>
+<td style="text-align:left">开始/结束状态</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>状态名</code> 或 <code>[状态描述]</code></td>
+<td style="text-align:left">状态节点</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>S1 --&gt; S2 : 事件/动作</code></td>
+<td style="text-align:left">状态转移</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>state 复合状态 {</code><br><code>  [*] --&gt; 子状态</code><br><code>  ...</code><br><code>}</code></td>
+<td style="text-align:left">复合状态嵌套</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>--</code> 或 <code>---</code></td>
+<td style="text-align:left">并发状态的分隔线</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>饼图</strong></td>
+<td style="text-align:left"><code>pie title 标题</code><br><code>  &quot;标签1&quot; : 30</code><br><code>  &quot;标签2&quot; : 70</code></td>
+<td style="text-align:left">数值自动计算百分比</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>甘特图</strong></td>
+<td style="text-align:left"><code>gantt</code><br><code>  title 标题</code><br><code>  dateFormat YYYY-MM-DD</code><br><code>  section 阶段</code><br><code>  任务1 :a1, 2024-01-01, 30d</code><br><code>  任务2 :after a1, 20d</code></td>
+<td style="text-align:left">项目时间线；状态：<code>done</code>，<code>active</code>，<code>crit</code> 等</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>思维导图</strong></td>
+<td style="text-align:left"><code>mindmap</code><br><code>  root(中心)</code><br><code>    分支1</code><br><code>      叶子</code><br><code>    分支2</code></td>
+<td style="text-align:left">需要较新 Mermaid 版本，Typora 部分版本可能不支持</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>通用技巧</strong></td>
+<td style="text-align:left"><code>A[第一行&lt;br&gt;第二行]</code></td>
+<td style="text-align:left">节点内换行</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>%% 这是注释</code></td>
+<td style="text-align:left">单行注释</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">特殊字符：<code>#34;</code> 显示引号，<code>#35;</code> 显示 #</td>
+<td style="text-align:left">转义特殊字符（数字为 HTML 实体编号）</td>
+</tr>
+</tbody>
+</table>
+
+      <nav class="post-prev-next"><span class="pn-link disabled">← 已是第一篇</span><a href="#post-1" class="pn-link">test →</a></nav>
+    </div>
+
+    <div id="post-1" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;流程图&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;时序图&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;类图&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;状态图&quot;}]">
+      <h2>流程图</h2>
+<pre class="mermaid">
+graph TD
+    A[开始] --&gt; B{条件判断}
+    B --&gt;|是| C[执行操作]
+    B --&gt;|否| D[跳过]
+    C --&gt; E[结束]
+    D --&gt; E
+
+</pre><h2>时序图</h2>
+<pre class="mermaid">
+sequenceDiagram
+    客户端-&gt;&gt;服务端: 发送请求
+    服务端-&gt;&gt;数据库: 查询数据
+    数据库--&gt;&gt;服务端: 返回结果
+    服务端--&gt;&gt;客户端: 响应数据
+
+</pre><h2>类图</h2>
+<pre class="mermaid">
+classDiagram
+    Animal &lt;|-- Dog
+    Animal &lt;|-- Cat
+    Animal : +String name
+    Animal : +eat()
+    Dog : +bark()
+    Cat : +meow()
+
+</pre><h2>状态图</h2>
+<pre class="mermaid">
+stateDiagram-v2
+    [*] --&gt; 待处理
+    待处理 --&gt; 处理中 : 开始
+    处理中 --&gt; 已完成 : 成功
+    处理中 --&gt; 失败 : 异常
+    失败 --&gt; 待处理 : 重试
+    已完成 --&gt; [*]
+
+</pre>
+      <nav class="post-prev-next"><a href="#post-0" class="pn-link">← Mermaid</a><span class="pn-link disabled">已是最后一篇 →</span></nav>
+    </div>
+      </main>
+
+      <aside class="outline-sidebar" id="outlineSidebar">
+        <div class="ol-sidebar-title">目录</div>
+        <ul class="ol-list" id="olSidebarList"></ul>
+      </aside>
+    </div>
+  </div>
+
+  <div class="float-btns" id="floatBtns">
+    <button class="fb-btn" id="btn-scrolltop" title="返回顶部">&#x2191;</button>
+    <button class="fb-btn" id="btn-outline" title="大纲">&#x2630;</button>
+  </div>
+
+  <div class="outline-popup" id="outlinePopup">
+    <div class="ol-popup-inner">
+      <ul class="ol-list" id="olPopupList"></ul>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <script>
+(function() {
+  var articles = document.querySelectorAll('.post-article');
+  var filetree = document.getElementById('filetree');
+  var overlay = document.getElementById('overlay');
+  var floatBtns = document.getElementById('floatBtns');
+  var postItems = document.querySelectorAll('.post-item');
+  var olSidebarList = document.getElementById('olSidebarList');
+  var outlinePopup = document.getElementById('outlinePopup');
+
+  function renderOutline(article) {
+    if (!olSidebarList) return;
+    var headings = [];
+    try { headings = JSON.parse(article.getAttribute('data-headings') || '[]'); } catch(e) {}
+    var html = headings.map(function(h) {
+      return '<li class="ol-item ol-h' + h.level + '"><a href="#' + article.id + '" data-heading="' + h.text.replace(/"/g, '&quot;') + '">' + h.text + '</a></li>';
+    }).join('');
+    olSidebarList.innerHTML = html;
+  }
+
+  function scrollToHeading(postId, headingText) {
+    var article = document.getElementById(postId);
+    if (!article) return;
+    if (!article.classList.contains('active')) {
+      window.location.hash = postId;
+    }
+    var headings = article.querySelectorAll('h2, h3');
+    for (var i = 0; i < headings.length; i++) {
+      if (headings[i].textContent.trim() === headingText) {
+        headings[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        break;
+      }
+    }
+  }
+
+  // 侧栏大纲点击
+  if (olSidebarList) {
+    olSidebarList.addEventListener('click', function(e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      e.preventDefault();
+      var postId = a.getAttribute('href').slice(1);
+      var headingText = a.getAttribute('data-heading');
+      scrollToHeading(postId, headingText);
+    });
+  }
+
+  function showPost(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    articles.forEach(function(a) { a.classList.remove('active'); });
+    target.classList.add('active');
+    postItems.forEach(function(item) { item.classList.remove('active'); });
+    var link = document.querySelector('.post-item a[href="#' + id + '"]');
+    if (link) link.parentElement.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var pa = document.getElementById('postarea');
+    if (pa) pa.scrollTo({ top: 0, behavior: 'smooth' });
+    renderOutline(target);
+    closeFiletree();
+  }
+
+  function handleHash() {
+    var hash = window.location.hash.slice(1);
+    if (hash && document.getElementById(hash)) {
+      showPost(hash);
+    } else if (articles.length > 0) {
+      window.location.hash = articles[0].id;
+    }
+  }
+
+  window.addEventListener('hashchange', handleHash);
+
+  // 初始加载
+  handleHash();
+  var active = document.querySelector('.post-article.active');
+  if (active) renderOutline(active);
+
+  var btnFiletree = document.getElementById('btn-filetree');
+  if (btnFiletree) btnFiletree.addEventListener('click', function() {
+    if (filetree) filetree.classList.toggle('open');
+    if (overlay) overlay.classList.toggle('show');
+  });
+
+  function closeFiletree() {
+    if (filetree) filetree.classList.remove('open');
+    if (overlay) overlay.classList.remove('show');
+  }
+
+  if (overlay) overlay.addEventListener('click', closeFiletree);
+
+  function checkScroll() {
+    if (!floatBtns) return;
+    if (window.scrollY > window.innerHeight) {
+      floatBtns.classList.add('visible');
+    } else {
+      floatBtns.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', checkScroll, { passive: true });
+  checkScroll();
+
+  var btnScrollTop = document.getElementById('btn-scrolltop');
+  if (btnScrollTop) btnScrollTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var pa = document.getElementById('postarea');
+    if (pa) pa.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var olPopupList = document.getElementById('olPopupList');
+  var btnOutline = document.getElementById('btn-outline');
+  if (btnOutline) btnOutline.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (olSidebarList && olPopupList) {
+      olPopupList.innerHTML = olSidebarList.innerHTML;
+    }
+    if (outlinePopup) outlinePopup.classList.toggle('show');
+  });
+
+  // 弹窗大纲点击
+  if (olPopupList) {
+    olPopupList.addEventListener('click', function(e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      e.preventDefault();
+      var postId = a.getAttribute('href').slice(1);
+      var headingText = a.getAttribute('data-heading');
+      scrollToHeading(postId, headingText);
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!outlinePopup) return;
+    if (!outlinePopup.contains(e.target) && e.target !== document.getElementById('btn-outline')) {
+      outlinePopup.classList.remove('show');
+    }
+  });
+
+  if (typeof mermaid !== 'undefined') mermaid.run();
+
+})();
+</script>
+</body>
+</html>

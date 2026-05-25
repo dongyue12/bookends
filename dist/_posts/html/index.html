@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML - Bookends</title>
+  <link rel="stylesheet" href="../../assets/main.css">
+  <link rel="stylesheet" href="../../assets/highlight.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  
+</head>
+<body class="category-page">
+  <div class="page-container">
+    <header class="topbar">
+      <button class="tb-btn" id="btn-filetree" title="目录">&#x2261;</button>
+      <a href="../../" class="tb-back" title="返回首页">&#x2190;</a>
+      <span class="tb-title">HTML</span>
+      <span class="tb-count">4 篇</span>
+    </header>
+
+    <div class="main-area">
+      <aside class="file-tree" id="filetree">
+        <ul class="file-tree-posts">
+    <li class="post-item active"><a href="#post-0">1.基础入门</a></li>
+<li class="post-item"><a href="#post-1">2.文本标签</a></li>
+<li class="post-item"><a href="#post-2">3.链接与媒体</a></li>
+<li class="post-item"><a href="#post-3">4.结构与表单</a></li>
+  </ul>
+      </aside>
+
+      <main class="post-area" id="postarea">
+        
+    <div id="post-0" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;什么是 HTML&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;Web 标准&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;基本框架&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;完整框架&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;头部标签详解&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;DOCTYPE 声明&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;lang 语言&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;charset 字符集&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;移动端适配&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;title 标题&quot;}]">
+      <h2>什么是 HTML</h2>
+<p>HTML（Hyper Text Markup Language）是一种超文本标记语言，用于描述网页的结构和内容。</p>
+<h2>Web 标准</h2>
+<p>Web 标准由 W3C（万维网联盟）制定，包含三个部分：</p>
+<table>
+<thead>
+<tr>
+<th>方面</th>
+<th>技术</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>结构</td>
+<td>HTML</td>
+<td>网页元素</td>
+</tr>
+<tr>
+<td>表现</td>
+<td>CSS</td>
+<td>样式</td>
+</tr>
+<tr>
+<td>行为</td>
+<td>JavaScript</td>
+<td>交互</td>
+</tr>
+</tbody>
+</table>
+<h2>基本框架</h2>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>html头部<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>html主体<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<h2>完整框架</h2>
+<pre class="hljs"><code><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;zh-CN&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    主要内容
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<h2>头部标签详解</h2>
+<h3>DOCTYPE 声明</h3>
+<pre class="hljs"><code><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+</code></pre>
+<ul>
+<li>告诉浏览器使用 HTML5 版本来显示网页</li>
+<li>位于文档最前面，不是一个 HTML 标签</li>
+</ul>
+<h3>lang 语言</h3>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;zh-CN&quot;</span>&gt;</span>
+</code></pre>
+<ul>
+<li><code>en</code>：英语，<code>zh-CN</code>：中文</li>
+</ul>
+<h3>charset 字符集</h3>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+</code></pre>
+<ul>
+<li>UTF-8 是国际通用字符集，GBK 是中国中文字符集</li>
+</ul>
+<h3>移动端适配</h3>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+</code></pre>
+<ul>
+<li><code>width=device-width</code>：视口宽度等于设备宽度</li>
+<li><code>initial-scale=1.0</code>：初始缩放比例</li>
+<li><code>user-scalable=no</code>：禁止用户缩放</li>
+</ul>
+<h3>title 标题</h3>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>网页标题<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+</code></pre>
+<p>显示在浏览器标题栏上。</p>
+
+      <nav class="post-prev-next"><span class="pn-link disabled">← 已是第一篇</span><a href="#post-1" class="pn-link">2.文本标签 →</a></nav>
+    </div>
+
+    <div id="post-1" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;标题标签&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;段落标签&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;文本格式化标签&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;注释&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;特殊字符&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;文件路径&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;换行标签&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;水平线标签&quot;}]">
+      <h2>标题标签</h2>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>一级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>二级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>三级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>四级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h5</span>&gt;</span>五级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h6</span>&gt;</span>六级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h6</span>&gt;</span>
+</code></pre>
+<ul>
+<li>h 是 header 的缩写</li>
+<li>标题标签独占一行</li>
+</ul>
+<h2>段落标签</h2>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这是一个段落。<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<ul>
+<li>段落文字会随窗口大小自动换行</li>
+<li>段落之间有空隙</li>
+</ul>
+<h2>文本格式化标签</h2>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;strong&gt;</code> <code>&lt;b&gt;</code></td>
+<td>加粗</td>
+</tr>
+<tr>
+<td><code>&lt;em&gt;</code> <code>&lt;i&gt;</code></td>
+<td>斜体</td>
+</tr>
+<tr>
+<td><code>&lt;del&gt;</code> <code>&lt;s&gt;</code></td>
+<td>删除线</td>
+</tr>
+<tr>
+<td><code>&lt;ins&gt;</code> <code>&lt;u&gt;</code></td>
+<td>下划线</td>
+</tr>
+<tr>
+<td><code>&lt;sup&gt;</code></td>
+<td>上标</td>
+</tr>
+<tr>
+<td><code>&lt;sub&gt;</code></td>
+<td>下标</td>
+</tr>
+</tbody>
+</table>
+<h2>注释</h2>
+<pre class="hljs"><code><span class="hljs-comment">&lt;!-- HTML 注释内容 --&gt;</span>
+</code></pre>
+<pre class="hljs"><code><span class="hljs-comment">/* CSS 注释内容 */</span>
+</code></pre>
+<pre class="hljs"><code><span class="hljs-comment">// JavaScript 注释</span>
+</code></pre>
+<h2>特殊字符</h2>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>空格</td>
+<td>空格符</td>
+<td><code>&amp;nbsp;</code></td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于号</td>
+<td><code>&amp;lt;</code></td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于号</td>
+<td><code>&amp;gt;</code></td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>和号</td>
+<td><code>&amp;amp;</code></td>
+</tr>
+<tr>
+<td>¥</td>
+<td>人民币</td>
+<td><code>&amp;yen;</code></td>
+</tr>
+<tr>
+<td>©</td>
+<td>版权</td>
+<td><code>&amp;copy;</code></td>
+</tr>
+<tr>
+<td>®</td>
+<td>注册商标</td>
+<td><code>&amp;reg;</code></td>
+</tr>
+<tr>
+<td>°</td>
+<td>摄氏度</td>
+<td><code>&amp;deg;</code></td>
+</tr>
+<tr>
+<td>±</td>
+<td>正负号</td>
+<td><code>&amp;plusmn;</code></td>
+</tr>
+<tr>
+<td>×</td>
+<td>乘号</td>
+<td><code>&amp;times;</code></td>
+</tr>
+<tr>
+<td>÷</td>
+<td>除号</td>
+<td><code>&amp;divide;</code></td>
+</tr>
+</tbody>
+</table>
+<h2>文件路径</h2>
+<ul>
+<li><strong>相对路径</strong>：相对于当前文件的路径</li>
+<li><strong>绝对路径</strong>：从根目录开始的完整路径</li>
+<li>Windows 用反斜杠 <code>\</code>，Linux/Web 用正斜杠 <code>/</code></li>
+</ul>
+<h2>换行标签</h2>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+</code></pre>
+<p>强制换行，单标签无闭合。</p>
+<h2>水平线标签</h2>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">hr</span> /&gt;</span>
+</code></pre>
+<p>用于分割内容，单标签无闭合。</p>
+
+      <nav class="post-prev-next"><a href="#post-0" class="pn-link">← 1.基础入门</a><a href="#post-2" class="pn-link">3.链接与媒体 →</a></nav>
+    </div>
+
+    <div id="post-2" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;图像标签&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;超链接&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;基本语法&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;核心属性&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;常见链接类型&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;注意事项&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;视频&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;音频&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;Track 字幕&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;媒体通用注意事项&quot;}]">
+      <h2>图像标签</h2>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+  <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;图像URL&quot;</span>
+  <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;图像无法显示时的替代文本&quot;</span>
+  <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;鼠标悬停时显示的文本&quot;</span>
+/&gt;</span>
+</code></pre>
+<ul>
+<li><code>src</code>：图片路径（必须属性）</li>
+<li><code>alt</code>：替换文本</li>
+<li><code>title</code>：提示文本</li>
+<li><code>width</code> / <code>height</code>：设置宽高</li>
+</ul>
+<h2>超链接</h2>
+<h3>基本语法</h3>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;链接目标&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;打开方式&quot;</span>&gt;</span>文本或图像<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+<h3>核心属性</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>href</code></td>
+<td>链接目标的 URL（必须）</td>
+</tr>
+<tr>
+<td><code>target</code></td>
+<td><code>_self</code>（当前窗口）/ <code>_blank</code>（新窗口）</td>
+</tr>
+</tbody>
+</table>
+<h3>常见链接类型</h3>
+<p><strong>外部链接</strong>（必须带 <code>http://</code> 或 <code>https://</code>）：</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://www.baidu.com&quot;</span>&gt;</span>百度<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+<p><strong>内部链接</strong>：</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/about.html&quot;</span>&gt;</span>关于我们<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+<p><strong>下载链接</strong>：</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;files/document.pdf&quot;</span> <span class="hljs-attr">download</span>&gt;</span>下载文档<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+<p><strong>空链接</strong>（占位测试用）：</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>空链接<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+<p><strong>图片链接</strong>：</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://example.com&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;image.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;描述&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+<p><strong>锚点链接</strong>（页面内跳转）：</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;two&quot;</span>&gt;</span>第二部分<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#two&quot;</span>&gt;</span>跳到第二部分<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+<h3>注意事项</h3>
+<ul>
+<li>外部链接必须写全协议，否则会被识别为相对路径</li>
+<li>使用 <code>target=&quot;_blank&quot;</code> 时建议加 <code>rel=&quot;noopener noreferrer&quot;</code> 防止安全风险</li>
+</ul>
+<h2>视频</h2>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;movie.mp4&quot;</span> <span class="hljs-attr">controls</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;600&quot;</span>&gt;</span>
+  您的浏览器不支持 video 标签。
+<span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
+</code></pre>
+<p>多格式兼容写法：</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">controls</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;600&quot;</span> <span class="hljs-attr">poster</span>=<span class="hljs-string">&quot;cover.jpg&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;movie.mp4&quot;</span>  <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;video/mp4&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;movie.webm&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;video/webm&quot;</span>&gt;</span>
+  您的浏览器不支持 HTML5 视频。
+<span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
+</code></pre>
+<p>常用属性：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controls</code></td>
+<td>显示播放控件</td>
+</tr>
+<tr>
+<td><code>autoplay</code></td>
+<td>自动播放（需配合 <code>muted</code>）</td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td>循环播放</td>
+</tr>
+<tr>
+<td><code>muted</code></td>
+<td>静音</td>
+</tr>
+<tr>
+<td><code>poster</code></td>
+<td>预览图</td>
+</tr>
+<tr>
+<td><code>width</code> / <code>height</code></td>
+<td>播放器宽高</td>
+</tr>
+</tbody>
+</table>
+<h2>音频</h2>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;music.mp3&quot;</span> <span class="hljs-attr">controls</span>&gt;</span>
+  您的浏览器不支持 audio 标签。
+<span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
+</code></pre>
+<p>多格式兼容：</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">controls</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;music.mp3&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;audio/mpeg&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;music.ogg&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;audio/ogg&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
+</code></pre>
+<p>常见音频格式：MP3（兼容性最广）、Ogg、WAV、AAC。</p>
+<h2>Track 字幕</h2>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">controls</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;700&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;video.mp4&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;video/mp4&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">track</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;subs-zh.vtt&quot;</span> <span class="hljs-attr">kind</span>=<span class="hljs-string">&quot;subtitles&quot;</span> <span class="hljs-attr">srclang</span>=<span class="hljs-string">&quot;zh-CN&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;中文&quot;</span> <span class="hljs-attr">default</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">track</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;subs-en.vtt&quot;</span> <span class="hljs-attr">kind</span>=<span class="hljs-string">&quot;subtitles&quot;</span> <span class="hljs-attr">srclang</span>=<span class="hljs-string">&quot;en&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;English&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
+</code></pre>
+<p>核心属性：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src</code></td>
+<td><code>.vtt</code> 文件 URL</td>
+</tr>
+<tr>
+<td><code>kind</code></td>
+<td>subtitles / captions / descriptions / chapters / metadata</td>
+</tr>
+<tr>
+<td><code>srclang</code></td>
+<td>语言代码（如 <code>zh-CN</code>）</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>轨道标题</td>
+</tr>
+<tr>
+<td><code>default</code></td>
+<td>默认启用</td>
+</tr>
+</tbody>
+</table>
+<p>WebVTT 文件示例（<code>.vtt</code>）：</p>
+<pre class="hljs"><code>WEBVTT
+00:00:00.000 --&gt; 00:00:03.500
+欢迎收看本教程
+00:00:04.000 --&gt; 00:00:07.200
+今天我们来学习 HTML 的 track 标签
+</code></pre>
+<h3>媒体通用注意事项</h3>
+<ul>
+<li>多数浏览器不允许带声音自动播放，除非设置 <code>muted</code></li>
+<li>为最大兼容性，建议同时提供 MP4/MP3 和 WebM/Ogg 版本</li>
+<li>可通过 JavaScript 控制播放：<code>video.play()</code> / <code>video.pause()</code></li>
+</ul>
+
+      <nav class="post-prev-next"><a href="#post-1" class="pn-link">← 2.文本标签</a><a href="#post-3" class="pn-link">4.结构与表单 →</a></nav>
+    </div>
+
+    <div id="post-3" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;列表&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;表格&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;单元格合并&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;元素类型&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;块级元素&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;内联元素&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;div 与 span&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;语义化结构标签&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;表单&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;表单容器&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;输入控件&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;文本域&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;文件上传&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;单选框&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;复选框&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;下拉列表&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;按钮&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;label 辅助标签&quot;}]">
+      <h2>列表</h2>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;ul&gt;</code></td>
+<td>无序列表，列表项前显示圆点</td>
+</tr>
+<tr>
+<td><code>&lt;ol&gt;</code></td>
+<td>有序列表，列表项前显示数字</td>
+</tr>
+<tr>
+<td><code>&lt;li&gt;</code></td>
+<td>列表项，必须放在 ul 或 ol 中</td>
+</tr>
+<tr>
+<td><code>&lt;dl&gt;</code></td>
+<td>自定义列表</td>
+</tr>
+<tr>
+<td><code>&lt;dt&gt;</code></td>
+<td>自定义列表中的术语</td>
+</tr>
+<tr>
+<td><code>&lt;dd&gt;</code></td>
+<td>自定义列表中的描述</td>
+</tr>
+</tbody>
+</table>
+<h2>表格</h2>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>表头1<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>表头2<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>单元格1<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>单元格2<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;table&gt;</code></td>
+<td>表格容器</td>
+</tr>
+<tr>
+<td><code>&lt;thead&gt;</code></td>
+<td>表头区域</td>
+</tr>
+<tr>
+<td><code>&lt;th&gt;</code></td>
+<td>表头单元格（文字加粗居中）</td>
+</tr>
+<tr>
+<td><code>&lt;tr&gt;</code></td>
+<td>行</td>
+</tr>
+<tr>
+<td><code>&lt;td&gt;</code></td>
+<td>普通单元格</td>
+</tr>
+<tr>
+<td><code>&lt;tbody&gt;</code></td>
+<td>表格主体</td>
+</tr>
+<tr>
+<td><code>&lt;tfoot&gt;</code></td>
+<td>表尾（不常用）</td>
+</tr>
+</tbody>
+</table>
+<h3>单元格合并</h3>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">rowspan</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>跨两行<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">colspan</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>跨两列<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+</code></pre>
+<ul>
+<li><code>rowspan</code>：跨行合并</li>
+<li><code>colspan</code>：跨列合并</li>
+<li>左上原则：合并从左上角单元格开始</li>
+</ul>
+<h2>元素类型</h2>
+<h3>块级元素</h3>
+<ul>
+<li>独占一行</li>
+<li>可嵌套其他元素</li>
+<li>如 <code>&lt;p&gt;</code>、<code>&lt;div&gt;</code>、<code>&lt;h1&gt;</code>~<code>&lt;h6&gt;</code></li>
+</ul>
+<h3>内联元素</h3>
+<ul>
+<li>不独占一行，一行可放多个</li>
+<li>不可嵌套块级元素</li>
+<li>如 <code>&lt;a&gt;</code>、<code>&lt;span&gt;</code>、<code>&lt;img&gt;</code></li>
+</ul>
+<h2>div 与 span</h2>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>块级容器，配合 CSS 布局<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>内联容器，配合 CSS 局部样式<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+<ul>
+<li><code>&lt;div&gt;</code>：块级，无实际语义，纯布局容器</li>
+<li><code>&lt;span&gt;</code>：内联，无实际语义，用于包裹文本</li>
+</ul>
+<h2>语义化结构标签</h2>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;header&gt;</code></td>
+<td>页眉（头部）</td>
+</tr>
+<tr>
+<td><code>&lt;main&gt;</code></td>
+<td>主体内容（每页唯一）</td>
+</tr>
+<tr>
+<td><code>&lt;nav&gt;</code></td>
+<td>导航栏</td>
+</tr>
+<tr>
+<td><code>&lt;article&gt;</code></td>
+<td>文章</td>
+</tr>
+<tr>
+<td><code>&lt;section&gt;</code></td>
+<td>分块/章节</td>
+</tr>
+<tr>
+<td><code>&lt;aside&gt;</code></td>
+<td>侧边栏</td>
+</tr>
+<tr>
+<td><code>&lt;footer&gt;</code></td>
+<td>页脚</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>表单</h2>
+<h3>表单容器</h3>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;提交地址&quot;</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- 表单控件 --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<h3>输入控件</h3>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;默认值&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;提示文本&quot;</span> /&gt;</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>控件类型（text / password 等）</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>控件名称，提交到后端用</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>默认值</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td>提示文本</td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td>禁用</td>
+</tr>
+<tr>
+<td><code>autocomplete</code></td>
+<td>自动填充，on / off</td>
+</tr>
+</tbody>
+</table>
+<h3>文本域</h3>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;content&quot;</span> <span class="hljs-attr">cols</span>=<span class="hljs-string">&quot;30&quot;</span> <span class="hljs-attr">rows</span>=<span class="hljs-string">&quot;10&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;请输入文本&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span>
+</code></pre>
+<ul>
+<li><code>cols</code>：列数（一行多少字符）</li>
+<li><code>rows</code>：行数</li>
+</ul>
+<h3>文件上传</h3>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">multiple</span> <span class="hljs-attr">accept</span>=<span class="hljs-string">&quot;.jpg,.png,.zip&quot;</span> /&gt;</span>
+</code></pre>
+<ul>
+<li><code>multiple</code>：允许多选</li>
+<li><code>accept</code>：限制文件类型</li>
+</ul>
+<h3>单选框</h3>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;gender&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">checked</span> /&gt;</span>女
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;gender&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1&quot;</span> /&gt;</span>男
+</code></pre>
+<ul>
+<li><code>name</code> 相同的为一组，组内只能选一个</li>
+<li><code>checked</code>：默认选中</li>
+</ul>
+<h3>复选框</h3>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;hobby&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0&quot;</span> /&gt;</span>篮球
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;hobby&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1&quot;</span> /&gt;</span>足球
+</code></pre>
+<h3>下拉列表</h3>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;北京&quot;</span> <span class="hljs-attr">selected</span>&gt;</span>北京<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;上海&quot;</span>&gt;</span>上海<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+</code></pre>
+<ul>
+<li><code>selected</code>：默认选中</li>
+</ul>
+<h3>按钮</h3>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>提交<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;reset&quot;</span>&gt;</span>重置<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>普通按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>submit</code></td>
+<td>提交表单</td>
+</tr>
+<tr>
+<td><code>reset</code></td>
+<td>重置表单</td>
+</tr>
+<tr>
+<td><code>button</code></td>
+<td>无默认行为，需配合 JS</td>
+</tr>
+</tbody>
+</table>
+<h3>label 辅助标签</h3>
+<p>label 可提升用户体验，点击 label 自动聚焦到对应 input：</p>
+<pre class="hljs"><code><span class="hljs-comment">&lt;!-- 方式一：直接包裹 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>用户名：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- 方式二：for + id 关联 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span>用户名：<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;username&quot;</span> /&gt;</span>
+</code></pre>
+
+      <nav class="post-prev-next"><a href="#post-2" class="pn-link">← 3.链接与媒体</a><span class="pn-link disabled">已是最后一篇 →</span></nav>
+    </div>
+      </main>
+
+      <aside class="outline-sidebar" id="outlineSidebar">
+        <div class="ol-sidebar-title">目录</div>
+        <ul class="ol-list" id="olSidebarList"></ul>
+      </aside>
+    </div>
+  </div>
+
+  <div class="float-btns" id="floatBtns">
+    <button class="fb-btn" id="btn-scrolltop" title="返回顶部">&#x2191;</button>
+    <button class="fb-btn" id="btn-outline" title="大纲">&#x2630;</button>
+  </div>
+
+  <div class="outline-popup" id="outlinePopup">
+    <div class="ol-popup-inner">
+      <ul class="ol-list" id="olPopupList"></ul>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <script>
+(function() {
+  var articles = document.querySelectorAll('.post-article');
+  var filetree = document.getElementById('filetree');
+  var overlay = document.getElementById('overlay');
+  var floatBtns = document.getElementById('floatBtns');
+  var postItems = document.querySelectorAll('.post-item');
+  var olSidebarList = document.getElementById('olSidebarList');
+  var outlinePopup = document.getElementById('outlinePopup');
+
+  function renderOutline(article) {
+    if (!olSidebarList) return;
+    var headings = [];
+    try { headings = JSON.parse(article.getAttribute('data-headings') || '[]'); } catch(e) {}
+    var html = headings.map(function(h) {
+      return '<li class="ol-item ol-h' + h.level + '"><a href="#' + article.id + '" data-heading="' + h.text.replace(/"/g, '&quot;') + '">' + h.text + '</a></li>';
+    }).join('');
+    olSidebarList.innerHTML = html;
+  }
+
+  function scrollToHeading(postId, headingText) {
+    var article = document.getElementById(postId);
+    if (!article) return;
+    if (!article.classList.contains('active')) {
+      window.location.hash = postId;
+    }
+    var headings = article.querySelectorAll('h2, h3');
+    for (var i = 0; i < headings.length; i++) {
+      if (headings[i].textContent.trim() === headingText) {
+        headings[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        break;
+      }
+    }
+  }
+
+  // 侧栏大纲点击
+  if (olSidebarList) {
+    olSidebarList.addEventListener('click', function(e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      e.preventDefault();
+      var postId = a.getAttribute('href').slice(1);
+      var headingText = a.getAttribute('data-heading');
+      scrollToHeading(postId, headingText);
+    });
+  }
+
+  function showPost(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    articles.forEach(function(a) { a.classList.remove('active'); });
+    target.classList.add('active');
+    postItems.forEach(function(item) { item.classList.remove('active'); });
+    var link = document.querySelector('.post-item a[href="#' + id + '"]');
+    if (link) link.parentElement.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var pa = document.getElementById('postarea');
+    if (pa) pa.scrollTo({ top: 0, behavior: 'smooth' });
+    renderOutline(target);
+    closeFiletree();
+  }
+
+  function handleHash() {
+    var hash = window.location.hash.slice(1);
+    if (hash && document.getElementById(hash)) {
+      showPost(hash);
+    } else if (articles.length > 0) {
+      window.location.hash = articles[0].id;
+    }
+  }
+
+  window.addEventListener('hashchange', handleHash);
+
+  // 初始加载
+  handleHash();
+  var active = document.querySelector('.post-article.active');
+  if (active) renderOutline(active);
+
+  var btnFiletree = document.getElementById('btn-filetree');
+  if (btnFiletree) btnFiletree.addEventListener('click', function() {
+    if (filetree) filetree.classList.toggle('open');
+    if (overlay) overlay.classList.toggle('show');
+  });
+
+  function closeFiletree() {
+    if (filetree) filetree.classList.remove('open');
+    if (overlay) overlay.classList.remove('show');
+  }
+
+  if (overlay) overlay.addEventListener('click', closeFiletree);
+
+  function checkScroll() {
+    if (!floatBtns) return;
+    if (window.scrollY > window.innerHeight) {
+      floatBtns.classList.add('visible');
+    } else {
+      floatBtns.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', checkScroll, { passive: true });
+  checkScroll();
+
+  var btnScrollTop = document.getElementById('btn-scrolltop');
+  if (btnScrollTop) btnScrollTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var pa = document.getElementById('postarea');
+    if (pa) pa.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var olPopupList = document.getElementById('olPopupList');
+  var btnOutline = document.getElementById('btn-outline');
+  if (btnOutline) btnOutline.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (olSidebarList && olPopupList) {
+      olPopupList.innerHTML = olSidebarList.innerHTML;
+    }
+    if (outlinePopup) outlinePopup.classList.toggle('show');
+  });
+
+  // 弹窗大纲点击
+  if (olPopupList) {
+    olPopupList.addEventListener('click', function(e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      e.preventDefault();
+      var postId = a.getAttribute('href').slice(1);
+      var headingText = a.getAttribute('data-heading');
+      scrollToHeading(postId, headingText);
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!outlinePopup) return;
+    if (!outlinePopup.contains(e.target) && e.target !== document.getElementById('btn-outline')) {
+      outlinePopup.classList.remove('show');
+    }
+  });
+
+  if (typeof mermaid !== 'undefined') mermaid.run();
+
+})();
+</script>
+</body>
+</html>

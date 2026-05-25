@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python - Bookends</title>
+  <link rel="stylesheet" href="../../assets/main.css">
+  <link rel="stylesheet" href="../../assets/highlight.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  
+</head>
+<body class="category-page">
+  <div class="page-container">
+    <header class="topbar">
+      <button class="tb-btn" id="btn-filetree" title="目录">&#x2261;</button>
+      <a href="../../" class="tb-back" title="返回首页">&#x2190;</a>
+      <span class="tb-title">Python</span>
+      <span class="tb-count">2 篇</span>
+    </header>
+
+    <div class="main-area">
+      <aside class="file-tree" id="filetree">
+        <ul class="file-tree-posts">
+    <li class="post-item active"><a href="#post-0">1.pip更换镜像</a></li>
+<li class="post-item"><a href="#post-1">2.Python创建虚拟环境</a></li>
+  </ul>
+      </aside>
+
+      <main class="post-area" id="postarea">
+        
+    <div id="post-0" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;方法一：通过文件资源管理器（推荐）&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;方法二：通过 PowerShell 命令创建&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;验证配置是否生效&quot;}]">
+      <h2>方法一：通过文件资源管理器（推荐）</h2>
+<ol>
+<li>打开文件资源管理器，地址栏输入 <code>%APPDATA%</code> 回车，进入 <code>C:\Users\&lt;用户名&gt;\AppData\Roaming</code></li>
+<li>新建文件夹 <code>pip</code></li>
+<li>进入 <code>pip</code>，新建文本文件，重命名为 <code>pip.ini</code>（确保扩展名是 <code>.ini</code>）</li>
+<li>右键编辑，填入：</li>
+</ol>
+<pre class="hljs"><code><span class="hljs-section">[global]</span>
+<span class="hljs-attr">index-url</span> = https://mirrors.aliyun.com/pypi/simple/
+
+<span class="hljs-section">[install]</span>
+<span class="hljs-attr">trusted-host</span> = mirrors.aliyun.com
+</code></pre>
+<p>可以替换为其他镜像源：</p>
+<ul>
+<li>清华：<code>https://pypi.tuna.tsinghua.edu.cn/simple</code></li>
+<li>中科大：<code>https://pypi.mirrors.ustc.edu.cn/simple</code></li>
+</ul>
+<h2>方法二：通过 PowerShell 命令创建</h2>
+<pre class="hljs"><code><span class="hljs-comment"># 创建 pip 文件夹（如果不存在）</span>
+<span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Directory <span class="hljs-literal">-Force</span> <span class="hljs-literal">-Path</span> <span class="hljs-string">&quot;<span class="hljs-variable">$env:APPDATA</span>\pip&quot;</span>
+
+<span class="hljs-comment"># 创建并写入 pip.ini 文件</span>
+<span class="hljs-string">@&quot;
+[global]
+index-url = https://mirrors.aliyun.com/pypi/simple/
+[install]
+trusted-host = mirrors.aliyun.com
+&quot;@</span> | <span class="hljs-built_in">Out-File</span> <span class="hljs-literal">-FilePath</span> <span class="hljs-string">&quot;<span class="hljs-variable">$env:APPDATA</span>\pip\pip.ini&quot;</span> <span class="hljs-literal">-Encoding</span> utf8
+</code></pre>
+<h2>验证配置是否生效</h2>
+<pre class="hljs"><code>pip config list
+</code></pre>
+<p>看到输出中包含你设置的 <code>index-url</code> 即表示配置成功。</p>
+
+      <nav class="post-prev-next"><span class="pn-link disabled">← 已是第一篇</span><a href="#post-1" class="pn-link">2.Python创建虚拟环境 →</a></nav>
+    </div>
+
+    <div id="post-1" class="post-article" data-headings="[]">
+      <h2>使用 <code>venv</code>（内置，推荐）</h2>
+<p>Python 标准库自带，无需额外安装：</p>
+<pre class="hljs"><code><span class="hljs-comment"># 创建虚拟环境</span>
+python -m venv myenv
+<span class="hljs-comment"># 激活虚拟环境</span>
+<span class="hljs-comment"># Windows:</span>
+myenv\Scripts\activate
+<span class="hljs-comment"># macOS/Linux:</span>
+<span class="hljs-built_in">source</span> myenv/bin/activate
+<span class="hljs-comment"># 退出虚拟环境</span>
+deactivate
+</code></pre>
+<h2>使用 <code>virtualenv</code>（第三方，功能更强）</h2>
+<pre class="hljs"><code><span class="hljs-comment"># 安装</span>
+pip install virtualenv
+<span class="hljs-comment"># 创建</span>
+virtualenv myenv
+<span class="hljs-comment"># 指定 Python 版本</span>
+virtualenv -p python3.11 myenv
+</code></pre>
+<h2>使用 <code>conda</code>（Anaconda/Miniconda）</h2>
+<pre class="hljs"><code>conda create -n myenv python=3.11
+conda activate myenv
+conda deactivate
+</code></pre>
+<h2>使用 <code>uv</code>（新兴，速度快）</h2>
+<p>由 Ruff 团队开发，速度极快：</p>
+<pre class="hljs"><code><span class="hljs-comment"># 安装 uv 后</span>
+uv venv
+<span class="hljs-comment"># 或指定路径和版本</span>
+uv venv myenv --python 3.11
+<span class="hljs-comment"># 激活方式同 venv</span>
+</code></pre>
+<p><strong>💡 Tip</strong>
+日常使用推荐 <code>python -m venv</code>，无需额外安装。如果经常管理多个 Python 版本，可以考虑 <code>uv</code> 或 <code>conda</code>。</p>
+
+      <nav class="post-prev-next"><a href="#post-0" class="pn-link">← 1.pip更换镜像</a><span class="pn-link disabled">已是最后一篇 →</span></nav>
+    </div>
+      </main>
+
+      <aside class="outline-sidebar" id="outlineSidebar">
+        <div class="ol-sidebar-title">目录</div>
+        <ul class="ol-list" id="olSidebarList"></ul>
+      </aside>
+    </div>
+  </div>
+
+  <div class="float-btns" id="floatBtns">
+    <button class="fb-btn" id="btn-scrolltop" title="返回顶部">&#x2191;</button>
+    <button class="fb-btn" id="btn-outline" title="大纲">&#x2630;</button>
+  </div>
+
+  <div class="outline-popup" id="outlinePopup">
+    <div class="ol-popup-inner">
+      <ul class="ol-list" id="olPopupList"></ul>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <script>
+(function() {
+  var articles = document.querySelectorAll('.post-article');
+  var filetree = document.getElementById('filetree');
+  var overlay = document.getElementById('overlay');
+  var floatBtns = document.getElementById('floatBtns');
+  var postItems = document.querySelectorAll('.post-item');
+  var olSidebarList = document.getElementById('olSidebarList');
+  var outlinePopup = document.getElementById('outlinePopup');
+
+  function renderOutline(article) {
+    if (!olSidebarList) return;
+    var headings = [];
+    try { headings = JSON.parse(article.getAttribute('data-headings') || '[]'); } catch(e) {}
+    var html = headings.map(function(h) {
+      return '<li class="ol-item ol-h' + h.level + '"><a href="#' + article.id + '" data-heading="' + h.text.replace(/"/g, '&quot;') + '">' + h.text + '</a></li>';
+    }).join('');
+    olSidebarList.innerHTML = html;
+  }
+
+  function scrollToHeading(postId, headingText) {
+    var article = document.getElementById(postId);
+    if (!article) return;
+    if (!article.classList.contains('active')) {
+      window.location.hash = postId;
+    }
+    var headings = article.querySelectorAll('h2, h3');
+    for (var i = 0; i < headings.length; i++) {
+      if (headings[i].textContent.trim() === headingText) {
+        headings[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        break;
+      }
+    }
+  }
+
+  // 侧栏大纲点击
+  if (olSidebarList) {
+    olSidebarList.addEventListener('click', function(e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      e.preventDefault();
+      var postId = a.getAttribute('href').slice(1);
+      var headingText = a.getAttribute('data-heading');
+      scrollToHeading(postId, headingText);
+    });
+  }
+
+  function showPost(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    articles.forEach(function(a) { a.classList.remove('active'); });
+    target.classList.add('active');
+    postItems.forEach(function(item) { item.classList.remove('active'); });
+    var link = document.querySelector('.post-item a[href="#' + id + '"]');
+    if (link) link.parentElement.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var pa = document.getElementById('postarea');
+    if (pa) pa.scrollTo({ top: 0, behavior: 'smooth' });
+    renderOutline(target);
+    closeFiletree();
+  }
+
+  function handleHash() {
+    var hash = window.location.hash.slice(1);
+    if (hash && document.getElementById(hash)) {
+      showPost(hash);
+    } else if (articles.length > 0) {
+      window.location.hash = articles[0].id;
+    }
+  }
+
+  window.addEventListener('hashchange', handleHash);
+
+  // 初始加载
+  handleHash();
+  var active = document.querySelector('.post-article.active');
+  if (active) renderOutline(active);
+
+  var btnFiletree = document.getElementById('btn-filetree');
+  if (btnFiletree) btnFiletree.addEventListener('click', function() {
+    if (filetree) filetree.classList.toggle('open');
+    if (overlay) overlay.classList.toggle('show');
+  });
+
+  function closeFiletree() {
+    if (filetree) filetree.classList.remove('open');
+    if (overlay) overlay.classList.remove('show');
+  }
+
+  if (overlay) overlay.addEventListener('click', closeFiletree);
+
+  function checkScroll() {
+    if (!floatBtns) return;
+    if (window.scrollY > window.innerHeight) {
+      floatBtns.classList.add('visible');
+    } else {
+      floatBtns.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', checkScroll, { passive: true });
+  checkScroll();
+
+  var btnScrollTop = document.getElementById('btn-scrolltop');
+  if (btnScrollTop) btnScrollTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var pa = document.getElementById('postarea');
+    if (pa) pa.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var olPopupList = document.getElementById('olPopupList');
+  var btnOutline = document.getElementById('btn-outline');
+  if (btnOutline) btnOutline.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (olSidebarList && olPopupList) {
+      olPopupList.innerHTML = olSidebarList.innerHTML;
+    }
+    if (outlinePopup) outlinePopup.classList.toggle('show');
+  });
+
+  // 弹窗大纲点击
+  if (olPopupList) {
+    olPopupList.addEventListener('click', function(e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      e.preventDefault();
+      var postId = a.getAttribute('href').slice(1);
+      var headingText = a.getAttribute('data-heading');
+      scrollToHeading(postId, headingText);
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!outlinePopup) return;
+    if (!outlinePopup.contains(e.target) && e.target !== document.getElementById('btn-outline')) {
+      outlinePopup.classList.remove('show');
+    }
+  });
+
+  if (typeof mermaid !== 'undefined') mermaid.run();
+
+})();
+</script>
+</body>
+</html>

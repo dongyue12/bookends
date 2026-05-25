@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS - Bookends</title>
+  <link rel="stylesheet" href="../../assets/main.css">
+  <link rel="stylesheet" href="../../assets/highlight.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  
+</head>
+<body class="category-page">
+  <div class="page-container">
+    <header class="topbar">
+      <button class="tb-btn" id="btn-filetree" title="目录">&#x2261;</button>
+      <a href="../../" class="tb-back" title="返回首页">&#x2190;</a>
+      <span class="tb-title">CSS</span>
+      <span class="tb-count">15 篇</span>
+    </header>
+
+    <div class="main-area">
+      <aside class="file-tree" id="filetree">
+        <ul class="file-tree-posts">
+    <li class="post-item active"><a href="#post-0">1.css是什么</a></li>
+<li class="post-item"><a href="#post-1">2.链接外部css</a></li>
+<li class="post-item"><a href="#post-2">3.元素选择器</a></li>
+<li class="post-item"><a href="#post-3">4.类选择器</a></li>
+<li class="post-item"><a href="#post-4">5.ID选择器</a></li>
+<li class="post-item"><a href="#post-5">6.属性选择器</a></li>
+<li class="post-item"><a href="#post-6">7.伪类选择器</a></li>
+<li class="post-item"><a href="#post-7">8.子代选择器</a></li>
+<li class="post-item"><a href="#post-8">9.CSS字体</a></li>
+<li class="post-item"><a href="#post-9">10.CSS颜色</a></li>
+<li class="post-item"><a href="#post-10">11.CSS盒子模型</a></li>
+<li class="post-item"><a href="#post-11">12.CSS布局</a></li>
+<li class="post-item"><a href="#post-12">13.CSS定位</a></li>
+<li class="post-item"><a href="#post-13">14.CSS变形</a></li>
+<li class="post-item"><a href="#post-14">15.CSS动画</a></li>
+  </ul>
+      </aside>
+
+      <main class="post-area" id="postarea">
+        
+    <div id="post-0" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;CSS 简介&quot;}]">
+      <h2>CSS 简介</h2>
+<p>CSS（Cascading Style Sheets）是<strong>层叠样式表</strong>的缩写，是一种样式语言，用于描述页面元素的呈现方式。</p>
+<ul>
+<li>提供了丰富的样式属性，从字体、颜色到布局和动画，让我们能够定制网页的外观和布局</li>
+<li>广泛用于构建现代网页和 APP，是构建 UI 的核心技术之一</li>
+<li>与 HTML 和 JavaScript 一起组成了前端开发的三大支柱：
+<ul>
+<li><strong>HTML</strong> 负责定义页面的结构</li>
+<li><strong>CSS</strong> 负责样式的呈现</li>
+<li><strong>JavaScript</strong> 负责处理交互和动态效果</li>
+</ul>
+</li>
+<li>CSS 由浏览器解释和执行，几乎所有现代浏览器都支持 CSS</li>
+<li>CSS 不依赖其他编程语言，可以直接嵌入 HTML 文档中，也可以作为外部样式表单独存在</li>
+<li>CSS 的上限很高，可以研究出很多复杂的样式</li>
+</ul>
+
+      <nav class="post-prev-next"><span class="pn-link disabled">← 已是第一篇</span><a href="#post-1" class="pn-link">2.链接外部css →</a></nav>
+    </div>
+
+    <div id="post-1" class="post-article" data-headings="[]">
+      <p>在编写css时一般都会写到另一个叫css的文件里面
+比如：</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 这里的rel是明确告诉浏览器，我在链接一个样式表文件 --&gt;</span>
+</code></pre>
+
+      <nav class="post-prev-next"><a href="#post-0" class="pn-link">← 1.css是什么</a><a href="#post-2" class="pn-link">3.元素选择器 →</a></nav>
+    </div>
+
+    <div id="post-2" class="post-article" data-headings="[]">
+      <ul>
+<li>直接通过 HTML 标签名（如 <code>p</code>、<code>h1</code>、<code>div</code>）来选择元素。</li>
+<li>常用于<strong>全局基础样式设定</strong>或<strong>重置默认样式</strong>，比如统一所有段落的字体、行高等。</li>
+<li>写法：<code>标签名 { ... }</code></li>
+</ul>
+<pre class="hljs"><code><span class="hljs-selector-tag">p</span> { <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>; }
+<span class="hljs-selector-tag">h1</span>, <span class="hljs-selector-tag">h2</span>, <span class="hljs-selector-tag">h3</span> { <span class="hljs-attribute">font-family</span>: sans-serif; }
+</code></pre>
+<p>虽然不如类选择器那么精细，但在搭建页面基础风格时仍然很常用。</p>
+
+      <nav class="post-prev-next"><a href="#post-1" class="pn-link">← 2.链接外部css</a><a href="#post-3" class="pn-link">4.类选择器 →</a></nav>
+    </div>
+
+    <div id="post-3" class="post-article" data-headings="[]">
+      <ul>
+<li>类选择器是<strong>最常用</strong>的选择器之一，因为它灵活、可复用。</li>
+<li>一个 HTML 元素可以通过 <code>class</code> 属性<strong>同时指定多个类名</strong>，类名之间用<strong>空格</strong>分隔，方便组合不同的样式。</li>
+<li>写法：<code>.类名 { ... }</code></li>
+</ul>
+<pre class="hljs"><code><span class="hljs-selector-class">.box</span> { <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>; }
+<span class="hljs-selector-class">.highlight</span> { <span class="hljs-attribute">background</span>: yellow; }
+</code></pre>
+<pre class="hljs"><code><span class="hljs-comment">&lt;!-- 同时使用多个类 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box highlight&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+
+      <nav class="post-prev-next"><a href="#post-2" class="pn-link">← 3.元素选择器</a><a href="#post-4" class="pn-link">5.ID选择器 →</a></nav>
+    </div>
+
+    <div id="post-4" class="post-article" data-headings="[]">
+      <ul>
+<li>ID 选择器用于选中拥有特定 <code>id</code> 属性的<strong>唯一元素</strong>（一个页面中同一个 id 只能出现一次）。</li>
+<li>适合用来定义<strong>某个特定模块的固定样式</strong>，但不推荐大量用于样式复用。</li>
+<li>写法：<code>#id名 { ... }</code></li>
+</ul>
+<pre class="hljs"><code><span class="hljs-selector-id">#header</span> { ... }
+</code></pre>
+<blockquote>
+<p>注意：虽然 ID 选择器的优先级很高，但在实际开发中，更推荐优先使用类选择器来管理样式，以保持低耦合和可复用性。</p>
+</blockquote>
+
+      <nav class="post-prev-next"><a href="#post-3" class="pn-link">← 4.类选择器</a><a href="#post-5" class="pn-link">6.属性选择器 →</a></nav>
+    </div>
+
+    <div id="post-5" class="post-article" data-headings="[]">
+      <p><strong>作用</strong>：根据元素是否拥有某个属性，或该属性的具体值来选择元素。非常适合在没有修改 HTML 类名的情况下，对特定类型的元素进行样式区分。
+<strong>基本语法</strong>：</p>
+<ul>
+<li><code>[attr]</code><br>
+选择带有 <code>attr</code> 属性的所有元素，无论值是什么。</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-selector-attr">[disabled]</span> {
+  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.5</span>;
+}
+<span class="hljs-comment">/* 所有带 disabled 属性的元素都会半透明 */</span>
+</code></pre>
+<ul>
+<li><code>[attr=&quot;value&quot;]</code><br>
+选择 <code>attr</code> 属性值<strong>完全等于</strong> <code>value</code> 的元素。</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=<span class="hljs-string">&quot;text&quot;</span>]</span> {
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#333</span>;
+}
+<span class="hljs-comment">/* 只选中 type 为 text 的输入框 */</span>
+</code></pre>
+<ul>
+<li><code>[attr^=&quot;value&quot;]</code><br>
+选择 <code>attr</code> 属性值以 <code>value</code> <strong>开头</strong>的元素。</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[href^=<span class="hljs-string">&quot;https://&quot;</span>]</span> {
+  <span class="hljs-attribute">color</span>: green;
+}
+<span class="hljs-comment">/* 所有外部安全链接（https开头）变绿色 */</span>
+</code></pre>
+<ul>
+<li><code>[attr$=&quot;value&quot;]</code><br>
+选择 <code>attr</code> 属性值以 <code>value</code> <strong>结尾</strong>的元素。</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[href$=<span class="hljs-string">&quot;.pdf&quot;</span>]</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">icon-pdf.svg</span>) no-repeat right center;
+}
+<span class="hljs-comment">/* 所有指向 PDF 的链接后面加一个图标 */</span>
+</code></pre>
+<ul>
+<li><code>[attr*=&quot;value&quot;]</code><br>
+选择 <code>attr</code> 属性值<strong>包含</strong> <code>value</code> 子串的元素。</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-selector-tag">div</span><span class="hljs-selector-attr">[class*=<span class="hljs-string">&quot;card&quot;</span>]</span> {
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>;
+}
+<span class="hljs-comment">/* 类名中包含 &quot;card&quot; 的所有 div（如 card、card-header、my-card）都会圆角 */</span>
+</code></pre>
+<p><strong>常见用途</strong>：</p>
+<ul>
+<li>区分不同类型的 <code>&lt;input&gt;</code>（如 <code>[type=&quot;checkbox&quot;]</code>、<code>[type=&quot;radio&quot;]</code>）。</li>
+<li>利用自定义数据属性（<code>data-*</code>）进行样式控制，如 <code>[data-status=&quot;error&quot;]</code>。</li>
+<li>美化指向特定文件类型的链接。</li>
+</ul>
+
+      <nav class="post-prev-next"><a href="#post-4" class="pn-link">← 5.ID选择器</a><a href="#post-6" class="pn-link">7.伪类选择器 →</a></nav>
+    </div>
+
+    <div id="post-6" class="post-article" data-headings="[]">
+      <p><strong>作用</strong>：表示元素的<strong>特定状态</strong>或<strong>在结构中的特定位置</strong>。它不会改变 DOM，而是捕捉用户交互、元素顺序等动态条件。</p>
+<h4>1. 动态交互伪类</h4>
+<ul>
+<li><code>:hover</code> —— 鼠标悬停时。</li>
+<li><code>:focus</code> —— 元素获得焦点时（常用于输入框、按钮）。</li>
+<li><code>:active</code> —— 元素被激活时（如鼠标按下但未松开）。</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#0056b3</span>;
+}
+<span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:active</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#003d80</span>;
+}
+</code></pre>
+<h4>2. 结构伪类</h4>
+<p>根据元素在父容器中的位置来选择。</p>
+<ul>
+<li><code>:first-child</code> / <code>:last-child</code> —— 父元素下第一个或最后一个子元素。</li>
+<li><code>:nth-child(n)</code> —— 选择父元素下第 n 个子元素（<code>n</code> 从 1 开始计数）。
+<ul>
+<li><code>:nth-child(odd)</code> / <code>:nth-child(even)</code> 隔行变色常用。</li>
+</ul>
+</li>
+<li><code>:first-of-type</code> / <code>:last-of-type</code> / <code>:nth-of-type(n)</code> —— 在兄弟元素中按<strong>同类型</strong>排序。</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:first-child</span> {
+  <span class="hljs-attribute">font-weight</span>: bold;
+}
+<span class="hljs-selector-tag">tr</span><span class="hljs-selector-pseudo">:nth-child</span>(even) {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f2f2f2</span>;
+}
+<span class="hljs-comment">/* 表格条纹背景 */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:first-of-type</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.2em</span>;
+}
+<span class="hljs-comment">/* 选择父元素中第一个 &lt;p&gt; 段落，忽略其他类型元素排序 */</span>
+</code></pre>
+<h4>3. 其他常用伪类</h4>
+<ul>
+<li><code>:not(selector)</code> —— 排除匹配选择器的元素。</li>
+<li><code>:empty</code> —— 没有子元素（包括文本节点）的元素。</li>
+<li><code>:checked</code> —— 被选中的复选框或单选框。</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.external</span>) {
+  <span class="hljs-attribute">text-decoration</span>: none;
+}
+<span class="hljs-comment">/* 除带有 .external 类的链接外，取消下划线 */</span>
+</code></pre>
+<p><strong>注意</strong>：伪类是单冒号 <code>:</code>，而伪元素（如 <code>::before</code>、<code>::after</code>）是双冒号，两者概念不同，不要混淆。</p>
+
+      <nav class="post-prev-next"><a href="#post-5" class="pn-link">← 6.属性选择器</a><a href="#post-7" class="pn-link">8.子代选择器 →</a></nav>
+    </div>
+
+    <div id="post-7" class="post-article" data-headings="[]">
+      <p>它们都属于<strong>关系选择器</strong>（也叫组合器），用来表达元素之间的层级关系。</p>
+<h4>1. 后代选择器（Descendant Combinator）</h4>
+<ul>
+<li>写法：<code>A B</code>（中间用<strong>空格</strong>）</li>
+<li>选中 <code>A</code> 内部<strong>所有层级</strong>中的 <code>B</code> 元素，无论嵌套多深。</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-selector-tag">div</span> <span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;
+}
+<span class="hljs-comment">/* div 里的所有段落（包括子元素中的段落、孙子元素中的段落）都会变成灰色 */</span>
+</code></pre>
+<ul>
+<li>适合：需要约束样式的作用域，但又不在乎目标元素的直接父子关系。</li>
+</ul>
+<h4>2. 子代选择器（Child Combinator）</h4>
+<ul>
+<li>写法：<code>A &gt; B</code>（<code>&gt;</code> 两边可以有空格）</li>
+<li>只选择 <code>A</code> 的<strong>直接子元素</strong> <code>B</code>，不涉及更深的后代。</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-selector-tag">ul</span> &gt; <span class="hljs-selector-tag">li</span> {
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">8px</span>;
+}
+<span class="hljs-comment">/* 只对 ul 正下方的 li 生效，不影响 li 里再嵌套的 ul 下的 li */</span>
+</code></pre>
+<ul>
+<li>适合：希望样式仅影响紧邻的一层，避免污染深层嵌套结构。
+<strong>对比示例</strong>：
+假设有 HTML 结构：</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>段落1（直接子元素）<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;inner&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>段落2（孙元素）<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<pre class="hljs"><code><span class="hljs-selector-class">.container</span> <span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">border-left</span>: <span class="hljs-number">2px</span> solid blue;
+}
+<span class="hljs-comment">/* 段落1 和 段落2 都会出现蓝色左边框（后代） */</span>
+<span class="hljs-selector-class">.container</span> &gt; <span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">border-left</span>: <span class="hljs-number">2px</span> solid red;
+}
+<span class="hljs-comment">/* 只有段落1 会出现红色左边框（直接子元素） */</span>
+</code></pre>
+<p><strong>实践建议</strong>：</p>
+<ul>
+<li>能使用子代选择器的地方，优先用子代，避免无意间影响深层元素。</li>
+<li>后代选择器更适合建立”组件内部所有某类元素”的宽松规则。</li>
+</ul>
+
+      <nav class="post-prev-next"><a href="#post-6" class="pn-link">← 7.伪类选择器</a><a href="#post-8" class="pn-link">9.CSS字体 →</a></nav>
+    </div>
+
+    <div id="post-8" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;定义字体&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;字体样式&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;字体装饰&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;字体大小&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;字体粗细&quot;}]">
+      <h2>定义字体</h2>
+<pre class="hljs"><code><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;微软雅黑&quot;</span>, sans-serif;  <span class="hljs-comment">/* 字体名称，可设多个作为回退 */</span>
+</code></pre>
+<p>自定义字体使用 <code>@font-face</code>：</p>
+<pre class="hljs"><code><span class="hljs-keyword">@font-face</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;MyFont&quot;</span>;
+  <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;myfont.woff2&quot;</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">&quot;woff2&quot;</span>);
+}
+</code></pre>
+<h2>字体样式</h2>
+<pre class="hljs"><code><span class="hljs-attribute">font-style</span>: italic;  <span class="hljs-comment">/* 斜体 */</span>
+<span class="hljs-attribute">font-style</span>: normal;  <span class="hljs-comment">/* 正常（取消斜体） */</span>
+</code></pre>
+<h2>字体装饰</h2>
+<pre class="hljs"><code><span class="hljs-attribute">text-decoration</span>: underline;       <span class="hljs-comment">/* 下划线 */</span>
+<span class="hljs-attribute">text-decoration</span>: line-through;    <span class="hljs-comment">/* 删除线 */</span>
+<span class="hljs-attribute">text-decoration</span>: overline;        <span class="hljs-comment">/* 上划线 */</span>
+<span class="hljs-attribute">text-decoration</span>: none;            <span class="hljs-comment">/* 去掉所有装饰 */</span>
+<span class="hljs-attribute">text-decoration</span>: underline overline;                    <span class="hljs-comment">/* 下划线 + 上划线 */</span>
+<span class="hljs-attribute">text-decoration</span>: underline overline line-through;       <span class="hljs-comment">/* 三者叠加 */</span>
+</code></pre>
+<h2>字体大小</h2>
+<pre class="hljs"><code><span class="hljs-attribute">font-size</span>: <span class="hljs-number">30px</span>;  <span class="hljs-comment">/* 字体大小 */</span>
+</code></pre>
+<h2>字体粗细</h2>
+<pre class="hljs"><code><span class="hljs-attribute">font-weight</span>: <span class="hljs-number">700</span>;    <span class="hljs-comment">/* 加粗（数值 100–900） */</span>
+<span class="hljs-attribute">font-weight</span>: bold;   <span class="hljs-comment">/* 加粗（关键字，等价 700） */</span>
+<span class="hljs-attribute">font-weight</span>: normal; <span class="hljs-comment">/* 正常（等价 400） */</span>
+</code></pre>
+
+      <nav class="post-prev-next"><a href="#post-7" class="pn-link">← 8.子代选择器</a><a href="#post-9" class="pn-link">10.CSS颜色 →</a></nav>
+    </div>
+
+    <div id="post-9" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;颜色名&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;RGB / RGBA&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;Hex（十六进制）&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;HSL / HSLA&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;元素透明度&quot;}]">
+      <h2>颜色名</h2>
+<pre class="hljs"><code><span class="hljs-attribute">color</span>: red;
+<span class="hljs-attribute">background-color</span>: blue;
+</code></pre>
+<h2>RGB / RGBA</h2>
+<pre class="hljs"><code><span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>);          <span class="hljs-comment">/* 白色 */</span>
+<span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.5</span>);        <span class="hljs-comment">/* 半透明红色 */</span>
+</code></pre>
+<h2>Hex（十六进制）</h2>
+<pre class="hljs"><code><span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;      <span class="hljs-comment">/* 白色（缩写） */</span>
+<span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;   <span class="hljs-comment">/* 白色（完整） */</span>
+<span class="hljs-attribute">color</span>: <span class="hljs-number">#000</span>;      <span class="hljs-comment">/* 黑色 */</span>
+</code></pre>
+<h2>HSL / HSLA</h2>
+<pre class="hljs"><code><span class="hljs-attribute">color</span>: <span class="hljs-built_in">hsl</span>(<span class="hljs-number">0</span>, <span class="hljs-number">100%</span>, <span class="hljs-number">50%</span>);            <span class="hljs-comment">/* 红色 */</span>
+<span class="hljs-attribute">color</span>: <span class="hljs-built_in">hsla</span>(<span class="hljs-number">0</span>, <span class="hljs-number">100%</span>, <span class="hljs-number">50%</span>, <span class="hljs-number">0.5</span>);      <span class="hljs-comment">/* 半透明红色 */</span>
+</code></pre>
+<h2>元素透明度</h2>
+<pre class="hljs"><code><span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.5</span>;    <span class="hljs-comment">/* 整个元素半透明（含子元素），值 0–1 */</span>
+</code></pre>
+<blockquote>
+<p>注意：<code>opacity</code> 影响整个元素（含子元素），如果只想让背景透明，用 <code>rgba()</code> 或 <code>hsla()</code> 设置 <code>background-color</code>。</p>
+</blockquote>
+
+      <nav class="post-prev-next"><a href="#post-8" class="pn-link">← 9.CSS字体</a><a href="#post-10" class="pn-link">11.CSS盒子模型 →</a></nav>
+    </div>
+
+    <div id="post-10" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;盒子边距&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;使用方法&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;盒子边框&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;盒子宽高&quot;}]">
+      <h2>盒子边距</h2>
+<p>| 外边距 | margin |
+| 内边距 | padding |</p>
+<h3>使用方法</h3>
+<pre class="hljs"><code><span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;             <span class="hljs-comment">/* 水平居中 */</span>
+<span class="hljs-attribute">margin-top</span>: <span class="hljs-number">10px</span>;           <span class="hljs-comment">/* 上边距 */</span>
+<span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">10px</span>;        <span class="hljs-comment">/* 下边距 */</span>
+<span class="hljs-attribute">margin-left</span>: <span class="hljs-number">10px</span>;          <span class="hljs-comment">/* 左边距 */</span>
+<span class="hljs-attribute">margin-right</span>: <span class="hljs-number">10px</span>;         <span class="hljs-comment">/* 右边距 */</span>
+<span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span>;          <span class="hljs-comment">/* 上下 左右 */</span>
+<span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span> <span class="hljs-number">30px</span> <span class="hljs-number">40px</span>; <span class="hljs-comment">/* 上 右 下 左（顺时针） */</span>
+</code></pre>
+<pre class="hljs"><code><span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;              <span class="hljs-comment">/* 四边相同 */</span>
+<span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span>;         <span class="hljs-comment">/* 上下 左右 */</span>
+<span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span> <span class="hljs-number">30px</span> <span class="hljs-number">40px</span>; <span class="hljs-comment">/* 上 右 下 左 */</span>
+</code></pre>
+<h2>盒子边框</h2>
+<pre class="hljs"><code><span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid red;        <span class="hljs-comment">/* 粗细 样式 颜色 */</span>
+<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>;           <span class="hljs-comment">/* 圆角 */</span>
+</code></pre>
+<h2>盒子宽高</h2>
+<pre class="hljs"><code><span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+<span class="hljs-attribute">max-width</span>: <span class="hljs-number">600px</span>;    <span class="hljs-comment">/* 最大宽度 */</span>
+<span class="hljs-attribute">min-height</span>: <span class="hljs-number">200px</span>;   <span class="hljs-comment">/* 最小高度 */</span>
+</code></pre>
+
+      <nav class="post-prev-next"><a href="#post-9" class="pn-link">← 10.CSS颜色</a><a href="#post-11" class="pn-link">12.CSS布局 →</a></nav>
+    </div>
+
+    <div id="post-11" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;元素类型&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;弹性布局&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;主轴对齐（水平方向）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;交叉轴对齐（垂直方向，单行）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;多行对齐&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;弹性比例&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;间距&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;网格布局&quot;}]">
+      <h2>元素类型</h2>
+<pre class="hljs"><code><span class="hljs-attribute">display</span>: block;         <span class="hljs-comment">/* 块级元素，独占一行 */</span>
+<span class="hljs-attribute">display</span>: inline;        <span class="hljs-comment">/* 行内元素，和其他元素在一行显示 */</span>
+<span class="hljs-attribute">display</span>: inline-block;  <span class="hljs-comment">/* 行内块元素，可设置宽高 */</span>
+<span class="hljs-attribute">display</span>: none;          <span class="hljs-comment">/* 隐藏元素，不占空间 */</span>
+</code></pre>
+<h2>弹性布局</h2>
+<pre class="hljs"><code><span class="hljs-attribute">display</span>: flex;
+<span class="hljs-attribute">flex-direction</span>: row;          <span class="hljs-comment">/* 主轴横向（默认） */</span>
+<span class="hljs-attribute">flex-direction</span>: column;       <span class="hljs-comment">/* 主轴纵向 */</span>
+</code></pre>
+<h3>主轴对齐（水平方向）</h3>
+<pre class="hljs"><code><span class="hljs-attribute">justify-content</span>: flex-start;    <span class="hljs-comment">/* 左对齐 */</span>
+<span class="hljs-attribute">justify-content</span>: center;        <span class="hljs-comment">/* 居中 */</span>
+<span class="hljs-attribute">justify-content</span>: flex-end;      <span class="hljs-comment">/* 右对齐 */</span>
+<span class="hljs-attribute">justify-content</span>: space-between; <span class="hljs-comment">/* 两端对齐，间距相等 */</span>
+<span class="hljs-attribute">justify-content</span>: space-around;  <span class="hljs-comment">/* 元素两侧有相等间距 */</span>
+</code></pre>
+<h3>交叉轴对齐（垂直方向，单行）</h3>
+<pre class="hljs"><code><span class="hljs-attribute">align-items</span>: flex-start;  <span class="hljs-comment">/* 顶部对齐 */</span>
+<span class="hljs-attribute">align-items</span>: center;      <span class="hljs-comment">/* 垂直居中 */</span>
+<span class="hljs-attribute">align-items</span>: flex-end;    <span class="hljs-comment">/* 底部对齐 */</span>
+</code></pre>
+<h3>多行对齐</h3>
+<pre class="hljs"><code><span class="hljs-attribute">align-content</span>: flex-start;     <span class="hljs-comment">/* 顶部对齐 */</span>
+<span class="hljs-attribute">align-content</span>: space-between;  <span class="hljs-comment">/* 两端对齐 */</span>
+<span class="hljs-attribute">align-content</span>: space-around;   <span class="hljs-comment">/* 间距相等 */</span>
+</code></pre>
+<h3>弹性比例</h3>
+<pre class="hljs"><code><span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;  <span class="hljs-comment">/* 占用剩余空间 */</span>
+</code></pre>
+<h3>间距</h3>
+<pre class="hljs"><code><span class="hljs-attribute">gap</span>: <span class="hljs-number">10px</span>;  <span class="hljs-comment">/* 子元素间距 */</span>
+</code></pre>
+<h2>网格布局</h2>
+<pre class="hljs"><code><span class="hljs-attribute">display</span>: grid;
+<span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>fr);     <span class="hljs-comment">/* 3列，等宽 */</span>
+<span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-number">100px</span> <span class="hljs-number">200px</span> <span class="hljs-number">300px</span>;  <span class="hljs-comment">/* 3列，指定宽度 */</span>
+<span class="hljs-attribute">grid-template-rows</span>: <span class="hljs-built_in">repeat</span>(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>fr);        <span class="hljs-comment">/* 3行，等高 */</span>
+<span class="hljs-attribute">grid-template-rows</span>: <span class="hljs-number">100px</span> <span class="hljs-number">100px</span> <span class="hljs-number">300px</span>;     <span class="hljs-comment">/* 3行，指定高度 */</span>
+<span class="hljs-attribute">grid-auto-rows</span>: <span class="hljs-number">100px</span>;    <span class="hljs-comment">/* 自动生成行的高度 */</span>
+<span class="hljs-attribute">gap</span>: <span class="hljs-number">10px</span>;                <span class="hljs-comment">/* 行列间距 */</span>
+</code></pre>
+
+      <nav class="post-prev-next"><a href="#post-10" class="pn-link">← 11.CSS盒子模型</a><a href="#post-12" class="pn-link">13.CSS定位 →</a></nav>
+    </div>
+
+    <div id="post-12" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;CSS 定位（简洁版）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;属性值速查表&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;常用代码片段&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;关键点&quot;}]">
+      <h2>CSS 定位（简洁版）</h2>
+<h3>属性值速查表</h3>
+<p>| 值         | 偏移基准             | 脱离文档流    | 典型场景                   |
+| <code>static</code>   | 无（默认）           | ❌             | 常规布局                   |
+| <code>relative</code> | 自身原位置           | ❌（占位保留） | 微调、作为绝对定位的父容器 |
+| <code>absolute</code> | 最近的非<code>static</code>祖先 | ✅             | 浮窗、图标角标             |
+| <code>fixed</code>    | 浏览器视口           | ✅             | 固定导航栏、返回顶部       |
+| <code>sticky</code>   | 滚动容器（混合模式） | ❌（占位保留） | 表头吸顶、侧边栏           |</p>
+<h3>常用代码片段</h3>
+<pre class="hljs"><code><span class="hljs-comment">/* 相对定位微调 */</span>
+<span class="hljs-selector-class">.relative</span> { <span class="hljs-attribute">position</span>: relative; <span class="hljs-attribute">top</span>: <span class="hljs-number">5px</span>; }
+<span class="hljs-comment">/* 绝对定位（父级需 relative）*/</span>
+<span class="hljs-selector-class">.parent</span> { <span class="hljs-attribute">position</span>: relative; }
+<span class="hljs-selector-class">.child</span> { <span class="hljs-attribute">position</span>: absolute; <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>; }
+<span class="hljs-comment">/* 固定导航栏 */</span>
+<span class="hljs-selector-class">.nav</span> { <span class="hljs-attribute">position</span>: fixed; <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>; }
+<span class="hljs-comment">/* 粘性表头 */</span>
+<span class="hljs-selector-tag">th</span> { <span class="hljs-attribute">position</span>: sticky; <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>; }
+<span class="hljs-comment">/* 居中弹窗 */</span>
+<span class="hljs-selector-class">.modal</span> {
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>; <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;
+  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>);
+}
+</code></pre>
+<h3>关键点</h3>
+<ul>
+<li><strong>偏移属性</strong>：<code>top</code> / <code>right</code> / <code>bottom</code> / <code>left</code>（仅对非<code>static</code>生效）</li>
+<li><strong>层级</strong>：<code>z-index</code> 控制堆叠顺序（仅非<code>static</code>元素有效）</li>
+<li><strong><code>absolute</code>无锚点</strong> → 相对 <code>&lt;html&gt;</code>（随页面滚动，不同于<code>fixed</code>）</li>
+<li><strong><code>sticky</code>需指定阈值</strong>（如 <code>top:0</code>）才生效，且不兼容IE</li>
+</ul>
+
+      <nav class="post-prev-next"><a href="#post-11" class="pn-link">← 12.CSS布局</a><a href="#post-13" class="pn-link">14.CSS变形 →</a></nav>
+    </div>
+
+    <div id="post-13" class="post-article" data-headings="[{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;transform 常用函数&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;常用组合示例&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;关键注意点&quot;}]">
+      <h3>transform 常用函数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">作用</th>
+<th style="text-align:left">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>translate(x, y)</code></td>
+<td style="text-align:left">平移</td>
+<td style="text-align:left"><code>transform: translate(10px, 20px);</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>translateX(n)</code></td>
+<td style="text-align:left">X轴平移</td>
+<td style="text-align:left"><code>transform: translateX(50%);</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>translateY(n)</code></td>
+<td style="text-align:left">Y轴平移</td>
+<td style="text-align:left"><code>transform: translateY(-10px);</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>scale(n)</code></td>
+<td style="text-align:left">缩放</td>
+<td style="text-align:left"><code>transform: scale(1.5);</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>rotate(deg)</code></td>
+<td style="text-align:left">旋转</td>
+<td style="text-align:left"><code>transform: rotate(45deg);</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>skew(deg)</code></td>
+<td style="text-align:left">倾斜</td>
+<td style="text-align:left"><code>transform: skew(10deg);</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>matrix()</code></td>
+<td style="text-align:left">矩阵变形</td>
+<td style="text-align:left">不常用</td>
+</tr>
+</tbody>
+</table>
+<h3>常用组合示例</h3>
+<pre class="hljs"><code><span class="hljs-comment">/* 居中（position + transform）*/</span>
+<span class="hljs-selector-class">.center</span> {
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>; <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;
+  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>);
+}
+<span class="hljs-comment">/* 悬浮放大 */</span>
+<span class="hljs-selector-class">.card</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(<span class="hljs-number">1.05</span>);
+  <span class="hljs-attribute">transition</span>: <span class="hljs-number">0.3s</span>;
+}
+<span class="hljs-comment">/* 旋转动画 */</span>
+<span class="hljs-selector-class">.spin</span> {
+  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">360deg</span>);
+}
+</code></pre>
+<h3>关键注意点</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">要点</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>transform</code> 不影响文档流</td>
+<td style="text-align:left">平移/缩放后原占位空间不变（类似 <code>relative</code>）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>transform</code> 创建新层</td>
+<td style="text-align:left">会触发 GPU 加速，动画更流畅</td>
+</tr>
+<tr>
+<td style="text-align:left">与 <code>position: fixed</code> 冲突</td>
+<td style="text-align:left"><code>transform</code> 会破坏 <code>fixed</code> 相对于视口的效果（变成相对 <code>transform</code> 容器）</td>
+</tr>
+<tr>
+<td style="text-align:left">多个变换写在一起</td>
+<td style="text-align:left"><code>transform: translate(10px, 10px) rotate(45deg);</code> 顺序影响结果</td>
+</tr>
+<tr>
+<td style="text-align:left">百分比参照</td>
+<td style="text-align:left"><code>translate(50%)</code> 参照<strong>自身宽高</strong>；<code>top/left</code> 参照<strong>父容器</strong></td>
+</tr>
+</tbody>
+</table>
+
+      <nav class="post-prev-next"><a href="#post-12" class="pn-link">← 13.CSS定位</a><a href="#post-14" class="pn-link">15.CSS动画 →</a></nav>
+    </div>
+
+    <div id="post-14" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;CSS 动画&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;三、常用动画示例&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;六、关键速记&quot;}]">
+      <h2>CSS 动画</h2>
+<p>CSS 动画分为两类：<strong>过渡（transition）</strong> 和 <strong>关键帧动画（animation）</strong>。</p>
+<h3>一、过渡 <code>transition</code></h3>
+<p>| 属性 | 说明 | 示例值 |
+| <code>transition-property</code> | 要过渡的属性 | <code>all</code>, <code>width</code>, <code>opacity</code> |
+| <code>transition-duration</code> | 过渡时长 | <code>0.3s</code>, <code>300ms</code> |
+| <code>transition-timing-function</code> | 速度曲线 | <code>ease</code>, <code>linear</code>, <code>ease-in-out</code> |
+| <code>transition-delay</code> | 延迟时间 | <code>0s</code>, <code>0.2s</code> |
+<strong>简写</strong>：<code>transition: &lt;属性&gt; &lt;时长&gt; &lt;曲线&gt; &lt;延迟&gt;;</code></p>
+<pre class="hljs"><code><span class="hljs-comment">/* 鼠标悬停时宽度平滑变化 */</span>
+<span class="hljs-selector-class">.box</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">transition</span>: width <span class="hljs-number">0.3s</span> ease;
+}
+<span class="hljs-selector-class">.box</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+}
+</code></pre>
+<h3>二、关键帧动画 <code>animation</code></h3>
+<p>| 属性 | 说明 | 示例值 |
+| <code>animation-name</code> | 关键帧名称 | <code>slide</code>, <code>fade</code> |
+| <code>animation-duration</code> | 动画时长 | <code>1s</code> |
+| <code>animation-timing-function</code> | 速度曲线 | <code>ease</code>, <code>linear</code> |
+| <code>animation-delay</code> | 延迟 | <code>0s</code> |
+| <code>animation-iteration-count</code> | 播放次数 | <code>1</code>, <code>infinite</code> |
+| <code>animation-direction</code> | 方向 | <code>normal</code>, <code>reverse</code>, <code>alternate</code> |
+| <code>animation-fill-mode</code> | 结束后状态 | <code>forwards</code>（停在最后） |
+| <code>animation-play-state</code> | 运行/暂停 | <code>running</code>, <code>paused</code> |
+<strong>简写</strong>：<code>animation: &lt;名称&gt; &lt;时长&gt; &lt;曲线&gt; &lt;延迟&gt; &lt;次数&gt; &lt;方向&gt; &lt;填充&gt;;</code></p>
+<pre class="hljs"><code><span class="hljs-comment">/* 定义关键帧 */</span>
+<span class="hljs-keyword">@keyframes</span> slide {
+  <span class="hljs-number">0%</span> { <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(<span class="hljs-number">0</span>); }
+  <span class="hljs-number">100%</span> { <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(<span class="hljs-number">100px</span>); }
+}
+<span class="hljs-comment">/* 应用动画 */</span>
+<span class="hljs-selector-class">.box</span> {
+  <span class="hljs-attribute">animation</span>: slide <span class="hljs-number">1s</span> ease-in-out <span class="hljs-number">2</span> forwards;
+}
+</code></pre>
+<h3>三、常用动画示例</h3>
+<pre class="hljs"><code><span class="hljs-comment">/* 淡入淡出 */</span>
+<span class="hljs-keyword">@keyframes</span> fade {
+  <span class="hljs-selector-tag">from</span> { <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>; }
+  <span class="hljs-selector-tag">to</span> { <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>; }
+}
+<span class="hljs-selector-class">.fade</span> { <span class="hljs-attribute">animation</span>: fade <span class="hljs-number">0.5s</span>; }
+<span class="hljs-comment">/* 旋转加载 */</span>
+<span class="hljs-keyword">@keyframes</span> spin {
+  <span class="hljs-number">100%</span> { <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">360deg</span>); }
+}
+<span class="hljs-selector-class">.loader</span> {
+  <span class="hljs-attribute">animation</span>: spin <span class="hljs-number">1s</span> linear infinite;
+}
+<span class="hljs-comment">/* 脉冲效果 */</span>
+<span class="hljs-keyword">@keyframes</span> pulse {
+  <span class="hljs-number">0%</span> { <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(<span class="hljs-number">1</span>); }
+  <span class="hljs-number">50%</span> { <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(<span class="hljs-number">1.05</span>); }
+  <span class="hljs-number">100%</span> { <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(<span class="hljs-number">1</span>); }
+}
+<span class="hljs-selector-class">.btn</span><span class="hljs-selector-pseudo">:hover</span> { <span class="hljs-attribute">animation</span>: pulse <span class="hljs-number">0.3s</span>; }
+</code></pre>
+<h3>四、<code>transition</code> vs <code>animation</code></h3>
+<p>| 对比项 | <code>transition</code> | <code>animation</code> |
+| 触发方式 | 需要事件（hover、类变化等） | 自动执行（页面加载即开始） |
+| 循环 | 单次，可反向 | 可无限循环 |
+| 中间帧控制 | 只能首尾两帧 | 可定义任意多关键帧 |
+| 脚本控制 | 有限 | 可暂停、重置等 |
+| 适用场景 | 简单交互反馈 | 复杂连续动画、加载动画 |</p>
+<h3>五、与 <code>transform</code> 配合建议</h3>
+<ul>
+<li>尽量对 <strong><code>transform</code> 和 <code>opacity</code></strong> 做动画，性能好（不触发重排）</li>
+<li>避免动画 <code>width</code>、<code>height</code>、<code>left/top</code> 等属性（会触发重排）</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-comment">/* 好 */</span>
+<span class="hljs-selector-class">.slide</span> {
+  <span class="hljs-attribute">transition</span>: transform <span class="hljs-number">0.3s</span>;
+}
+<span class="hljs-selector-class">.slide</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(<span class="hljs-number">10px</span>);
+}
+<span class="hljs-comment">/* 差 */</span>
+<span class="hljs-selector-class">.slide</span> {
+  <span class="hljs-attribute">transition</span>: left <span class="hljs-number">0.3s</span>;
+}
+<span class="hljs-selector-class">.slide</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">10px</span>;
+}
+</code></pre>
+<h3>六、关键速记</h3>
+<ul>
+<li><strong>过渡</strong> = 状态 A → 状态 B，需触发</li>
+<li><strong>关键帧</strong> = 任意时间点控制，自动运行</li>
+<li><strong>性能</strong>：动画 <code>transform</code> + <code>opacity</code>，用 GPU 加速</li>
+</ul>
+
+      <nav class="post-prev-next"><a href="#post-13" class="pn-link">← 14.CSS变形</a><span class="pn-link disabled">已是最后一篇 →</span></nav>
+    </div>
+      </main>
+
+      <aside class="outline-sidebar" id="outlineSidebar">
+        <div class="ol-sidebar-title">目录</div>
+        <ul class="ol-list" id="olSidebarList"></ul>
+      </aside>
+    </div>
+  </div>
+
+  <div class="float-btns" id="floatBtns">
+    <button class="fb-btn" id="btn-scrolltop" title="返回顶部">&#x2191;</button>
+    <button class="fb-btn" id="btn-outline" title="大纲">&#x2630;</button>
+  </div>
+
+  <div class="outline-popup" id="outlinePopup">
+    <div class="ol-popup-inner">
+      <ul class="ol-list" id="olPopupList"></ul>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <script>
+(function() {
+  var articles = document.querySelectorAll('.post-article');
+  var filetree = document.getElementById('filetree');
+  var overlay = document.getElementById('overlay');
+  var floatBtns = document.getElementById('floatBtns');
+  var postItems = document.querySelectorAll('.post-item');
+  var olSidebarList = document.getElementById('olSidebarList');
+  var outlinePopup = document.getElementById('outlinePopup');
+
+  function renderOutline(article) {
+    if (!olSidebarList) return;
+    var headings = [];
+    try { headings = JSON.parse(article.getAttribute('data-headings') || '[]'); } catch(e) {}
+    var html = headings.map(function(h) {
+      return '<li class="ol-item ol-h' + h.level + '"><a href="#' + article.id + '" data-heading="' + h.text.replace(/"/g, '&quot;') + '">' + h.text + '</a></li>';
+    }).join('');
+    olSidebarList.innerHTML = html;
+  }
+
+  function scrollToHeading(postId, headingText) {
+    var article = document.getElementById(postId);
+    if (!article) return;
+    if (!article.classList.contains('active')) {
+      window.location.hash = postId;
+    }
+    var headings = article.querySelectorAll('h2, h3');
+    for (var i = 0; i < headings.length; i++) {
+      if (headings[i].textContent.trim() === headingText) {
+        headings[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        break;
+      }
+    }
+  }
+
+  // 侧栏大纲点击
+  if (olSidebarList) {
+    olSidebarList.addEventListener('click', function(e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      e.preventDefault();
+      var postId = a.getAttribute('href').slice(1);
+      var headingText = a.getAttribute('data-heading');
+      scrollToHeading(postId, headingText);
+    });
+  }
+
+  function showPost(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    articles.forEach(function(a) { a.classList.remove('active'); });
+    target.classList.add('active');
+    postItems.forEach(function(item) { item.classList.remove('active'); });
+    var link = document.querySelector('.post-item a[href="#' + id + '"]');
+    if (link) link.parentElement.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var pa = document.getElementById('postarea');
+    if (pa) pa.scrollTo({ top: 0, behavior: 'smooth' });
+    renderOutline(target);
+    closeFiletree();
+  }
+
+  function handleHash() {
+    var hash = window.location.hash.slice(1);
+    if (hash && document.getElementById(hash)) {
+      showPost(hash);
+    } else if (articles.length > 0) {
+      window.location.hash = articles[0].id;
+    }
+  }
+
+  window.addEventListener('hashchange', handleHash);
+
+  // 初始加载
+  handleHash();
+  var active = document.querySelector('.post-article.active');
+  if (active) renderOutline(active);
+
+  var btnFiletree = document.getElementById('btn-filetree');
+  if (btnFiletree) btnFiletree.addEventListener('click', function() {
+    if (filetree) filetree.classList.toggle('open');
+    if (overlay) overlay.classList.toggle('show');
+  });
+
+  function closeFiletree() {
+    if (filetree) filetree.classList.remove('open');
+    if (overlay) overlay.classList.remove('show');
+  }
+
+  if (overlay) overlay.addEventListener('click', closeFiletree);
+
+  function checkScroll() {
+    if (!floatBtns) return;
+    if (window.scrollY > window.innerHeight) {
+      floatBtns.classList.add('visible');
+    } else {
+      floatBtns.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', checkScroll, { passive: true });
+  checkScroll();
+
+  var btnScrollTop = document.getElementById('btn-scrolltop');
+  if (btnScrollTop) btnScrollTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var pa = document.getElementById('postarea');
+    if (pa) pa.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var olPopupList = document.getElementById('olPopupList');
+  var btnOutline = document.getElementById('btn-outline');
+  if (btnOutline) btnOutline.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (olSidebarList && olPopupList) {
+      olPopupList.innerHTML = olSidebarList.innerHTML;
+    }
+    if (outlinePopup) outlinePopup.classList.toggle('show');
+  });
+
+  // 弹窗大纲点击
+  if (olPopupList) {
+    olPopupList.addEventListener('click', function(e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      e.preventDefault();
+      var postId = a.getAttribute('href').slice(1);
+      var headingText = a.getAttribute('data-heading');
+      scrollToHeading(postId, headingText);
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!outlinePopup) return;
+    if (!outlinePopup.contains(e.target) && e.target !== document.getElementById('btn-outline')) {
+      outlinePopup.classList.remove('show');
+    }
+  });
+
+  if (typeof mermaid !== 'undefined') mermaid.run();
+
+})();
+</script>
+</body>
+</html>

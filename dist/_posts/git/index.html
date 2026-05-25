@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git - Bookends</title>
+  <link rel="stylesheet" href="../../assets/main.css">
+  <link rel="stylesheet" href="../../assets/highlight.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  
+</head>
+<body class="category-page">
+  <div class="page-container">
+    <header class="topbar">
+      <button class="tb-btn" id="btn-filetree" title="目录">&#x2261;</button>
+      <a href="../../" class="tb-back" title="返回首页">&#x2190;</a>
+      <span class="tb-title">Git</span>
+      <span class="tb-count">5 篇</span>
+    </header>
+
+    <div class="main-area">
+      <aside class="file-tree" id="filetree">
+        <ul class="file-tree-posts">
+    <li class="post-item active"><a href="#post-0">1.环境配置</a></li>
+<li class="post-item"><a href="#post-1">2.基础操作</a></li>
+<li class="post-item"><a href="#post-2">3.分支协作</a></li>
+<li class="post-item"><a href="#post-3">4.回退与恢复</a></li>
+<li class="post-item"><a href="#post-4">5.命令速查</a></li>
+  </ul>
+      </aside>
+
+      <main class="post-area" id="postarea">
+        
+    <div id="post-0" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;初始化仓库&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;方式一：一劳永逸（推荐）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;方式二：创建时指定（Git 2.28+）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;方式三：创建后改名&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;验证&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;创建 SSH 公钥&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;配置用户信息&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;添加远程仓库&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;克隆远程仓库&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;.gitignore 忽略文件&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;快速开始&quot;}]">
+      <h2>初始化仓库</h2>
+<pre class="hljs"><code>git init
+</code></pre>
+<p><code>git init</code> 默认创建的分支名是 <code>master</code>。GitHub 等平台现在推荐用 <code>main</code>，有三种方式：</p>
+<h3>方式一：一劳永逸（推荐）</h3>
+<pre class="hljs"><code>git config --global init.defaultBranch main
+</code></pre>
+<p>设置后，所有 <code>git init</code> 创建的仓库默认分支就是 <code>main</code>。只需执行一次，永久生效。</p>
+<h3>方式二：创建时指定（Git 2.28+）</h3>
+<pre class="hljs"><code>git init -b main
+</code></pre>
+<p>只对当前仓库生效，不影响全局配置。</p>
+<h3>方式三：创建后改名</h3>
+<pre class="hljs"><code>git init
+git branch -M main
+</code></pre>
+<p>兼容所有 Git 版本。但注意改名只是本地生效，首次 push 前还没远程分支，所以直接 push 即可。</p>
+<h3>验证</h3>
+<pre class="hljs"><code>git branch    <span class="hljs-comment"># 查看当前分支，前面带 * 的就是</span>
+</code></pre>
+<h2>创建 SSH 公钥</h2>
+<pre class="hljs"><code>ssh-keygen -t ed25519 -C <span class="hljs-string">&quot;your_email@example.com&quot;</span>
+</code></pre>
+<p>查看公钥：</p>
+<pre class="hljs"><code><span class="hljs-built_in">cat</span> ~/.ssh/id_ed25519.pub
+</code></pre>
+<p>将公钥内容添加到 GitHub/GitLab 的 SSH Keys 设置中。</p>
+<h2>配置用户信息</h2>
+<pre class="hljs"><code>git config --global user.name <span class="hljs-string">&quot;Your Name&quot;</span>
+git config --global user.email <span class="hljs-string">&quot;email@example.com&quot;</span>
+</code></pre>
+<h2>添加远程仓库</h2>
+<pre class="hljs"><code>git remote add origin &lt;url&gt;
+</code></pre>
+<p><code>&lt;url&gt;</code> 是 GitHub 仓库地址。</p>
+<h2>克隆远程仓库</h2>
+<pre class="hljs"><code>git <span class="hljs-built_in">clone</span> &lt;url&gt;
+</code></pre>
+<p>直接下载远程仓库到本地，无需手动 init 和 remote。</p>
+<h2>.gitignore 忽略文件</h2>
+<pre class="hljs"><code><span class="hljs-comment"># 在项目根目录创建 .gitignore 文件</span>
+</code></pre>
+<p>常见忽略规则：</p>
+<pre class="hljs"><code># 依赖
+node_modules/
+vendor/
+
+# 构建产物
+dist/
+build/
+
+# 环境变量
+.env
+.env.local
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# 日志
+*.log
+</code></pre>
+<h2>快速开始</h2>
+<pre class="hljs"><code><span class="hljs-comment"># 场景 A：从零开始</span>
+git init -b main                    <span class="hljs-comment"># 以 main 为主分支初始化</span>
+git add .
+git commit -m <span class="hljs-string">&quot;first commit&quot;</span>
+git remote add origin &lt;url&gt;
+git push -u origin main
+
+<span class="hljs-comment"># 场景 B：克隆已有项目</span>
+git <span class="hljs-built_in">clone</span> &lt;url&gt;
+<span class="hljs-built_in">cd</span> &lt;project&gt;
+</code></pre>
+
+      <nav class="post-prev-next"><span class="pn-link disabled">← 已是第一篇</span><a href="#post-1" class="pn-link">2.基础操作 →</a></nav>
+    </div>
+
+    <div id="post-1" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;文件操作&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;提交管理&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;提交信息规范（Conventional Commits）&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;远程同步&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;临时保存（stash）&quot;}]">
+      <h2>文件操作</h2>
+<pre class="hljs"><code>git add &lt;file&gt;                         <span class="hljs-comment"># 添加指定文件到暂存区</span>
+git add .                              <span class="hljs-comment"># 添加所有修改</span>
+git add -p                             <span class="hljs-comment"># 交互式选择添加（逐块确认，推荐）</span>
+git add *.js                           <span class="hljs-comment"># 通配符添加</span>
+git add src/                           <span class="hljs-comment"># 添加整个目录</span>
+git <span class="hljs-built_in">rm</span> &lt;file&gt;                          <span class="hljs-comment"># 删除文件并暂存</span>
+git <span class="hljs-built_in">mv</span> &lt;old&gt; &lt;new&gt;                     <span class="hljs-comment"># 重命名文件</span>
+git restore &lt;file&gt;                     <span class="hljs-comment"># 丢弃工作区修改（回到最近一次 add/commit 的状态）</span>
+git restore --staged &lt;file&gt;            <span class="hljs-comment"># 取消暂存（修改回到工作区）</span>
+</code></pre>
+<h2>提交管理</h2>
+<pre class="hljs"><code>git status                             <span class="hljs-comment"># 查看工作区状态</span>
+git status -s                          <span class="hljs-comment"># 简洁状态</span>
+git diff                               <span class="hljs-comment"># 查看未暂存的修改内容</span>
+git diff --staged                      <span class="hljs-comment"># 查看已暂存但未提交的修改</span>
+git commit -m <span class="hljs-string">&quot;提交说明&quot;</span>                <span class="hljs-comment"># 提交暂存区</span>
+git commit -am <span class="hljs-string">&quot;提交说明&quot;</span>               <span class="hljs-comment"># add + commit（仅已跟踪文件）</span>
+git commit --amend -m <span class="hljs-string">&quot;新的信息&quot;</span>         <span class="hljs-comment"># 修改最近一次提交的信息</span>
+git commit --amend --no-edit           <span class="hljs-comment"># 追加修改到最近一次提交，不改信息</span>
+</code></pre>
+<h3>提交信息规范（Conventional Commits）</h3>
+<pre class="hljs"><code>&lt;type&gt;: &lt;简短描述&gt;
+
+feat: 添加用户登录
+fix: 修复登录超时
+refactor: 提取 token 刷新逻辑
+docs: 更新 README
+chore: 升级依赖
+</code></pre>
+<h2>远程同步</h2>
+<pre class="hljs"><code>git remote -v                          <span class="hljs-comment"># 查看远程仓库列表</span>
+git remote add origin &lt;url&gt;            <span class="hljs-comment"># 添加远程仓库</span>
+git remote set-url origin &lt;url&gt;        <span class="hljs-comment"># 修改远程仓库地址</span>
+git remote <span class="hljs-built_in">rm</span> origin                   <span class="hljs-comment"># 删除远程仓库关联</span>
+
+git fetch origin                       <span class="hljs-comment"># 下载远程更新，不合并</span>
+git fetch --prune                      <span class="hljs-comment"># 同时清理远程已删除的分支</span>
+git pull origin main                   <span class="hljs-comment"># 拉取并合并（= fetch + merge）</span>
+git pull --rebase origin main          <span class="hljs-comment"># 拉取并变基（= fetch + rebase，推荐）</span>
+
+git push origin &lt;branch&gt;               <span class="hljs-comment"># 推送到远程</span>
+git push -u origin &lt;branch&gt;            <span class="hljs-comment"># 首次推送并设置上游（之后直接 git push）</span>
+git push --force-with-lease            <span class="hljs-comment"># 安全强制推送（不会覆盖别人新推的提交）</span>
+git push origin --delete &lt;branch&gt;      <span class="hljs-comment"># 删除远程分支</span>
+</code></pre>
+<h2>临时保存（stash）</h2>
+<pre class="hljs"><code>git stash                              <span class="hljs-comment"># 暂存工作进度</span>
+git stash save <span class="hljs-string">&quot;描述&quot;</span>                  <span class="hljs-comment"># 带描述暂存</span>
+git stash list                         <span class="hljs-comment"># 查看 stash 列表</span>
+git stash pop                          <span class="hljs-comment"># 恢复最近一次并删除</span>
+git stash apply                        <span class="hljs-comment"># 恢复但不删除</span>
+git stash drop                         <span class="hljs-comment"># 删除最近一次</span>
+git stash pop stash@{1}                <span class="hljs-comment"># 恢复指定的 stash</span>
+</code></pre>
+<blockquote>
+<p>典型场景：开发到一半需要切分支修 bug，但又不想提交半成品代码。</p>
+</blockquote>
+
+      <nav class="post-prev-next"><a href="#post-0" class="pn-link">← 1.环境配置</a><a href="#post-2" class="pn-link">3.分支协作 →</a></nav>
+    </div>
+
+    <div id="post-2" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;分支策略&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;Trunk-Based Development（推荐）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;Git Flow（传统方案）&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;分支命名规范&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;分支命令&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;合并策略&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;标准开发流程（Feature Branch + PR）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;1. 拉取最新&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;2. 创建特性分支&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;3. 开发 + 提交&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;4. 同步上游（main 有新提交时）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;5. 提交 Pull Request&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;6. Code Review 后修改&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;7. 合入后清理&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;冲突解决&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;同步上游变更&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;常用组合&quot;}]">
+      <h2>分支策略</h2>
+<p>大厂常用的两种模型：<strong>Trunk-Based Development</strong>（主流）和 <strong>Git Flow</strong>（传统）。</p>
+<h3>Trunk-Based Development（推荐）</h3>
+<p>Google、Facebook 等公司的主流选择。核心思想：<strong>所有人都往 main 提交，分支存活不超过 1 天</strong>。</p>
+<pre class="hljs"><code>main ───●────●────●────●────●────●──▶
+         │    │         │
+         │    │         └── 新功能 C（分支存活 4 小时）
+         │    └── 新功能 B（分支存活 8 小时）
+         └── 新功能 A（分支存活 6 小时）
+</code></pre>
+<p><strong>特点：</strong></p>
+<ul>
+<li>分支短命（≤ 1 天），减少合并冲突</li>
+<li>未完成功能用 feature flag 隐藏，不影响线上</li>
+<li>高频集成，CI/CD 自动化测试和部署</li>
+<li>Code Review 通过 PR/MR 完成</li>
+</ul>
+<p><strong>适用场景：</strong> CI/CD 成熟、测试覆盖率高、迭代快的团队。</p>
+<h3>Git Flow（传统方案）</h3>
+<p>适合有固定发布周期的项目（客户端软件、SDK）。</p>
+<pre class="hljs"><code>main     ──●──────────────●──────────────●──▶
+            │              │              │
+develop  ──●──●──●──●──●──●──●──●──●──●──●──▶
+            │  │      │
+feature/A ──┘  │      │
+               │      │
+release/1.0 ───┘  ●──●──┘
+                      │
+hotfix/xxx ───────────●──┘
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>分支</th>
+<th>来源</th>
+<th>合入</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>main</code></td>
+<td>—</td>
+<td>—</td>
+<td>生产环境代码</td>
+</tr>
+<tr>
+<td><code>develop</code></td>
+<td>—</td>
+<td>—</td>
+<td>开发主线</td>
+</tr>
+<tr>
+<td><code>feature/*</code></td>
+<td>develop</td>
+<td>develop</td>
+<td>新功能</td>
+</tr>
+<tr>
+<td><code>release/*</code></td>
+<td>develop</td>
+<td>main + develop</td>
+<td>发布前冻结</td>
+</tr>
+<tr>
+<td><code>hotfix/*</code></td>
+<td>main</td>
+<td>main + develop</td>
+<td>线上紧急修复</td>
+</tr>
+</tbody>
+</table>
+<p><strong>适用场景：</strong> 固定版本号、长发布周期。</p>
+<hr>
+<h2>分支命名规范</h2>
+<table>
+<thead>
+<tr>
+<th>前缀</th>
+<th>用途</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>feature/</code></td>
+<td>新功能</td>
+<td><code>feature/user-auth</code></td>
+</tr>
+<tr>
+<td><code>fix/</code></td>
+<td>修 bug</td>
+<td><code>fix/login-error</code></td>
+</tr>
+<tr>
+<td><code>refactor/</code></td>
+<td>重构</td>
+<td><code>refactor/api-layer</code></td>
+</tr>
+<tr>
+<td><code>docs/</code></td>
+<td>文档</td>
+<td><code>docs/api-guide</code></td>
+</tr>
+<tr>
+<td><code>chore/</code></td>
+<td>杂项</td>
+<td><code>chore/update-deps</code></td>
+</tr>
+<tr>
+<td><code>hotfix/</code></td>
+<td>紧急修复</td>
+<td><code>hotfix/crash-on-start</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>分支命令</h2>
+<pre class="hljs"><code>git branch                              <span class="hljs-comment"># 查看本地分支</span>
+git branch -r                           <span class="hljs-comment"># 查看远程分支</span>
+git branch -a                           <span class="hljs-comment"># 查看所有分支</span>
+git branch &lt;name&gt;                       <span class="hljs-comment"># 创建分支（不切换）</span>
+git switch &lt;name&gt;                       <span class="hljs-comment"># 切换分支（推荐，Git 2.23+）</span>
+git switch -c &lt;name&gt;                    <span class="hljs-comment"># 创建并切换</span>
+git checkout -b &lt;name&gt;                  <span class="hljs-comment"># 创建并切换（旧写法）</span>
+git branch -m &lt;old&gt; &lt;new&gt;               <span class="hljs-comment"># 重命名分支</span>
+git branch -d &lt;name&gt;                    <span class="hljs-comment"># 删除已合并分支</span>
+git branch -D &lt;name&gt;                    <span class="hljs-comment"># 强制删除</span>
+git push origin --delete &lt;name&gt;         <span class="hljs-comment"># 删除远程分支</span>
+</code></pre>
+<hr>
+<h2>合并策略</h2>
+<pre class="hljs"><code><span class="hljs-comment"># merge：保留分支拓扑</span>
+git merge feature/login
+
+<span class="hljs-comment"># squash merge：整个分支压缩成一条提交（推荐用于 PR 合入）</span>
+git merge --squash feature/login
+git commit -m <span class="hljs-string">&quot;feat: 添加登录功能&quot;</span>
+
+<span class="hljs-comment"># rebase：把当前分支搬到目标分支顶部，历史线性</span>
+git rebase main
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>历史形态</th>
+<th>场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>merge</td>
+<td>保留分支图</td>
+<td>多人协作分支</td>
+</tr>
+<tr>
+<td>squash merge</td>
+<td>一条直线</td>
+<td>PR 合入 main（大厂推荐）</td>
+</tr>
+<tr>
+<td>rebase</td>
+<td>线性历史</td>
+<td>同步上游、整理本地提交</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>大厂惯例：</strong> PR 合入 main 用 squash merge，日常同步用 rebase。</p>
+</blockquote>
+<hr>
+<h2>标准开发流程（Feature Branch + PR）</h2>
+<h3>1. 拉取最新</h3>
+<pre class="hljs"><code>git checkout main
+git pull origin main
+</code></pre>
+<h3>2. 创建特性分支</h3>
+<pre class="hljs"><code>git switch -c feature/add-login
+</code></pre>
+<h3>3. 开发 + 提交</h3>
+<pre class="hljs"><code>git status
+git diff
+git add .
+git commit -m <span class="hljs-string">&quot;feat: 添加登录功能&quot;</span>
+git push -u origin feature/add-login
+</code></pre>
+<h3>4. 同步上游（main 有新提交时）</h3>
+<pre class="hljs"><code><span class="hljs-comment"># rebase 方式（推荐）</span>
+git checkout main
+git pull origin main
+git checkout feature/add-login
+git rebase main
+
+<span class="hljs-comment"># 或者 merge 方式</span>
+git checkout feature/add-login
+git merge main
+</code></pre>
+<blockquote>
+<p>推送 rebase 后的分支用 <code>git push --force-with-lease</code>，不会覆盖别人的提交。</p>
+</blockquote>
+<h3>5. 提交 Pull Request</h3>
+<p>推送到远程后，在 GitHub/GitLab 网页上创建 PR，填写：</p>
+<ul>
+<li><strong>标题</strong>：一句话描述</li>
+<li><strong>描述</strong>：背景、改动、测试方式、截图</li>
+<li><strong>Reviewer</strong>：指定审核人</li>
+</ul>
+<h3>6. Code Review 后修改</h3>
+<p>Reviewer 提意见后，<strong>在同一分支上继续改</strong>：</p>
+<pre class="hljs"><code>git add .
+git commit -m <span class="hljs-string">&quot;fix: 根据 review 意见调整&quot;</span>
+git push origin feature/add-login
+</code></pre>
+<blockquote>
+<p>不要另开新分支。PR 会自动更新到最新提交。</p>
+</blockquote>
+<h3>7. 合入后清理</h3>
+<pre class="hljs"><code>git checkout main
+git pull origin main
+git branch -d feature/add-login
+git push origin --delete feature/add-login   <span class="hljs-comment"># 或直接在 PR 页面点删除</span>
+</code></pre>
+<hr>
+<h2>冲突解决</h2>
+<p>多人改了同一文件时，合并产生冲突：</p>
+<pre class="hljs"><code>git merge main
+<span class="hljs-comment"># CONFLICT: Merge conflict in src/app.js</span>
+</code></pre>
+<p>Git 在冲突文件中标记：</p>
+<pre class="hljs"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+你的修改
+=======
+别人的修改
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; main
+</code></pre>
+<p>解决步骤：</p>
+<pre class="hljs"><code><span class="hljs-comment"># 1. 手动编辑文件，删除标记，保留正确内容</span>
+<span class="hljs-comment"># 2. 标记已解决</span>
+git add src/app.js
+<span class="hljs-comment"># 3. 继续</span>
+git merge --<span class="hljs-built_in">continue</span>          <span class="hljs-comment"># merge 场景</span>
+git rebase --<span class="hljs-built_in">continue</span>         <span class="hljs-comment"># rebase 场景</span>
+
+<span class="hljs-comment"># 想放弃？</span>
+git merge --abort             <span class="hljs-comment"># 或 git rebase --abort</span>
+</code></pre>
+<hr>
+<h2>同步上游变更</h2>
+<pre class="hljs"><code><span class="hljs-comment"># 方法一：rebase（推荐）</span>
+git fetch origin
+git rebase origin/main
+
+<span class="hljs-comment"># 方法二：merge</span>
+git pull origin main
+</code></pre>
+<hr>
+<h2>常用组合</h2>
+<pre class="hljs"><code><span class="hljs-comment"># 对比两个分支</span>
+git diff main..feature/xxx
+git diff main..feature/xxx --name-only     <span class="hljs-comment"># 只看文件名</span>
+
+<span class="hljs-comment"># 查看还没 push 的提交</span>
+git <span class="hljs-built_in">log</span> origin/main..HEAD --oneline
+
+<span class="hljs-comment"># 把最近 3 次提交压缩成一条</span>
+git rebase -i HEAD~3
+
+<span class="hljs-comment"># 把某次提交应用到当前分支</span>
+git cherry-pick &lt;<span class="hljs-built_in">hash</span>&gt;
+</code></pre>
+
+      <nav class="post-prev-next"><a href="#post-1" class="pn-link">← 2.基础操作</a><a href="#post-3" class="pn-link">4.回退与恢复 →</a></nav>
+    </div>
+
+    <div id="post-3" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;撤销与回滚&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;层级一：撤销工作区修改（还没 add）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;层级二：取消暂存（已经 add，还没 commit）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;层级三：撤销本地提交（已经 commit，还没 push）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;层级四：撤销远程提交（已经 push）&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;清除工作区&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;清除未跟踪文件&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;一步回到干净状态&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;切换到指定版本（只读，不回退）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;detached HEAD 图解&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;想基于旧版本改代码？&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;只看不切&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;找回误删的提交（reflog）&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;场景速查&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;reset vs revert 决策&quot;}]">
+      <h2>撤销与回滚</h2>
+<p>撤销操作分为四个层级，逐级递进：<strong>工作区 → 暂存区 → 本地提交 → 远程提交</strong>。</p>
+<h3>层级一：撤销工作区修改（还没 add）</h3>
+<pre class="hljs"><code>git restore &lt;file&gt;                   <span class="hljs-comment"># 丢弃单个文件的修改</span>
+git restore .                        <span class="hljs-comment"># 丢弃所有文件的修改</span>
+</code></pre>
+<blockquote>
+<p>本质是从暂存区（或最新提交）恢复文件。<strong>不可逆</strong>。</p>
+</blockquote>
+<h3>层级二：取消暂存（已经 add，还没 commit）</h3>
+<pre class="hljs"><code>git restore --staged &lt;file&gt;          <span class="hljs-comment"># 取消单个文件的暂存，修改回到工作区</span>
+git restore --staged .               <span class="hljs-comment"># 取消所有暂存</span>
+</code></pre>
+<blockquote>
+<p>修改还在工作区，只是从暂存区拿出来了。</p>
+</blockquote>
+<h3>层级三：撤销本地提交（已经 commit，还没 push）</h3>
+<h4>reset — 回退到指定提交</h4>
+<pre class="hljs"><code>工作区 ← 暂存区 ← 本地仓库 ← 远程
+                     ↑
+                   这里
+</code></pre>
+<p>三种模式：</p>
+<pre class="hljs"><code>git reset --soft &lt;commit&gt;     修改保留在暂存区（可以直接重新 commit）
+git reset --mixed &lt;commit&gt;    修改回到工作区（需要重新 add）
+git reset --hard &lt;commit&gt;     修改全部丢弃（不可恢复）
+</code></pre>
+<p><strong><code>&lt;commit&gt;</code> 的写法：</strong></p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HEAD~1</code></td>
+<td>回退 1 次提交</td>
+</tr>
+<tr>
+<td><code>HEAD~3</code></td>
+<td>回退 3 次提交</td>
+</tr>
+<tr>
+<td><code>abc1234</code></td>
+<td>回退到指定 commit hash</td>
+</tr>
+<tr>
+<td><code>origin/main</code></td>
+<td>回退到远程 main 的最新状态</td>
+</tr>
+</tbody>
+</table>
+<h4>示例</h4>
+<p>当前提交历史：</p>
+<pre class="hljs"><code>A --- B --- C --- D (HEAD)
+</code></pre>
+<p>回退到 B（撤销 C 和 D）：</p>
+<pre class="hljs"><code><span class="hljs-comment"># 方式一：相对引用</span>
+git reset --soft HEAD~2     <span class="hljs-comment"># 撤销 C、D，修改在暂存区</span>
+git reset --mixed HEAD~2    <span class="hljs-comment"># 撤销 C、D，修改在工作区</span>
+git reset --hard HEAD~2     <span class="hljs-comment"># 撤销 C、D，修改彻底丢弃</span>
+
+<span class="hljs-comment"># 方式二：用 commit hash</span>
+git <span class="hljs-built_in">log</span> --oneline           <span class="hljs-comment"># 先查到目标 commit 的 hash</span>
+git reset --hard abc1234    <span class="hljs-comment"># 直接跳到 abc1234</span>
+
+<span class="hljs-comment"># 方式三：回退到远程版本</span>
+git fetch origin
+git reset --hard origin/main
+</code></pre>
+<h4>三种模式效果对比</h4>
+<p>假设工作区有文件 <code>f(v2)</code>，暂存区有 <code>f(v2)</code>，最新提交是 <code>f(v2)</code>：</p>
+<pre class="hljs"><code>git reset --soft HEAD~1   →  f 保留在暂存区（v2），工作区不变
+                             适合：把多个 commit 合并成一个
+
+git reset --mixed HEAD~1  →  f 不在暂存区，在工作区（v2）
+                             适合：重新整理后再 commit（默认行为）
+
+git reset --hard HEAD~1   →  f 全部丢弃，回到 HEAD~1 的状态
+                             适合：确认要彻底放弃最近的修改
+</code></pre>
+<h4>commit --amend</h4>
+<pre class="hljs"><code>git commit --amend -m <span class="hljs-string">&quot;新的提交信息&quot;</span>       <span class="hljs-comment"># 修改提交信息</span>
+git commit --amend --no-edit             <span class="hljs-comment"># 追加内容，不改信息</span>
+</code></pre>
+<blockquote>
+<p>只适用于<strong>还没 push</strong> 的提交。本质是把新修改&quot;塞进&quot;上一次提交。</p>
+</blockquote>
+<h3>层级四：撤销远程提交（已经 push）</h3>
+<p>已 push 的提交<strong>不能用 reset</strong>（会破坏别人拉取的历史），必须用 <code>revert</code>：</p>
+<pre class="hljs"><code>git revert abc1234                                          <span class="hljs-comment"># 撤销指定提交</span>
+git revert abc1234..def5678 --no-commit                     <span class="hljs-comment"># 撤销多个，确认后手动 commit</span>
+git revert HEAD~2..HEAD                                     <span class="hljs-comment"># 撤销最近 3 次</span>
+</code></pre>
+<blockquote>
+<p><code>revert</code> 不删除原提交，而是创建一次新的&quot;反向操作&quot;提交。历史完整、安全、可追溯。</p>
+</blockquote>
+<hr>
+<h2>清除工作区</h2>
+<h3>清除未跟踪文件</h3>
+<pre class="hljs"><code>git clean -n                    <span class="hljs-comment"># 预览：列出会被删除的文件（安全）</span>
+git clean -f                    <span class="hljs-comment"># 删除未跟踪文件</span>
+git clean -fd                   <span class="hljs-comment"># 删除未跟踪文件和目录</span>
+git clean -fx                   <span class="hljs-comment"># 连 .gitignore 里的也删</span>
+</code></pre>
+<h3>一步回到干净状态</h3>
+<pre class="hljs"><code>git reset --hard HEAD                  <span class="hljs-comment"># 丢弃工作区 + 暂存区所有修改</span>
+git reset --hard HEAD &amp;&amp; git clean -fd <span class="hljs-comment"># 连未跟踪文件一起清</span>
+</code></pre>
+<hr>
+<h2>切换到指定版本（只读，不回退）</h2>
+<p>和 reset 不同，切换只是让工作区<strong>临时</strong>变成历史版本的样子，不移动分支指针，不改历史。</p>
+<pre class="hljs"><code>git checkout &lt;commit-hash&gt;       <span class="hljs-comment"># 进入 &quot;detached HEAD&quot; 状态</span>
+<span class="hljs-comment"># 看看代码、运行测试...</span>
+git switch main                  <span class="hljs-comment"># 看完回来</span>
+</code></pre>
+<h3>detached HEAD 图解</h3>
+<pre class="hljs"><code>正常状态：                          detached HEAD：
+HEAD → main → D --- C --- B --- A       HEAD → B --- A
+                                                  ↑
+                                          main → D --- C
+</code></pre>
+<p>HEAD 直接指向 commit 而非分支。此时做的提交，切回分支后就&quot;找不到&quot;了。</p>
+<h3>想基于旧版本改代码？</h3>
+<pre class="hljs"><code>git checkout -b fix-from-old &lt;commit-hash&gt;    <span class="hljs-comment"># 从旧版本拉新分支</span>
+</code></pre>
+<h3>只看不切</h3>
+<pre class="hljs"><code>git show &lt;<span class="hljs-built_in">hash</span>&gt;:&lt;file&gt;                        <span class="hljs-comment"># 查看历史中某个文件的内容</span>
+git show HEAD~3:src/app.js
+</code></pre>
+<hr>
+<h2>找回误删的提交（reflog）</h2>
+<pre class="hljs"><code>git reflog                           <span class="hljs-comment"># 查看 HEAD 移动记录</span>
+</code></pre>
+<p>即使 <code>reset --hard</code> 或删了分支，只要提交过，reflog 里就能找到 hash，然后恢复：</p>
+<pre class="hljs"><code><span class="hljs-comment"># 从 reflog 找到要恢复的 hash</span>
+git checkout -b recovered-branch abc1234
+</code></pre>
+<blockquote>
+<p>默认保留 90 天。只要 commit 过，就不会真正丢失。</p>
+</blockquote>
+<hr>
+<h2>场景速查</h2>
+<table>
+<thead>
+<tr>
+<th>我想...</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>丢弃某个文件的修改</td>
+<td><code>git restore &lt;file&gt;</code></td>
+</tr>
+<tr>
+<td>取消暂存</td>
+<td><code>git restore --staged &lt;file&gt;</code></td>
+</tr>
+<tr>
+<td>撤销 commit 但保留修改</td>
+<td><code>git reset --soft HEAD~1</code></td>
+</tr>
+<tr>
+<td>撤销 commit，回到工作区</td>
+<td><code>git reset --mixed HEAD~1</code></td>
+</tr>
+<tr>
+<td>彻底丢弃最近一次 commit</td>
+<td><code>git reset --hard HEAD~1</code></td>
+</tr>
+<tr>
+<td>回退到远程最新状态</td>
+<td><code>git reset --hard origin/main</code></td>
+</tr>
+<tr>
+<td>回退到指定 commit</td>
+<td><code>git log --oneline</code> → <code>git reset --hard &lt;hash&gt;</code></td>
+</tr>
+<tr>
+<td>撤销已 push 的提交</td>
+<td><code>git revert &lt;hash&gt;</code> 然后 <code>git push</code></td>
+</tr>
+<tr>
+<td>改最后一次提交信息</td>
+<td><code>git commit --amend -m &quot;新的&quot;</code></td>
+</tr>
+<tr>
+<td>删除未跟踪文件</td>
+<td><code>git clean -f</code></td>
+</tr>
+<tr>
+<td>完全回到干净状态</td>
+<td><code>git reset --hard HEAD &amp;&amp; git clean -fd</code></td>
+</tr>
+<tr>
+<td>临时看历史版本代码</td>
+<td><code>git checkout &lt;hash&gt;</code></td>
+</tr>
+<tr>
+<td>找回误删的提交</td>
+<td><code>git reflog</code> → <code>git checkout -b &lt;name&gt; &lt;hash&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h2>reset vs revert 决策</h2>
+<pre class="hljs"><code>提交已经 push 到共享分支？（main / develop / 协作分支）
+  ├── 是 → 用 git revert（安全）
+  └── 否 → 用 git reset（干净）
+</code></pre>
+<p>没把握时先用 <code>revert</code>，永远不会出错。</p>
+
+      <nav class="post-prev-next"><a href="#post-2" class="pn-link">← 3.分支协作</a><a href="#post-4" class="pn-link">5.命令速查 →</a></nav>
+    </div>
+
+    <div id="post-4" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;速查表&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;工作流一：日常开发（Feature Branch）&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;工作流二：紧急修复（Hotfix）&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;工作流三：临时切换任务&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;常用组合&quot;}]">
+      <h2>速查表</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git init</code></td>
+<td>初始化新仓库</td>
+</tr>
+<tr>
+<td><code>git clone &lt;url&gt;</code></td>
+<td>克隆远程仓库</td>
+</tr>
+<tr>
+<td><code>git status</code></td>
+<td>查看工作区状态</td>
+</tr>
+<tr>
+<td><code>git diff</code></td>
+<td>查看未暂存的修改</td>
+</tr>
+<tr>
+<td><code>git diff --staged</code></td>
+<td>查看已暂存的修改</td>
+</tr>
+<tr>
+<td><code>git add &lt;file&gt;</code></td>
+<td>添加指定文件到暂存区</td>
+</tr>
+<tr>
+<td><code>git add .</code></td>
+<td>添加所有修改到暂存区</td>
+</tr>
+<tr>
+<td><code>git add -p</code></td>
+<td>交互式选择添加</td>
+</tr>
+<tr>
+<td><code>git commit -m &quot;msg&quot;</code></td>
+<td>提交暂存区文件</td>
+</tr>
+<tr>
+<td><code>git commit --amend</code></td>
+<td>修改最近一次提交</td>
+</tr>
+<tr>
+<td><code>git log --oneline --graph --all</code></td>
+<td>图形化查看提交历史</td>
+</tr>
+<tr>
+<td><code>git blame &lt;file&gt;</code></td>
+<td>查看文件每行的修改者</td>
+</tr>
+<tr>
+<td><code>git branch</code></td>
+<td>列出本地分支</td>
+</tr>
+<tr>
+<td><code>git branch -r</code></td>
+<td>列出远程分支</td>
+</tr>
+<tr>
+<td><code>git switch &lt;branch&gt;</code></td>
+<td>切换分支</td>
+</tr>
+<tr>
+<td><code>git switch -c &lt;branch&gt;</code></td>
+<td>创建并切换分支</td>
+</tr>
+<tr>
+<td><code>git branch -d &lt;branch&gt;</code></td>
+<td>删除已合并分支</td>
+</tr>
+<tr>
+<td><code>git merge &lt;branch&gt;</code></td>
+<td>合并指定分支到当前分支</td>
+</tr>
+<tr>
+<td><code>git rebase &lt;branch&gt;</code></td>
+<td>将当前分支变基到目标分支</td>
+</tr>
+<tr>
+<td><code>git cherry-pick &lt;hash&gt;</code></td>
+<td>将指定提交应用到当前分支</td>
+</tr>
+<tr>
+<td><code>git stash</code></td>
+<td>暂存工作进度</td>
+</tr>
+<tr>
+<td><code>git stash pop</code></td>
+<td>恢复最近暂存</td>
+</tr>
+<tr>
+<td><code>git restore &lt;file&gt;</code></td>
+<td>丢弃工作区修改</td>
+</tr>
+<tr>
+<td><code>git restore --staged &lt;file&gt;</code></td>
+<td>取消暂存</td>
+</tr>
+<tr>
+<td><code>git revert &lt;hash&gt;</code></td>
+<td>安全撤销某次提交</td>
+</tr>
+<tr>
+<td><code>git reset --soft HEAD~1</code></td>
+<td>撤销提交，保留修改</td>
+</tr>
+<tr>
+<td><code>git reset --hard HEAD~1</code></td>
+<td>彻底回退一次提交</td>
+</tr>
+<tr>
+<td><code>git remote -v</code></td>
+<td>查看远程仓库</td>
+</tr>
+<tr>
+<td><code>git remote add origin &lt;url&gt;</code></td>
+<td>添加远程仓库</td>
+</tr>
+<tr>
+<td><code>git fetch origin</code></td>
+<td>拉取远程更新（不合并）</td>
+</tr>
+<tr>
+<td><code>git pull origin &lt;branch&gt;</code></td>
+<td>拉取并合并远程分支</td>
+</tr>
+<tr>
+<td><code>git push origin &lt;branch&gt;</code></td>
+<td>推送分支到远程</td>
+</tr>
+<tr>
+<td><code>git push -u origin &lt;branch&gt;</code></td>
+<td>推送并设置上游</td>
+</tr>
+<tr>
+<td><code>git push origin --delete &lt;branch&gt;</code></td>
+<td>删除远程分支</td>
+</tr>
+<tr>
+<td><code>git tag v1.0.0</code></td>
+<td>创建标签</td>
+</tr>
+<tr>
+<td><code>git push origin v1.0.0</code></td>
+<td>推送标签到远程</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>工作流一：日常开发（Feature Branch）</h2>
+<pre class="hljs"><code><span class="hljs-comment"># 1. 每天开始：拉取最新</span>
+git checkout main
+git pull origin main
+
+<span class="hljs-comment"># 2. 创建特性分支</span>
+git switch -c feature/my-feature
+
+<span class="hljs-comment"># 3. 开发 + 提交</span>
+git add .
+git commit -m <span class="hljs-string">&quot;feat: 添加某某功能&quot;</span>
+git push -u origin feature/my-feature
+
+<span class="hljs-comment"># 4. 期间同步 main 的新变更（如果有）</span>
+git fetch origin
+git rebase origin/main
+
+<span class="hljs-comment"># 5. 推送并提 PR → Code Review → 修改 → 合入</span>
+
+<span class="hljs-comment"># 6. 合入后清理</span>
+git checkout main
+git pull origin main
+git branch -d feature/my-feature
+</code></pre>
+<h2>工作流二：紧急修复（Hotfix）</h2>
+<pre class="hljs"><code><span class="hljs-comment"># 1. 从 main 拉最新</span>
+git checkout main
+git pull origin main
+
+<span class="hljs-comment"># 2. 创建修复分支</span>
+git switch -c hotfix/critical-bug
+
+<span class="hljs-comment"># 3. 修复 + 提交 + 推送</span>
+git add .
+git commit -m <span class="hljs-string">&quot;fix: 修复线上紧急问题&quot;</span>
+git push -u origin hotfix/critical-bug
+
+<span class="hljs-comment"># 4. 提 PR → 加急 Review → 合入 main</span>
+
+<span class="hljs-comment"># 5. 确认线上修复后清理</span>
+git checkout main
+git pull origin main
+git branch -d hotfix/critical-bug
+</code></pre>
+<h2>工作流三：临时切换任务</h2>
+<pre class="hljs"><code><span class="hljs-comment"># 开发到一半需要切去修 bug</span>
+git stash save <span class="hljs-string">&quot;WIP: 正在开发用户模块&quot;</span>
+
+<span class="hljs-comment"># 切去修 bug...</span>
+git checkout main
+git switch -c hotfix/xxx
+<span class="hljs-comment"># ... 修复、提交、提 PR、合入 ...</span>
+
+<span class="hljs-comment"># 回到原任务</span>
+git checkout feature/my-feature
+git stash pop
+</code></pre>
+<h2>常用组合</h2>
+<pre class="hljs"><code><span class="hljs-comment"># 看最近一周谁改了什么</span>
+git <span class="hljs-built_in">log</span> --oneline --since=<span class="hljs-string">&quot;1 week ago&quot;</span> --author=<span class="hljs-string">&quot;你的名字&quot;</span>
+
+<span class="hljs-comment"># 撤销最近一次 commit（保留修改）</span>
+git reset --soft HEAD~1
+
+<span class="hljs-comment"># 把当前分支的提交整理成一条</span>
+git rebase -i HEAD~3       <span class="hljs-comment"># 交互式整理最近 3 次提交</span>
+
+<span class="hljs-comment"># 对比两个分支的差异</span>
+git diff main..feature/xxx
+
+<span class="hljs-comment"># 查看哪些文件在 main 上改了但我还没同步</span>
+git fetch origin
+git diff HEAD..origin/main --name-only
+</code></pre>
+
+      <nav class="post-prev-next"><a href="#post-3" class="pn-link">← 4.回退与恢复</a><span class="pn-link disabled">已是最后一篇 →</span></nav>
+    </div>
+      </main>
+
+      <aside class="outline-sidebar" id="outlineSidebar">
+        <div class="ol-sidebar-title">目录</div>
+        <ul class="ol-list" id="olSidebarList"></ul>
+      </aside>
+    </div>
+  </div>
+
+  <div class="float-btns" id="floatBtns">
+    <button class="fb-btn" id="btn-scrolltop" title="返回顶部">&#x2191;</button>
+    <button class="fb-btn" id="btn-outline" title="大纲">&#x2630;</button>
+  </div>
+
+  <div class="outline-popup" id="outlinePopup">
+    <div class="ol-popup-inner">
+      <ul class="ol-list" id="olPopupList"></ul>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <script>
+(function() {
+  var articles = document.querySelectorAll('.post-article');
+  var filetree = document.getElementById('filetree');
+  var overlay = document.getElementById('overlay');
+  var floatBtns = document.getElementById('floatBtns');
+  var postItems = document.querySelectorAll('.post-item');
+  var olSidebarList = document.getElementById('olSidebarList');
+  var outlinePopup = document.getElementById('outlinePopup');
+
+  function renderOutline(article) {
+    if (!olSidebarList) return;
+    var headings = [];
+    try { headings = JSON.parse(article.getAttribute('data-headings') || '[]'); } catch(e) {}
+    var html = headings.map(function(h) {
+      return '<li class="ol-item ol-h' + h.level + '"><a href="#' + article.id + '" data-heading="' + h.text.replace(/"/g, '&quot;') + '">' + h.text + '</a></li>';
+    }).join('');
+    olSidebarList.innerHTML = html;
+  }
+
+  function scrollToHeading(postId, headingText) {
+    var article = document.getElementById(postId);
+    if (!article) return;
+    if (!article.classList.contains('active')) {
+      window.location.hash = postId;
+    }
+    var headings = article.querySelectorAll('h2, h3');
+    for (var i = 0; i < headings.length; i++) {
+      if (headings[i].textContent.trim() === headingText) {
+        headings[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        break;
+      }
+    }
+  }
+
+  // 侧栏大纲点击
+  if (olSidebarList) {
+    olSidebarList.addEventListener('click', function(e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      e.preventDefault();
+      var postId = a.getAttribute('href').slice(1);
+      var headingText = a.getAttribute('data-heading');
+      scrollToHeading(postId, headingText);
+    });
+  }
+
+  function showPost(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    articles.forEach(function(a) { a.classList.remove('active'); });
+    target.classList.add('active');
+    postItems.forEach(function(item) { item.classList.remove('active'); });
+    var link = document.querySelector('.post-item a[href="#' + id + '"]');
+    if (link) link.parentElement.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var pa = document.getElementById('postarea');
+    if (pa) pa.scrollTo({ top: 0, behavior: 'smooth' });
+    renderOutline(target);
+    closeFiletree();
+  }
+
+  function handleHash() {
+    var hash = window.location.hash.slice(1);
+    if (hash && document.getElementById(hash)) {
+      showPost(hash);
+    } else if (articles.length > 0) {
+      window.location.hash = articles[0].id;
+    }
+  }
+
+  window.addEventListener('hashchange', handleHash);
+
+  // 初始加载
+  handleHash();
+  var active = document.querySelector('.post-article.active');
+  if (active) renderOutline(active);
+
+  var btnFiletree = document.getElementById('btn-filetree');
+  if (btnFiletree) btnFiletree.addEventListener('click', function() {
+    if (filetree) filetree.classList.toggle('open');
+    if (overlay) overlay.classList.toggle('show');
+  });
+
+  function closeFiletree() {
+    if (filetree) filetree.classList.remove('open');
+    if (overlay) overlay.classList.remove('show');
+  }
+
+  if (overlay) overlay.addEventListener('click', closeFiletree);
+
+  function checkScroll() {
+    if (!floatBtns) return;
+    if (window.scrollY > window.innerHeight) {
+      floatBtns.classList.add('visible');
+    } else {
+      floatBtns.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', checkScroll, { passive: true });
+  checkScroll();
+
+  var btnScrollTop = document.getElementById('btn-scrolltop');
+  if (btnScrollTop) btnScrollTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var pa = document.getElementById('postarea');
+    if (pa) pa.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var olPopupList = document.getElementById('olPopupList');
+  var btnOutline = document.getElementById('btn-outline');
+  if (btnOutline) btnOutline.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (olSidebarList && olPopupList) {
+      olPopupList.innerHTML = olSidebarList.innerHTML;
+    }
+    if (outlinePopup) outlinePopup.classList.toggle('show');
+  });
+
+  // 弹窗大纲点击
+  if (olPopupList) {
+    olPopupList.addEventListener('click', function(e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      e.preventDefault();
+      var postId = a.getAttribute('href').slice(1);
+      var headingText = a.getAttribute('data-heading');
+      scrollToHeading(postId, headingText);
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!outlinePopup) return;
+    if (!outlinePopup.contains(e.target) && e.target !== document.getElementById('btn-outline')) {
+      outlinePopup.classList.remove('show');
+    }
+  });
+
+  if (typeof mermaid !== 'undefined') mermaid.run();
+
+})();
+</script>
+</body>
+</html>

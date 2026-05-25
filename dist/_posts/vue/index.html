@@ -1,0 +1,2781 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VUE - Bookends</title>
+  <link rel="stylesheet" href="../../assets/main.css">
+  <link rel="stylesheet" href="../../assets/highlight.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  
+</head>
+<body class="category-page">
+  <div class="page-container">
+    <header class="topbar">
+      <button class="tb-btn" id="btn-filetree" title="目录">&#x2261;</button>
+      <a href="../../" class="tb-back" title="返回首页">&#x2190;</a>
+      <span class="tb-title">VUE</span>
+      <span class="tb-count">21 篇</span>
+    </header>
+
+    <div class="main-area">
+      <aside class="file-tree" id="filetree">
+        
+      <li class="file-tree-chapter">
+        <details open>
+          <summary class="chapter-title">01-核心基础</summary>
+          <ul class="file-tree-posts">
+            <li class="post-item active"><a href="#post-0">1.环境搭建</a></li>
+<li class="post-item"><a href="#post-1">2.理解vue项目</a></li>
+<li class="post-item"><a href="#post-2">3.vue代码风格</a></li>
+<li class="post-item"><a href="#post-3">4.模版语法</a></li>
+<li class="post-item"><a href="#post-4">5.属性绑定</a></li>
+<li class="post-item"><a href="#post-5">6.列表渲染</a></li>
+<li class="post-item"><a href="#post-6">7.条件渲染</a></li>
+<li class="post-item"><a href="#post-7">8.事件处理</a></li>
+<li class="post-item"><a href="#post-8">9.表单的输入绑定</a></li>
+<li class="post-item"><a href="#post-9">10.计算属性</a></li>
+<li class="post-item"><a href="#post-10">11.侦听器</a></li>
+<li class="post-item"><a href="#post-11">12.模板引用</a></li>
+<li class="post-item"><a href="#post-12">13.数据变化侦测</a></li>
+<li class="post-item"><a href="#post-13">14.动态样式绑定</a></li>
+<li class="post-item"><a href="#post-14">15.组件基础</a></li>
+<li class="post-item"><a href="#post-15">16.Props详解</a></li>
+          </ul>
+        </details>
+      </li>
+
+      <li class="file-tree-chapter">
+        <details open>
+          <summary class="chapter-title">02-Vue3进阶</summary>
+          <ul class="file-tree-posts">
+            <li class="post-item active"><a href="#post-0">1.setup语法糖</a></li>
+<li class="post-item"><a href="#post-1">2.响应式核心ref与reactive</a></li>
+<li class="post-item"><a href="#post-2">3.ref进阶技巧</a></li>
+          </ul>
+        </details>
+      </li>
+
+      <li class="file-tree-chapter">
+        <details open>
+          <summary class="chapter-title">附录</summary>
+          <ul class="file-tree-posts">
+            <li class="post-item active"><a href="#post-0">1.插件扩展</a></li>
+<li class="post-item"><a href="#post-1">2.常见报错</a></li>
+          </ul>
+        </details>
+      </li>
+      </aside>
+
+      <main class="post-area" id="postarea">
+        
+    <div id="post-0" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;第一步：安装 Node.js&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;第二步：创建项目&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;第三步：安装依赖并启动&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;项目文件夹里有什么？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;VSCode 插件&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;快速检查&quot;}]">
+      <p>Vue 是一个 JavaScript 框架，它本质上就是一堆 <code>.js</code> 文件。要开始用 Vue，你需要两样东西：</p>
+<ol>
+<li><strong>Node.js</strong> — 一个能让你在电脑上运行 JavaScript 的环境（不仅仅是浏览器里）</li>
+<li><strong>Vite</strong> — 一个帮你创建 Vue 项目的工具（脚手架）
+<strong>💡 Tip：类比一下</strong>
+如果把写 Vue 项目比作盖房子：</li>
+</ol>
+<ul>
+<li>Node.js = 施工队（负责干活）</li>
+<li>Vite = 图纸 + 工具（帮你搭好骨架）</li>
+</ul>
+<h2>第一步：安装 Node.js</h2>
+<p>去 <a href="https://nodejs.org">nodejs.org</a> 下载 LTS 版本（长期支持版，最稳定），像安装普通软件一样点&quot;下一步&quot;装好即可。
+装完后打开终端（PowerShell 或 cmd），验证一下：</p>
+<pre class="hljs"><code>node -v      <span class="hljs-comment"># 能看到版本号就说明装好了，比如 v20.11.0</span>
+npm -v       <span class="hljs-comment"># npm 是 Node 自带的包管理器，也会显示版本号</span>
+</code></pre>
+<h2>第二步：创建项目</h2>
+<p>在终端中进入你想放项目的文件夹，然后运行：</p>
+<pre class="hljs"><code>npm create vue@latest
+</code></pre>
+<p>这条命令会问你几个问题：</p>
+<ul>
+<li><strong>Project name（项目名）</strong>：给你的项目起个名字，比如 <code>my-first-app</code></li>
+<li><strong>是否加 TypeScript？</strong>：新手可以先选 No，先学 Vue 本身</li>
+<li><strong>是否加 Router？</strong>：新手先选 No，后面再学</li>
+<li>其他选项全部回车跳过就好
+<strong>💡 Tip：这些选项以后都能加，不用纠结。</strong></li>
+</ul>
+<h2>第三步：安装依赖并启动</h2>
+<pre class="hljs"><code><span class="hljs-built_in">cd</span> my-first-app      <span class="hljs-comment"># 进入项目文件夹</span>
+npm install           <span class="hljs-comment"># 下载项目需要的所有依赖（就这一次，以后不用）</span>
+npm run dev           <span class="hljs-comment"># 启动开发服务器</span>
+</code></pre>
+<p>看到类似 <code>Local: http://localhost:5173/</code> 就说明成功了。用浏览器打开这个地址，你应该能看到一个 Vue 的欢迎页。
+<strong>📝 Note：开发服务器是什么？</strong>
+<code>npm run dev</code> 会启动一个&quot;开发服务器&quot;，它做的事情是：</p>
+<ol>
+<li>把你写的代码实时编译成浏览器能看懂的样子</li>
+<li>当你修改代码并保存时，浏览器自动刷新</li>
+<li>这就是&quot;热更新&quot;——改代码 → 保存 → 立刻看到效果</li>
+</ol>
+<h2>项目文件夹里有什么？</h2>
+<p>刚创建的项目结构如下。你不需要一次性全搞懂，先认识最重要的：</p>
+<pre class="hljs"><code>my-first-app/
+├── index.html          ← 唯一的 HTML 页面（SPA 的入口）
+├── package.json         ← 项目配置 + 依赖列表（相当于购物清单）
+├── vite.config.js       ← Vite 的配置文件（一般不用动）
+├── src/                 ← 你写代码的地方，大部分时间都在这个文件夹里
+│   ├── main.js          ← 项目的启动文件（告诉 Vue &quot;从哪开始&quot;）
+│   ├── App.vue          ← 根组件（整个页面的最外层）
+│   └── components/      ← 放各种小组件的文件夹
+└── public/              ← 放不经过处理的静态文件（如图片、字体）
+</code></pre>
+<p><strong>📝 Note：<code>.vue</code> 文件是什么？</strong>
+<code>.vue</code> 文件就是 Vue 的&quot;单文件组件&quot;。一个 <code>.vue</code> 文件包含三部分：</p>
+<ul>
+<li><code>&lt;template&gt;</code> — HTML 模板（你看到的样子）</li>
+<li><code>&lt;script&gt;</code> — JavaScript 逻辑（控制行为）</li>
+<li><code>&lt;style&gt;</code> — CSS 样式（控制外观）
+后面会逐一详细讲解。</li>
+</ul>
+<h2>VSCode 插件</h2>
+<p>如果你用 VSCode 写代码，搜 <strong>Vue - Official</strong> 安装，它会提供：</p>
+<ul>
+<li><code>.vue</code> 文件的语法高亮（代码有颜色）</li>
+<li>输入时的智能提示</li>
+<li>写错时的类型检查</li>
+</ul>
+<h2>快速检查</h2>
+<p>装完后，打开 <code>src/App.vue</code>，找到 <code>&lt;h1&gt;</code> 标签，把里面的文字改成 <code>&quot;Hello, Vue!&quot;</code>，保存——浏览器应该马上更新。
+如果能做到这一步，环境就搭好了，可以开始学 Vue 了！
+下一步：
+<strong>💡 Tip：Composition API 写法（Vue 3）</strong>
+环境搭建本身不涉及代码风格差异，创建项目的命令两种 API 风格通用。
+详见：</p>
+
+      <nav class="post-prev-next"><span class="pn-link disabled">← 已是第一篇</span><a href="#post-1" class="pn-link">2.理解vue项目 →</a></nav>
+    </div>
+
+    <div id="post-1" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;Vue 到底是干什么的？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;项目的启动流程&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;根组件 App.vue 长什么样&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;SPA 是什么？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;接下来学什么？&quot;}]">
+      <h2>Vue 到底是干什么的？</h2>
+<p>简单说，Vue 帮你做一件事：<strong>把数据和页面自动关联起来</strong>。
+举个例子：你有一个变量叫 <code>name = &quot;小明&quot;</code>，你想在页面上显示&quot;你好，小明&quot;。用原生 JavaScript 你可能要写：</p>
+<pre class="hljs"><code><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;greeting&#x27;</span>).<span class="hljs-property">textContent</span> = <span class="hljs-string">&#x27;你好，&#x27;</span> + name
+</code></pre>
+<p>但如果 <code>name</code> 变成了 <code>&quot;小红&quot;</code>，你得再写一行代码更新页面。数据一变，你得手动更新。
+Vue 的思路是：<strong>你只管改数据，页面自动更新</strong>。这就是&quot;响应式&quot;——数据的变化会自动&quot;响应&quot;到页面上。</p>
+<h2>项目的启动流程</h2>
+<p>每个 Vue 项目启动时，都从 <code>main.js</code> 开始执行。打开 <code>src/main.js</code>：</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span>
+<span class="hljs-title function_">createApp</span>(<span class="hljs-title class_">App</span>).<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#x27;#app&#x27;</span>)
+</code></pre>
+<p>这三行代码的意思是：
+| 代码 | 做什么 |
+| <code>import { createApp } from 'vue'</code> | 从 Vue 库里借一个 <code>createApp</code> 函数 |
+| <code>import App from './App.vue'</code> | 把自己写的 <code>App.vue</code> 组件加载进来 |
+| <code>createApp(App).mount('#app')</code> | 创建应用 → 把 <code>App</code> 组件挂到 <code>#app</code> 这个位置 |
+画成图就是这样：</p>
+<pre class="hljs"><code>index.html                  main.js                    App.vue
+┌───────────┐    启动    ┌──────────────┐    挂载    ┌──────────────┐
+│ &lt;div      │ ◄──────── │ createApp(…  │ ◄──────── │ &lt;template&gt;   │
+│  id=&quot;app&quot;&gt;│           │  mount(#app) │           │   整个页面的   │
+│ &lt;/div&gt;    │           └──────────────┘           │   内容都在这里  │
+└───────────┘                                     └──────────────┘
+</code></pre>
+<p><strong>💡 Tip：mount 是什么？</strong>
+&quot;挂载&quot;就是把 Vue 组件&quot;装&quot;到 HTML 的某个位置上。<code>mount('#app')</code> 的意思就是：把 Vue 应用放到 <code>id=&quot;app&quot;</code> 的那个 <code>&lt;div&gt;</code> 里。</p>
+<h2>根组件 App.vue 长什么样</h2>
+<p>打开 <code>src/App.vue</code>，你会看到这样的结构：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;h1&gt;{{ title }}&lt;/h1&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      title: 'Hello Vue 3'
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>这是 Vue 最基础的写法（叫&quot;选项式 API&quot;），我们来拆解每一块：</p>
+<ul>
+<li><strong><code>&lt;template&gt;</code></strong> — 就是 HTML，但可以使用 Vue 的特殊语法</li>
+<li><strong><code>{{ title }}</code></strong> — 双大括号叫&quot;插值&quot;，把 <code>title</code> 这个变量的值显示在这里</li>
+<li><strong><code>&lt;script&gt;</code></strong> — 写 JavaScript 的地方</li>
+<li><strong><code>data()</code></strong> — 一个函数，return 出去的就是这个组件的&quot;数据&quot;</li>
+<li><strong><code>export default</code></strong> — 把这整块代码&quot;导出&quot;，让别的地方可以用它
+<strong>📝 Note：为什么 data 是函数不是对象？</strong>
+这是 Vue 的一个设计：<code>data</code> 必须写成一个函数（<code>data() { ... }</code>），不能直接写 <code>data: { ... }</code>。
+原因很简单：每个组件需要有自己的数据副本，函数保证了每次用的都是&quot;新的一份&quot;，不会互相干扰。你暂时记住这个规则就行。</li>
+</ul>
+<h2>SPA 是什么？</h2>
+<p>Vue 是 <strong>SPA（单页应用）</strong> 框架。SPA 的意思是：
+<strong>整个网站只有一个 <code>.html</code> 文件</strong>，切换页面时浏览器不会真正跳转——只是 Vue 在同一个页面里&quot;换掉&quot;显示的内容。
+对比一下传统网站和 SPA：
+| | 传统网页 | SPA（Vue 项目） |
+| HTML 文件 | 每个页面一个 <code>.html</code> | 整个网站只有一个 <code>index.html</code> |
+| 页面切换 | 浏览器白屏→重新加载 | 丝滑切换，无白屏 |
+| 数据请求 | 每次切换页面重新请求 | 按需请求，更快 |
+| 用户体验 | 有延迟感 | 像 App 一样流畅 |
+这就是为什么 Vue 适合做&quot;Web App&quot;——体验接近手机 App。</p>
+<h2>接下来学什么？</h2>
+<p>了解了项目结构后，建议按这个顺序学习：</p>
+<ol>
+<li>— 了解 Vue 的两种写法</li>
+<li>— 怎么把数据显示到页面上</li>
+<li>— 动态改 HTML 属性</li>
+<li>— 控制元素的显示/隐藏</li>
+<li>— 遍历数据显示列表
+<strong>💡 Tip：Composition API 写法（Vue 3）</strong>
+上面的示例用了 Options API。用 Composition API 写同一个功能是这样的：</li>
+</ol>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref } from 'vue'
+const title = ref('Hello Vue 3')
+&lt;/script&gt;
+</code></pre>
+<p>详见：</p>
+
+      <nav class="post-prev-next"><a href="#post-0" class="pn-link">← 1.环境搭建</a><a href="#post-2" class="pn-link">3.vue代码风格 →</a></nav>
+    </div>
+
+    <div id="post-2" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;选项式 API（Options API）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;优点&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;缺点&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;组合式 API（Composition API）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;优点&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;缺点&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;两种风格怎么选？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;一个直观的对比&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;新手常见问题&quot;}]">
+      <p>Vue 提供了两种写代码的方式，官方叫&quot;API 风格&quot;。它们功能完全一样，只是写法不同。</p>
+<h2>选项式 API（Options API）</h2>
+<p>这种风格的特点是：<strong>用固定的&quot;选项&quot;来组织代码</strong>。就像填表格一样，数据放 <code>data</code>，方法放 <code>methods</code>，计算结果放 <code>computed</code>。</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;p&gt;点击次数：{{ count }}&lt;/p&gt;
+  &lt;button @click=&quot;addOne&quot;&gt;点我 +1&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      count: 0       // 数据写这里
+    }
+  },
+  methods: {
+    addOne() {
+      this.count++   // 方法写这里，用 this. 访问数据
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p><strong>💡 Tip：为什么是 <code>this.count</code>？</strong>
+在选项式 API 中，<code>this</code> 指代&quot;当前组件&quot;。<code>data</code> 里定义的数据会自动挂到 <code>this</code> 上，所以用 <code>this.count</code> 就能读到。</p>
+<h3>优点</h3>
+<ul>
+<li>结构固定，新手容易上手——所有组件长一个样</li>
+<li>文档好查，每种功能有对应的固定位置</li>
+</ul>
+<h3>缺点</h3>
+<ul>
+<li>同一个功能的代码会散落在不同选项里（数据在 <code>data</code>，逻辑在 <code>methods</code>，计算在 <code>computed</code>），功能多了不好维护</li>
+</ul>
+<h2>组合式 API（Composition API）</h2>
+<p>这种风格的特点是：<strong>按功能组织代码，而不是按选项</strong>。用 Vue 提供的函数（<code>ref</code>、<code>computed</code> 等）来写逻辑。</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;p&gt;点击次数：{{ count }}&lt;/p&gt;
+  &lt;button @click=&quot;addOne&quot;&gt;点我 +1&lt;/button&gt;
+&lt;/template&gt;
+&lt;script setup&gt;
+import { ref } from 'vue'
+const count = ref(0)     // ref() 创建响应式数据
+function addOne() {
+  count.value++          // 注意！在 JS 里用 .value 访问
+}
+&lt;/script&gt;
+</code></pre>
+<p><strong>⚠️ Warning：两个关键区别</strong></p>
+<ol>
+<li>用 <code>&lt;script setup&gt;</code> 代替了 <code>export default</code></li>
+<li>数据用 <code>ref()</code> 创建，在 JavaScript 里访问需要 <code>.value</code>（但模板里不用）</li>
+</ol>
+<h3>优点</h3>
+<ul>
+<li>同一功能的代码写在一起，逻辑清晰</li>
+<li>可以把一段逻辑抽出来复用（这是组合式 API 最大的优势）</li>
+<li>TypeScript 支持更好</li>
+</ul>
+<h3>缺点</h3>
+<ul>
+<li>新手理解&quot;响应式&quot;要多花一点时间</li>
+<li>需要记住 <code>ref</code> 要在 JS 里加 <code>.value</code>（忘了会报错）</li>
+</ul>
+<h2>两种风格怎么选？</h2>
+<p>| 场景 | 推荐 |
+| <strong>刚开始学 Vue</strong> | 选项式 API（结构清晰，照着抄就行） |
+| <strong>小项目 / 简单页面</strong> | 选项式 API（够用，不用上组合式） |
+| <strong>大型项目 / 多人合作</strong> | 组合式 API（好拆分、好复用） |
+| <strong>需要复用逻辑</strong> | 组合式 API（可以抽成函数到处用） |
+| <strong>用 TypeScript</strong> | 组合式 API（类型推断更好） |
+<strong>📝 Note：本笔记的教学安排</strong>
+基础部分会用选项式 API 讲解（更容易理解 Vue 的核心概念），同时每篇末尾附上组合式 API 的对照写法。等你理解了基础概念后，再来看组合式 API 就会发现它只是换了一种组织方式。</p>
+<h2>一个直观的对比</h2>
+<p>同一个功能，两种写法放在一起看：</p>
+<pre class="hljs"><code>&lt;!-- ========== 选项式 API ========== --&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return { name: '小明', age: 18 }
+  },
+  computed: {
+    intro() {
+      return `${this.name}今年${this.age}岁`
+    }
+  },
+  methods: {
+    growUp() {
+      this.age++
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<pre class="hljs"><code>&lt;!-- ========== 组合式 API ========== --&gt;
+&lt;script setup&gt;
+import { ref, computed } from 'vue'
+const name = ref('小明')
+const age = ref(18)
+const intro = computed(() =&gt; `${name.value}今年${age.value}岁`)
+function growUp() {
+  age.value++
+}
+&lt;/script&gt;
+</code></pre>
+<p>功能完全一样，只是&quot;组织代码的方式&quot;不同。</p>
+<h2>新手常见问题</h2>
+<p><strong>Q：学了选项式还要学组合式吗？</strong>
+A：先精通一种。建议从选项式入门理解 Vue 核心概念，然后再学组合式。组合式只是写法不同，核心概念（响应式、组件、指令）是一样的。
+<strong>Q：能不能混着用？</strong>
+A：同一个 <code>.vue</code> 文件里不要混用，但要学的知识点是通用的——条件渲染、列表渲染、事件处理这些在两个风格里用法完全一样。
+下一步：
+<strong>💡 Tip：Composition API 写法速查</strong>
+详见： 和</p>
+
+      <nav class="post-prev-next"><a href="#post-1" class="pn-link">← 2.理解vue项目</a><a href="#post-3" class="pn-link">4.模版语法 →</a></nav>
+    </div>
+
+    <div id="post-3" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;什么是&amp;quot;指令&amp;quot;？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;模板里只有文本？不，还有指令和表达式&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;新手常见问题&quot;}]">
+      <p>Vue 的模板就是 HTML，但加了两种特殊语法：<strong>插值表达式</strong> 和 <strong>指令</strong>。</p>
+<h2>插值表达式 <code>{{ }}</code></h2>
+<p>插值的意思是&quot;在这里插入值&quot;。Vue 用 <strong>双大括号</strong> <code>{{ }}</code> 把数据嵌入到 HTML 中。</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;p&gt;{{ message }}&lt;/p&gt;
+  &lt;p&gt;{{ number + 1 }}&lt;/p&gt;
+  &lt;p&gt;{{ flag ? '是' : '否' }}&lt;/p&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      message: 'Hello',
+      number: 10,
+      flag: true
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>页面会显示：</p>
+<pre class="hljs"><code>Hello
+11
+是
+</code></pre>
+<p><strong>💡 Tip：<code>{{ }}</code> 里面可以写什么？</strong>
+可以写合法的 JavaScript 表达式（能算出结果的代码）。比如：</p>
+<ul>
+<li>变量：<code>{{ name }}</code></li>
+<li>运算：<code>{{ a + b }}</code></li>
+<li>三元：<code>{{ ok ? '是' : '否' }}</code></li>
+<li>调用方法：<code>{{ message.toUpperCase() }}</code>
+但不能写语句！不能写 <code>{{ if (true) { ... } }}</code> 和 <code>{{ const x = 1 }}</code>。</li>
+</ul>
+<h2>原始 HTML — <code>v-html</code></h2>
+<p>默认情况下，<code>{{ }}</code> 会把内容当作<strong>纯文本</strong>处理，HTML 标签会被转义——也就是说，<code>&lt;b&gt;</code> 不会让文字加粗。
+如果你真的需要渲染 HTML 字符串，用 <code>v-html</code>：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;p&gt;{{ rawHtml }}&lt;/p&gt;              &lt;!-- 显示: &lt;b&gt;粗体&lt;/b&gt; --&gt;
+  &lt;p v-html=&quot;rawHtml&quot;&gt;&lt;/p&gt;         &lt;!-- 显示: 粗体 --&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      rawHtml: '&lt;b&gt;粗体&lt;/b&gt;'
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p><strong>🚫 Danger：v-html 有安全风险</strong>
+<code>v-html</code> 要慎用！如果你把用户输入的内容直接用 <code>v-html</code> 渲染，恶意用户可以在里面插入 <code>&lt;script&gt;</code> 标签执行攻击代码（XSS 攻击）。
+规则：<strong>永远不要对用户输入的内容使用 <code>v-html</code></strong>。</p>
+<h2>什么是&quot;指令&quot;？</h2>
+<p>指令就是 Vue 提供的特殊属性，以 <code>v-</code> 开头。它们告诉 Vue &quot;这个元素要做什么特殊处理&quot;。
+| 指令 | 作用 | 类比 |
+| <code>v-html</code> | 渲染 HTML | 用 HTML 内容替换元素 |
+| <code>v-bind</code> | 绑定属性 | 下篇讲 |
+| <code>v-if</code> | 条件显示 | 后面会讲 |
+| <code>v-for</code> | 循环渲染 | 后面会讲 |
+| <code>v-on</code> | 绑定事件 | 后面会讲 |
+| <code>v-model</code> | 双向绑定 | 后面会讲 |
+这六个指令是 Vue 最核心的东西，后面会逐一详细讲解。</p>
+<h2>模板里只有文本？不，还有指令和表达式</h2>
+<p>总结一下，Vue 模板里你能用的东西：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;!-- 1. 普通 HTML（照搬） --&gt;
+  &lt;h1&gt;标题&lt;/h1&gt;
+  &lt;!-- 2. 插值表达式（动态内容） --&gt;
+  &lt;p&gt;{{ message }}&lt;/p&gt;
+  &lt;!-- 3. 指令（v- 开头，做特殊操作） --&gt;
+  &lt;a v-bind:href=&quot;url&quot;&gt;链接&lt;/a&gt;
+&lt;/template&gt;
+</code></pre>
+<p>这三种东西可以组合使用，构成 Vue 模板的全部能力。</p>
+<h2>新手常见问题</h2>
+<p><strong>Q：为什么我的 <code>{{ }}</code> 一闪而过变成了真实数据？</strong>
+A：那是 Vue 还没加载完时，模板原样显示了。解决办法：在 <code>index.html</code> 的 <code>#app</code> 上加 <code>v-cloak</code>（进阶内容，不急）。
+<strong>Q：<code>{{ }}</code> 和 <code>v-text</code> 有什么区别？</strong>
+A：效果一样，<code>&lt;span v-text=&quot;msg&quot;&gt;&lt;/span&gt;</code> 等于 <code>&lt;span&gt;{{ msg }}&lt;/span&gt;</code>。一般直接用插值更直观。
+下一步：
+<strong>💡 Tip：Composition API 写法（Vue 3）</strong></p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref } from 'vue'
+const message = ref('Hello')
+const rawHtml = ref('&lt;b&gt;粗体&lt;/b&gt;')
+&lt;/script&gt;
+</code></pre>
+<p>模板部分完全一样，不变。
+详见：</p>
+
+      <nav class="post-prev-next"><a href="#post-2" class="pn-link">← 3.vue代码风格</a><a href="#post-4" class="pn-link">5.属性绑定 →</a></nav>
+    </div>
+
+    <div id="post-4" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;为什么需要属性绑定？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;基本用法&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;简写&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;布尔属性&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;绑定多个属性&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;总结&quot;}]">
+      <h2>为什么需要属性绑定？</h2>
+<p>HTML 属性（如 <code>href</code>、<code>src</code>、<code>class</code>、<code>disabled</code>）在普通 HTML 里是写死的：</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://vuejs.org&quot;</span>&gt;</span>官网<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>    <span class="hljs-comment">&lt;!-- href 永远是 vuejs.org --&gt;</span>
+</code></pre>
+<p>但你经常需要<strong>动态改变属性值</strong>，比如：</p>
+<ul>
+<li>切换不同图片：<code>src</code> 要根据数据变化</li>
+<li>禁用/启用按钮：<code>disabled</code> 要根据状态变化</li>
+<li>跳转不同链接：<code>href</code> 要根据用户操作变化
+这时就要用 <code>v-bind</code>。</li>
+</ul>
+<h2>基本用法</h2>
+<p><code>v-bind</code> 让 HTML 属性的值可以跟 Vue 的数据绑定：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;a v-bind:href=&quot;url&quot;&gt;前往官网&lt;/a&gt;
+  &lt;img v-bind:src=&quot;imageSrc&quot; alt=&quot;logo&quot;&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      url: 'https://vuejs.org',
+      imageSrc: 'logo.png'
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>渲染出来的 HTML 就是：</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://vuejs.org&quot;</span>&gt;</span>前往官网<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;logo.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;logo&quot;</span>&gt;</span>
+</code></pre>
+<p><code>v-bind</code> 后面跟的属性名 = HTML 属性名，等号后面是数据变量。</p>
+<h2>简写</h2>
+<p><code>v-bind</code> 太长了，Vue 提供了简写——<strong>直接用冒号 <code>:</code></strong>：</p>
+<pre class="hljs"><code>&lt;a :href=&quot;url&quot;&gt;链接&lt;/a&gt;           &lt;!-- 等于 v-bind:href=&quot;url&quot; --&gt;
+&lt;img :src=&quot;imageSrc&quot;&gt;             &lt;!-- 等于 v-bind:src=&quot;imageSrc&quot; --&gt;
+</code></pre>
+<p>几乎所有 Vue 开发者都用简写，看到 <code>:</code> 就理解为&quot;这是一个动态属性&quot;。</p>
+<h2>布尔属性</h2>
+<p>有些 HTML 属性不需要值，存在就生效，比如 <code>disabled</code>、<code>checked</code>、<code>readonly</code>。</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;button :disabled=&quot;isDisabled&quot;&gt;提交&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      isDisabled: true     // true → 按钮禁用
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>Vue 特殊处理了布尔属性：</p>
+<ul>
+<li><code>true</code> → 属性存在 → 按钮禁用</li>
+<li><code>false</code> → 属性移除 → 按钮可用</li>
+<li><code>null</code> 或 <code>undefined</code> → 属性也不渲染</li>
+</ul>
+<h2>绑定多个属性</h2>
+<p>如果你有一个对象，想把它的所有属性都绑到元素上：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;div v-bind=&quot;attrs&quot;&gt;内容&lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      attrs: {
+        id: 'myDiv',
+        class: 'container',
+        title: '提示信息'
+      }
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>渲染结果等于：</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;myDiv&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;提示信息&quot;</span>&gt;</span>内容<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h2>总结</h2>
+<p>| 写法 | 含义 |
+| <code>v-bind:href=&quot;url&quot;</code> | 完整写法 |
+| <code>:href=&quot;url&quot;</code> | 简写（推荐） |
+| <code>:disabled=&quot;true&quot;</code> | 布尔属性 |
+| <code>v-bind=&quot;obj&quot;</code> | 批量绑定 |
+记住：<strong>HTML 属性要动态改变 → 前面加冒号 <code>:</code></strong>。
+下一步：
+<strong>💡 Tip：Composition API 写法（Vue 3）</strong></p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref } from 'vue'
+const url = ref('https://vuejs.org')
+const isDisabled = ref(true)
+&lt;/script&gt;
+</code></pre>
+<p>模板中的 <code>:href</code>、<code>:disabled</code> 等写法完全不变。
+详见：</p>
+
+      <nav class="post-prev-next"><a href="#post-3" class="pn-link">← 4.模版语法</a><a href="#post-5" class="pn-link">6.列表渲染 →</a></nav>
+    </div>
+
+    <div id="post-5" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;遍历数组&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;获取索引&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;遍历对象&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;遍历数字范围&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;key 属性 — 很重要！&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;为什么需要 key？&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;用什么做 key？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;实际例子：待办事项列表&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;新手常见问题&quot;}]">
+      <p><code>v-for</code> 指令用来&quot;循环生成多个相同的元素&quot;，就像 JavaScript 的 <code>for...of</code> 循环。</p>
+<h2>遍历数组</h2>
+<p>最常用的场景是把数组里的每一项渲染出来：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;ul&gt;
+    &lt;li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;&gt;
+      {{ item.name }}
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      items: [
+        { id: 1, name: 'Vue' },
+        { id: 2, name: 'React' },
+        { id: 3, name: 'Angular' }
+      ]
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>页面输出：</p>
+<pre class="hljs"><code>• Vue
+• React
+• Angular
+</code></pre>
+<p><strong>📝 Note：<code>v-for</code> 的语法</strong>
+<code>v-for=&quot;item in items&quot;</code> 读作：&quot;从 <code>items</code> 数组里逐个取出元素，存到变量 <code>item</code> 里，然后用 <code>item</code> 渲染这一行。&quot;</p>
+<h2>获取索引</h2>
+<p>如果你还需要知道&quot;当前是第几个&quot;，加一个括号：</p>
+<pre class="hljs"><code>&lt;li v-for=&quot;(item, index) in items&quot; :key=&quot;item.id&quot;&gt;
+  {{ index + 1 }}. {{ item.name }}
+&lt;/li&gt;
+</code></pre>
+<p>输出：</p>
+<pre class="hljs"><code>1. Vue
+2. React
+3. Angular
+</code></pre>
+<p><strong>💡 Tip：注意</strong>
+<code>index</code> 从 0 开始，显示的时候一般需要 <code>index + 1</code>。</p>
+<h2>遍历对象</h2>
+<p><code>v-for</code> 也能遍历对象的属性：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;p v-for=&quot;(value, key, index) in user&quot; :key=&quot;key&quot;&gt;
+    {{ index }}. {{ key }}: {{ value }}
+  &lt;/p&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      user: { name: '张三', age: 18, city: '北京' }
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>输出：</p>
+<pre class="hljs"><code>0. name: 张三
+1. age: 18
+2. city: 北京
+</code></pre>
+<p>三个参数的顺序是：<strong>值 → 键 → 索引</strong>。</p>
+<h2>遍历数字范围</h2>
+<pre class="hljs"><code>&lt;span v-for=&quot;n in 5&quot; :key=&quot;n&quot;&gt;{{ n }} &lt;/span&gt;
+</code></pre>
+<p>输出：<code>1 2 3 4 5</code>（从 1 开始，到 5）</p>
+<h2>key 属性 — 很重要！</h2>
+<p>每个 <code>v-for</code> 的元素都应该加上 <code>:key</code>，这是 <strong>Vue 识别每个元素的身份标识</strong>。</p>
+<h3>为什么需要 key？</h3>
+<p>Vue 更新列表时，需要知道&quot;哪一行是新加的、哪一行是删掉的、哪一行改了&quot;。没有 key，Vue 就只能&quot;按位置对号入座&quot;，容易出错。
+举个例子：你有一个列表 <code>[A, B, C]</code>，你想在最前面插入 <code>D</code> 变成 <code>[D, A, B, C]</code>：</p>
+<ul>
+<li><strong>没有 key</strong>：Vue 把第一行从 A 改成 D，第二行 B 改成 A...四行都要更新</li>
+<li><strong>有 key</strong>：Vue 一看，D 是新的，放最前面；A、B、C 都在，不用动</li>
+</ul>
+<h3>用什么做 key？</h3>
+<pre class="hljs"><code>&lt;!-- ✅ 用唯一 ID --&gt;
+&lt;li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;&gt;{{ item.name }}&lt;/li&gt;
+&lt;!-- ❌ 不要用索引（index） --&gt;
+&lt;li v-for=&quot;(item, index) in items&quot; :key=&quot;index&quot;&gt;{{ item.name }}&lt;/li&gt;
+</code></pre>
+<p>用 <code>index</code> 做 key 的坏处：当你对数组做插入/删除时，元素的 index 会变，Vue 就分不清谁是谁了。
+<strong>💡 Tip：记住</strong>
+<strong>只要有 <code>v-for</code>，就一定要加 <code>:key</code>，且 key 要用唯一的、不变的值。</strong></p>
+<h2>在 <code>&lt;template&gt;</code> 上使用 v-for</h2>
+<p>和 <code>v-if</code> 一样，<code>v-for</code> 也可以加在 <code>&lt;template&gt;</code> 上同时渲染多个元素：</p>
+<pre class="hljs"><code>&lt;template v-for=&quot;item in items&quot; :key=&quot;item.id&quot;&gt;
+  &lt;h3&gt;{{ item.name }}&lt;/h3&gt;
+  &lt;p&gt;{{ item.desc }}&lt;/p&gt;
+&lt;/template&gt;
+</code></pre>
+<h2>实际例子：待办事项列表</h2>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;input v-model=&quot;newTodo&quot; @keyup.enter=&quot;addTodo&quot; placeholder=&quot;输入待办事项&quot;&gt;
+    &lt;ul&gt;
+      &lt;li v-for=&quot;todo in todos&quot; :key=&quot;todo.id&quot;&gt;
+        {{ todo.text }}
+        &lt;button @click=&quot;removeTodo(todo.id)&quot;&gt;删除&lt;/button&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      newTodo: '',
+      todos: [
+        { id: 1, text: '学 Vue' },
+        { id: 2, text: '写代码' }
+      ],
+      nextId: 3
+    }
+  },
+  methods: {
+    addTodo() {
+      if (this.newTodo.trim()) {
+        this.todos.push({ id: this.nextId++, text: this.newTodo })
+        this.newTodo = ''     // 清空输入框
+      }
+    },
+    removeTodo(id) {
+      this.todos = this.todos.filter(t =&gt; t.id !== id)
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h2>新手常见问题</h2>
+<p><strong>Q：不写 <code>:key</code> 会怎样？</strong>
+A：能运行，但 Vue 会在控制台给你一个警告，而且列表更新时可能出 bug。养成习惯，有 <code>v-for</code> 必有 <code>:key</code>。
+<strong>Q：为什么我的列表没更新？</strong>
+A：检查你是不是用 <code>this.items[0] = xxx</code> 这样直接赋值。Vue 2 不会检测这种改动，要用 <code>splice</code> 或整体替换数组。Vue 3 没这个问题。
+下一步：
+<strong>💡 Tip：Composition API 写法（Vue 3）</strong></p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref } from 'vue'
+const items = ref([{ id: 1, name: 'Vue' }, { id: 2, name: 'React' }])
+&lt;/script&gt;
+</code></pre>
+<p>模板部分 (<code>v-for</code>、<code>:key</code>) 完全不变。
+详见：</p>
+
+      <nav class="post-prev-next"><a href="#post-4" class="pn-link">← 5.属性绑定</a><a href="#post-6" class="pn-link">7.条件渲染 →</a></nav>
+    </div>
+
+    <div id="post-6" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;v-if / v-else-if / v-else&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;v-show&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;v-if vs v-show，怎么选？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;实际例子：登录状态切换&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;新手常见问题&quot;}]">
+      <p>条件渲染就是&quot;根据条件决定显示还是隐藏某个元素&quot;。Vue 提供了两个指令：<code>v-if</code> 和 <code>v-show</code>。</p>
+<h2>v-if / v-else-if / v-else</h2>
+<p>和 JavaScript 的 <code>if...else</code> 逻辑一模一样，控制元素是否在 DOM 中存在。</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;p v-if=&quot;score &gt;= 90&quot;&gt;优秀&lt;/p&gt;
+  &lt;p v-else-if=&quot;score &gt;= 60&quot;&gt;及格&lt;/p&gt;
+  &lt;p v-else&gt;不及格&lt;/p&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return { score: 75 }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>结果：页面只显示&quot;及格&quot;那一行。另外两行<strong>根本不在 HTML 里</strong>（你可以打开浏览器开发者工具验证）。
+<strong>📝 Note：规则</strong></p>
+<ul>
+<li><code>v-if</code> / <code>v-else-if</code> / <code>v-else</code> 必须紧挨着，中间不能插其他元素</li>
+<li>只有第一个带条件（<code>v-if</code>），后面的 <code>v-else-if</code> 和 <code>v-else</code> 跟着就行</li>
+</ul>
+<h2>v-show</h2>
+<p><code>v-show</code> 也能控制显示隐藏，但原理不同——<strong>元素始终在 DOM 中，只是通过 CSS <code>display: none</code> 隐藏了</strong>。</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;p v-show=&quot;visible&quot;&gt;我一直都在 DOM 里&lt;/p&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return { visible: true }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>当 <code>visible</code> 为 <code>false</code> 时：</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: none;&quot;</span>&gt;</span>我一直都在 DOM 里<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<h2>v-if vs v-show，怎么选？</h2>
+<p>|          | v-if                    | v-show                               |
+| <strong>原理</strong>   | 条件为假时，元素从 DOM 中<strong>完全移除</strong> | 条件为假时，元素还在，只是<strong>隐藏</strong>（<code>display: none</code>） |
+| <strong>初始渲染</strong> | 条件为假时不渲染，<strong>更快</strong>（省资源）    | 始终渲染，初始时<strong>慢一点点</strong>                     |
+| <strong>切换开销</strong> | 每次切换要销毁/重建，<strong>开销大</strong>      | 只改 CSS，<strong>开销极小</strong>                      |
+| <strong>适用场景</strong> | 条件<strong>很少改变</strong>的情况（如用户是否登录）  | 条件<strong>频繁切换</strong>的情况（如选项卡切换）                |
+筛选分类时就可以用show减少css开销
+<strong>💡 Tip：记住一个口诀</strong>
+<strong>少切换用 v-if，多切换用 v-show。</strong></p>
+<h2>在 <code>&lt;template&gt;</code> 上使用 v-if</h2>
+<p>如果你想用 <code>v-if</code> 控制多个元素，但不想多包一层 <code>&lt;div&gt;</code>，可以用 <code>&lt;template&gt;</code>：</p>
+<pre class="hljs"><code>&lt;template v-if=&quot;loggedIn&quot;&gt;
+  &lt;h2&gt;欢迎回来&lt;/h2&gt;
+  &lt;p&gt;今天天气不错&lt;/p&gt;
+  &lt;button&gt;开始使用&lt;/button&gt;
+&lt;/template&gt;
+</code></pre>
+<p><code>&lt;template&gt;</code> 是一个&quot;隐形容器&quot;——它本身不会渲染成任何 HTML，只是用来组织逻辑。
+<strong>📝 Note：注意</strong>
+<code>v-show</code> 不能用在 <code>&lt;template&gt;</code> 上，因为 <code>&lt;template&gt;</code> 没有实际 DOM 元素。</p>
+<h2>实际例子：登录状态切换</h2>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;p v-if=&quot;user&quot;&gt;欢迎，{{ user }}&lt;/p&gt;
+    &lt;button v-else @click=&quot;login&quot;&gt;请登录&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return { user: null }
+  },
+  methods: {
+    login() {
+      this.user = '小明'    // 数据一变，v-if 自动重新判断
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>点击按钮 → <code>user</code> 从 <code>null</code> 变成 <code>&quot;小明&quot;</code> → Vue 自动把&quot;请登录&quot;替换成&quot;欢迎，小明&quot;。</p>
+<h2>新手常见问题</h2>
+<p><strong>Q：v-if 和 v-show 可以同时用吗？</strong>
+A：分开用就行，别同时加一个元素上。先判断用哪个：切换频繁用 <code>v-show</code>，否则用 <code>v-if</code>。
+<strong>Q：为什么 v-if 里用 v-for 会告警？</strong>
+A：Vue 规定 <code>v-if</code> 和 <code>v-for</code> 不能放在同一个元素上（执行优先级会出问题）。应该先用 <code>v-for</code> 循环，再在里面用 <code>v-if</code>。
+下一步：
+<strong>💡 Tip：Composition API 写法（Vue 3）</strong></p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref } from 'vue'
+const score = ref(75)
+const visible = ref(true)
+const user = ref(null)
+&lt;/script&gt;
+</code></pre>
+<p>模板部分完全不变。
+详见：</p>
+
+      <nav class="post-prev-next"><a href="#post-5" class="pn-link">← 6.列表渲染</a><a href="#post-7" class="pn-link">8.事件处理 →</a></nav>
+    </div>
+
+    <div id="post-7" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;基本用法&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;简写&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;给方法传参&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;事件修饰符&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;按键修饰符&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;组合键&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;内联处理&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;实际例子：计数器&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;新手常见问题&quot;}]">
+      <p>用户点击按钮、输入文字、移动鼠标……这些都是&quot;事件&quot;。Vue 用 <code>v-on</code> 指令来监听这些事件。</p>
+<h2>基本用法</h2>
+<p><code>v-on</code> 用于绑定事件处理函数：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;button v-on:click=&quot;handleClick&quot;&gt;点我&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  methods: {
+    handleClick() {
+      alert('按钮被点了！')
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p><code>v-on:click=&quot;handleClick&quot;</code> 的意思是：<strong>当这个按钮被点击时，调用 <code>handleClick</code> 方法</strong>。</p>
+<h2>简写</h2>
+<p><code>v-on:</code> 太长，日常用 <strong><code>@</code></strong> 简写：</p>
+<pre class="hljs"><code>&lt;button @click=&quot;handleClick&quot;&gt;点我&lt;/button&gt;     &lt;!-- 等于 v-on:click --&gt;
+&lt;input @input=&quot;handleInput&quot;&gt;                   &lt;!-- 等于 v-on:input --&gt;
+&lt;form @submit=&quot;handleSubmit&quot;&gt;                  &lt;!-- 等于 v-on:submit --&gt;
+</code></pre>
+<p>看到 <code>@</code> 就理解为&quot;当...事件发生时&quot;。</p>
+<h2>给方法传参</h2>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;button @click=&quot;say('Hello')&quot;&gt;打招呼&lt;/button&gt;
+  &lt;button @click=&quot;say('再见')&quot;&gt;说再见&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  methods: {
+    say(msg) {
+      alert(msg)
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p><strong>💡 Tip：需要事件对象怎么办？</strong>
+如果你既要传参，又要拿到事件对象，用 <code>$event</code>：</p>
+<pre class="hljs"><code>&lt;button @click=&quot;handle('参数', $event)&quot;&gt;点我&lt;/button&gt;
+</code></pre>
+<h2>事件修饰符</h2>
+<p>很多事件需要加上&quot;额外操作&quot;，比如阻止表单自动提交、防止事件冒泡。Vue 提供了<strong>修饰符</strong>，在事件后面加 <code>.xxx</code> 就行。
+| 修饰符 | 作用 | 不用 Vue 你要写 |
+| <code>.prevent</code> | 阻止默认行为（如表单提交、a 标签跳转） | <code>e.preventDefault()</code> |
+| <code>.stop</code> | 阻止事件冒泡（点击子元素不会触发父元素） | <code>e.stopPropagation()</code> |
+| <code>.once</code> | 事件只触发一次 | 手动加标志位 |
+| <code>.self</code> | 只在事件源是自身时触发 | <code>if (e.target === e.currentTarget)</code> |
+| <code>.capture</code> | 在捕获阶段触发 | 第三个参数 <code>true</code> |</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;!-- 表单提交时不会刷新页面 --&gt;
+  &lt;form @submit.prevent=&quot;onSubmit&quot;&gt;
+    &lt;input type=&quot;text&quot;&gt;
+    &lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;
+  &lt;/form&gt;
+  &lt;!-- 点击&quot;点我&quot;不会触发灰色区域的点击事件 --&gt;
+  &lt;div @click=&quot;onOuterClick&quot; style=&quot;background: gray; padding: 20px&quot;&gt;
+    &lt;button @click.stop=&quot;onInnerClick&quot;&gt;点我&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+<h2>按键修饰符</h2>
+<p>监听键盘事件时，可以指定按键：</p>
+<pre class="hljs"><code>&lt;!-- 只有按回车时触发 --&gt;
+&lt;input @keyup.enter=&quot;onEnter&quot;&gt;
+&lt;!-- 只有按 Esc 时触发 --&gt;
+&lt;input @keyup.escape=&quot;onCancel&quot;&gt;
+</code></pre>
+<p>支持的按键别名：<code>.enter</code>、<code>.tab</code>、<code>.delete</code>、<code>.esc</code>、<code>.space</code>、<code>.up</code>、<code>.down</code>、<code>.left</code>、<code>.right</code>
+也可以直接用键码：<code>@keyup.13</code>（13 = 回车键码，不过用别名更直观）</p>
+<h2>组合键</h2>
+<pre class="hljs"><code>&lt;!-- Ctrl + 回车 --&gt;
+&lt;input @keyup.ctrl.enter=&quot;onCtrlEnter&quot;&gt;
+&lt;!-- 精确匹配：只有 Ctrl 被按下（不能同时按其他键） --&gt;
+&lt;button @click.ctrl.exact=&quot;onCtrlOnly&quot;&gt;精确 Ctrl&lt;/button&gt;
+</code></pre>
+<h2>内联处理</h2>
+<p>简单逻辑可以直接写在模板里，不用定义方法：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;button @click=&quot;count++&quot;&gt;点了 {{ count }} 次&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return { count: 0 }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>适合只有一行逻辑的简单操作。复杂的逻辑还是应该写到 <code>methods</code> 里。</p>
+<h2>实际例子：计数器</h2>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;当前计数：{{ count }}&lt;/p&gt;
+    &lt;button @click=&quot;count++&quot;&gt;+1&lt;/button&gt;
+    &lt;button @click=&quot;count--&quot;&gt;-1&lt;/button&gt;
+    &lt;button @click=&quot;count = 0&quot;&gt;重置&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return { count: 0 }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h2>新手常见问题</h2>
+<p><strong>Q：<code>@click=&quot;fn&quot;</code> 和 <code>@click=&quot;fn()&quot;</code> 有区别吗？</strong>
+A：有。<code>@click=&quot;fn&quot;</code> 会把事件对象传给 fn；<code>@click=&quot;fn()&quot;</code> 则什么都不传。如果不需要事件对象，两种写法效果一样。
+<strong>Q：事件处理函数里怎么访问 data？</strong>
+A：用 <code>this.xxx</code>。Vue 自动把 <code>data</code> 里的数据挂到了 <code>this</code> 上。
+下一步：
+<strong>💡 Tip：Composition API 写法（Vue 3）</strong></p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref } from 'vue'
+const count = ref(0)
+function handleClick() { count.value++ }
+&lt;/script&gt;
+</code></pre>
+<p>模板中的 <code>@click</code> 等写法完全不变。
+详见：</p>
+
+      <nav class="post-prev-next"><a href="#post-6" class="pn-link">← 7.条件渲染</a><a href="#post-8" class="pn-link">9.表单的输入绑定 →</a></nav>
+    </div>
+
+    <div id="post-8" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;什么是双向绑定？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;不同表单控件的用法&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;文本框&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;文本域&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;单选复选框&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;多选复选框（绑定到数组）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;单选框&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;下拉列表&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;修饰符&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;实际例子：登录表单&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;新手常见问题&quot;}]">
+      <p><code>v-model</code> 是 Vue 最常用的指令之一，实现表单控件和数据之间的<strong>双向绑定</strong>。</p>
+<h2>什么是双向绑定？</h2>
+<p>普通的 <code>:value</code> 只能做到&quot;数据 → 页面&quot;。<code>v-model</code> 能做到：</p>
+<pre class="hljs"><code>数据 ↔ 页面：改数据，页面变；用户输入，数据也变。
+</code></pre>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;input v-model=&quot;message&quot;&gt;
+  &lt;p&gt;你输入的是：{{ message }}&lt;/p&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return { message: '' }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>你在输入框里打字 → <code>message</code> 自动更新 → <code>{{ message }}</code> 自动刷新。两个方向都是自动的。
+<strong>💡 Tip：v-model 的本质</strong>
+<code>v-model=&quot;message&quot;</code> 等价于同时做了两件事：</p>
+<ol>
+<li><code>:value=&quot;message&quot;</code> — 把数据绑到输入框</li>
+<li><code>@input=&quot;message = $event.target.value&quot;</code> — 监听输入并更新数据
+所以它叫&quot;双向绑定&quot;，一行顶两行。</li>
+</ol>
+<h2>不同表单控件的用法</h2>
+<h3>文本框</h3>
+<pre class="hljs"><code>&lt;input v-model=&quot;text&quot;&gt;
+</code></pre>
+<h3>文本域</h3>
+<pre class="hljs"><code>&lt;textarea v-model=&quot;content&quot;&gt;&lt;/textarea&gt;
+</code></pre>
+<p><strong>📝 Note：注意</strong>
+<code>&lt;textarea&gt;</code> 不要写 <code>{{ }}</code> 插值，用 <code>v-model</code>。</p>
+<h3>单选复选框</h3>
+<pre class="hljs"><code>&lt;input type=&quot;checkbox&quot; v-model=&quot;checked&quot;&gt;
+&lt;span&gt;{{ checked ? '已选' : '未选' }}&lt;/span&gt;
+</code></pre>
+<p><code>checked</code> 的值是 <code>true</code> 或 <code>false</code>。</p>
+<h3>多选复选框（绑定到数组）</h3>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;input type=&quot;checkbox&quot; v-model=&quot;hobbies&quot; value=&quot;读书&quot;&gt; 读书
+    &lt;input type=&quot;checkbox&quot; v-model=&quot;hobbies&quot; value=&quot;运动&quot;&gt; 运动
+    &lt;input type=&quot;checkbox&quot; v-model=&quot;hobbies&quot; value=&quot;音乐&quot;&gt; 音乐
+    &lt;p&gt;你选了：{{ hobbies }}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      hobbies: []          // 必须是数组
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h3>单选框</h3>
+<pre class="hljs"><code>&lt;input type=&quot;radio&quot; v-model=&quot;gender&quot; value=&quot;男&quot;&gt; 男
+&lt;input type=&quot;radio&quot; v-model=&quot;gender&quot; value=&quot;女&quot;&gt; 女
+</code></pre>
+<h3>下拉列表</h3>
+<pre class="hljs"><code>&lt;select v-model=&quot;city&quot;&gt;
+  &lt;option disabled value=&quot;&quot;&gt;请选择城市&lt;/option&gt;
+  &lt;option value=&quot;beijing&quot;&gt;北京&lt;/option&gt;
+  &lt;option value=&quot;shanghai&quot;&gt;上海&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<h2>修饰符</h2>
+<p><code>v-model</code> 提供了三个方便的修饰符：
+| 修饰符 | 作用 | 什么时候用 |
+| <code>.lazy</code> | 失去焦点时才更新数据（而不是每次输入都更新） | 输入大段文字时减少计算 |
+| <code>.number</code> | 自动把输入转成数字 | 输入年龄、价格 |
+| <code>.trim</code> | 自动去掉首尾空格 | 输入用户名、邮箱 |</p>
+<pre class="hljs"><code>&lt;input v-model.lazy=&quot;message&quot;&gt;     &lt;!-- 按回车或失焦才更新 --&gt;
+&lt;input v-model.number=&quot;age&quot;&gt;       &lt;!-- 输入 &quot;25&quot; → age 是数字 25 --&gt;
+&lt;input v-model.trim=&quot;username&quot;&gt;    &lt;!-- &quot; 小明 &quot; → &quot;小明&quot; --&gt;
+</code></pre>
+<h2>实际例子：登录表单</h2>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;form @submit.prevent=&quot;handleLogin&quot;&gt;
+    &lt;div&gt;
+      &lt;label&gt;用户名：&lt;/label&gt;
+      &lt;input v-model.trim=&quot;username&quot; placeholder=&quot;请输入用户名&quot;&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;label&gt;密码：&lt;/label&gt;
+      &lt;input v-model=&quot;password&quot; type=&quot;password&quot; placeholder=&quot;请输入密码&quot;&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot; v-model=&quot;remember&quot;&gt; 记住我
+      &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;button type=&quot;submit&quot;&gt;登录&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      username: '',
+      password: '',
+      remember: false
+    }
+  },
+  methods: {
+    handleLogin() {
+      console.log(`登录：${this.username}, 记住：${this.remember}`)
+      // 这里发登录请求
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h2>新手常见问题</h2>
+<p><strong>Q：input 事件和 v-model 冲突吗？</strong>
+A：不会。你仍然可以单独用 <code>@input</code> 做额外的处理，<code>v-model</code> 会继续正常运行。
+<strong>Q：为什么我的 checkbox 绑定到数组，数据没更新？</strong>
+A：检查你的数组是用 <code>ref</code> 还是 <code>reactive</code>。组合式 API 中如果用 <code>ref([])</code>，用的时候要 <code>.value</code>。
+<strong>Q：v-model 能绑定 computed 吗？</strong>
+A：能，但需要给 computed 提供 setter。如果只是只读 computed，v-model 会报错。
+下一步：
+<strong>💡 Tip：Composition API 写法（Vue 3）</strong></p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref } from 'vue'
+const message = ref('')
+const checked = ref(false)
+&lt;/script&gt;
+</code></pre>
+<p>模板中 <code>v-model</code> 写法完全不变。
+详见：</p>
+
+      <nav class="post-prev-next"><a href="#post-7" class="pn-link">← 8.事件处理</a><a href="#post-9" class="pn-link">10.计算属性 →</a></nav>
+    </div>
+
+    <div id="post-9" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;什么是计算属性？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;一个例子看懂&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;计算属性 vs 方法 — 关键区别&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;计算属性的 getter 和 setter&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;什么时候用 computed？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;新手常见问题&quot;}]">
+      <h2>什么是计算属性？</h2>
+<p>计算属性（computed）是一类特殊的属性，它的值<strong>由其他数据计算得出</strong>，而且 Vue 会缓存结果。
+简单说：<strong>有依赖别人才能算出来的值，就放 computed 里</strong>。</p>
+<h2>一个例子看懂</h2>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;p&gt;原始数组：{{ numbers }}&lt;/p&gt;
+  &lt;p&gt;偶数数组：{{ evenNumbers }}&lt;/p&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      numbers: [1, 2, 3, 4, 5, 6]
+    }
+  },
+  computed: {
+    evenNumbers() {
+      return this.numbers.filter(n =&gt; n % 2 === 0)
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>输出：</p>
+<pre class="hljs"><code>原始数组：[1, 2, 3, 4, 5, 6]
+偶数数组：[2, 4, 6]
+</code></pre>
+<p><code>evenNumbers</code> 不是存死的数据，而是每次根据 <code>numbers</code> 自动算出来的。只要 <code>numbers</code> 不变，<code>evenNumbers</code> 就用缓存的结果，不会重新算。</p>
+<h2>计算属性 vs 方法 — 关键区别</h2>
+<p>两种写法都能实现同样的功能，但行为完全不同：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;!-- 方法：每次访问都会重新执行 --&gt;
+  &lt;p&gt;{{ getEvenNumbers() }}&lt;/p&gt;
+  &lt;p&gt;{{ getEvenNumbers() }}&lt;/p&gt;
+  &lt;p&gt;{{ getEvenNumbers() }}&lt;/p&gt;
+  &lt;!-- 计算属性：第一次算出后缓存，后面直接用 --&gt;
+  &lt;p&gt;{{ evenNumbers }}&lt;/p&gt;
+  &lt;p&gt;{{ evenNumbers }}&lt;/p&gt;
+  &lt;p&gt;{{ evenNumbers }}&lt;/p&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() { return { numbers: [1, 2, 3, 4, 5, 6] } },
+  computed: {
+    evenNumbers() {
+      console.log('computed 被调用了')     // 只打印 1 次
+      return this.numbers.filter(n =&gt; n % 2 === 0)
+    }
+  },
+  methods: {
+    getEvenNumbers() {
+      console.log('method 被调用了')       // 打印 3 次
+      return this.numbers.filter(n =&gt; n % 2 === 0)
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>| | computed | methods |
+| <strong>缓存</strong> | 有（依赖不变就复用上次结果） | 无（每次重新计算） |
+| <strong>调用方式</strong> | 像属性一样，不带括号：<code>{{ evenNumbers }}</code> | 像函数一样，带括号：<code>{{ getEven() }}</code> |
+| <strong>适用场景</strong> | 需要根据数据计算的<strong>展示值</strong> | 需要执行的动作（如事件处理） |
+| <strong>何时用</strong> | 读数据时 | 做操作时 |
+<strong>💡 Tip：记住</strong>
+computed 就像 Excel 里的公式：<code>=SUM(A1:A10)</code>。只要 A1:A10 的值没变，结果就不会重新算。</p>
+<h2>计算属性的 getter 和 setter</h2>
+<p>计算属性默认是&quot;只读&quot;的（getter）。但你也可以让它可写（setter）：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;p&gt;{{ fullName }}&lt;/p&gt;
+  &lt;button @click=&quot;changeFullName&quot;&gt;改名字&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      firstName: '张',
+      lastName: '三'
+    }
+  },
+  computed: {
+    fullName: {
+      get() {                               // 读取时调用
+        return this.firstName + this.lastName
+      },
+      set(newValue) {                       // 设置时调用
+        this.firstName = newValue[0]
+        this.lastName = newValue.slice(1)
+      }
+    }
+  },
+  methods: {
+    changeFullName() {
+      this.fullName = '李四'     // 触发 setter
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>不过 getter+setter 的计算属性用得比较少，大部分场景下只读就够了。</p>
+<h2>什么时候用 computed？</h2>
+<p>凡是符合&quot;这个值由其他值决定&quot;的逻辑，都应该用 computed：</p>
+<ul>
+<li>过滤列表（如搜索功能）</li>
+<li>格式化显示（如价格显示为 ¥ 符号）</li>
+<li>判断状态（如购物车是否为空）</li>
+<li>拼接字符串（如全名 = 姓 + 名）</li>
+</ul>
+<h2>新手常见问题</h2>
+<p><strong>Q：computed 里能写异步代码吗？</strong>
+A：不行。computed 是同步的，必须立即返回值。如果需要异步操作，用 <code>watch</code> 或 <code>methods</code>。
+<strong>Q：computed 里能修改 data 吗？</strong>
+A：不能！computed 是&quot;只读&quot;的，在里面修改 data 会造成无限循环。改数据去 methods。
+下一步：
+<strong>💡 Tip：Composition API 写法（Vue 3）</strong></p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref, computed } from 'vue'
+const numbers = ref([1, 2, 3, 4, 5, 6])
+const evenNumbers = computed(() =&gt; numbers.value.filter(n =&gt; n % 2 === 0))
+&lt;/script&gt;
+</code></pre>
+<p>详见：</p>
+
+      <nav class="post-prev-next"><a href="#post-8" class="pn-link">← 9.表单的输入绑定</a><a href="#post-10" class="pn-link">11.侦听器 →</a></nav>
+    </div>
+
+    <div id="post-10" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;和 computed 有什么区别？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;基本用法&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;deep — 深度监听&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;immediate — 立即执行&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;监听对象中的某个属性&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;实际例子：防抖搜索&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;新手常见问题&quot;}]">
+      <p><code>watch</code>（侦听器）用来<strong>监听某个数据的变化，然后执行一些&quot;副作用&quot;</strong>。</p>
+<h2>和 computed 有什么区别？</h2>
+<p>| | computed | watch |
+| <strong>做什么</strong> | 根据数据<strong>算一个新值</strong>出来 | 数据变了，<strong>干一件事</strong> |
+| <strong>返回</strong> | 必须返回一个值 | 不返回值，执行操作 |
+| <strong>用途</strong> | 格式化、过滤、拼接 | 发请求、存本地、调第三方库 |
+| <strong>本质</strong> | 派生数据 | 副作用处理 |
+<strong>💡 Tip：一句话区别</strong>
+computed：数据变了，<strong>算出</strong>新结果。
+watch：数据变了，<strong>去做</strong>某件事。</p>
+<h2>基本用法</h2>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;input v-model=&quot;keyword&quot; placeholder=&quot;搜索&quot;&gt;
+  &lt;p&gt;结果：{{ result }}&lt;/p&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      keyword: '',
+      result: ''
+    }
+  },
+  watch: {
+    keyword(newVal, oldVal) {               // 新值在前，旧值在后
+      console.log(`从 &quot;${oldVal}&quot; 变为 &quot;${newVal}&quot;`)
+      this.result = `搜索：${newVal}`
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>每次你输入文字 → <code>keyword</code> 变化 → <code>watch</code> 里的函数自动执行 → <code>result</code> 更新 → 页面刷新。
+<strong>📝 Note：参数顺序</strong>
+<code>keyword(newVal, oldVal)</code> — <strong>新值在前</strong>，旧值在后。别写反了。</p>
+<h2>deep — 深度监听</h2>
+<p>默认情况下，<code>watch</code> 只监听对象<strong>引用</strong>的变化（地址变了没有），不监听对象<strong>内部属性</strong>的变化。</p>
+<pre class="hljs"><code>&lt;script&gt;
+export default {
+  data() {
+    return {
+      user: { name: '张三', age: 18 }
+    }
+  },
+  watch: {
+    user: {
+      handler(newVal) {
+        console.log('user 变了', newVal)
+      },
+      deep: true          // 开启深度监听
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>开启 <code>deep: true</code> 后，修改 <code>user.name</code> 或 <code>user.age</code> 也会触发 watch。
+<strong>⚠️ Warning：deep 有性能代价</strong>
+<code>deep: true</code> 会递归遍历对象所有属性，对象很大会影响性能。只在确实需要监听嵌套属性时才开。</p>
+<h2>immediate — 立即执行</h2>
+<p>默认情况下，watch 只在数据<strong>变化时</strong>才触发。如果你需要在页面加载时就执行一次，加 <code>immediate: true</code>：</p>
+<pre class="hljs"><code>&lt;script&gt;
+export default {
+  watch: {
+    keyword: {
+      handler(newVal) {
+        console.log('当前值：', newVal)
+      },
+      immediate: true     // 组件创建时立即执行一次
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h2>监听对象中的某个属性</h2>
+<p>如果只想监听对象的某个属性，而不是整个对象：</p>
+<pre class="hljs"><code><span class="hljs-attr">watch</span>: {
+  <span class="hljs-string">&#x27;user.name&#x27;</span>(newName) {           <span class="hljs-comment">// 用引号包起来，加点号</span>
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;名字变了：&#x27;</span>, newName)
+  }
+}
+</code></pre>
+<h2>实际例子：防抖搜索</h2>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;input v-model=&quot;keyword&quot; placeholder=&quot;搜索用户&quot;&gt;
+    &lt;ul&gt;
+      &lt;li v-for=&quot;user in filteredUsers&quot; :key=&quot;user.id&quot;&gt;{{ user.name }}&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      keyword: '',
+      users: [
+        { id: 1, name: '张三' },
+        { id: 2, name: '李四' },
+        { id: 3, name: '王五' }
+      ],
+      filteredUsers: [],
+      timer: null
+    }
+  },
+  watch: {
+    keyword() {
+      clearTimeout(this.timer)                // 清除上一次定时器
+      this.timer = setTimeout(() =&gt; {
+        this.filteredUsers = this.users.filter(
+          u =&gt; u.name.includes(this.keyword)
+        )
+      }, 300)                                  // 300ms 后才真正搜索
+    }
+  },
+  created() {
+    this.filteredUsers = this.users            // 初始显示全部
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h2>新手常见问题</h2>
+<p><strong>Q：computed 和 watch，我该用哪个？</strong>
+A：先想&quot;我需要的是一个值，还是一个动作&quot;——如果是值用 computed，是动作用 watch。
+<strong>Q：watch 里能监听 computed 吗？</strong>
+A：可以。computed 的值变了也能被 watch 监听到。
+<strong>Q：能不能同时监听多个数据？</strong>
+A：在选项式 API 中，每个数据单独写一个 watch。在组合式 API 中可以用数组：</p>
+<pre class="hljs"><code><span class="hljs-title function_">watch</span>([keyword, category], <span class="hljs-function">(<span class="hljs-params">[newKw, newCat]</span>) =&gt;</span> { ... })
+</code></pre>
+<p>下一步：
+<strong>💡 Tip：Composition API 写法（Vue 3）</strong></p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref, watch } from 'vue'
+const keyword = ref('')
+watch(keyword, (newVal, oldVal) =&gt; {
+  console.log(`从 ${oldVal} 变为 ${newVal}`)
+})
+&lt;/script&gt;
+</code></pre>
+<p><code>watch</code> 作为函数调用而非配置对象。另有 <code>watchEffect</code>（自动追踪依赖，立即执行）。
+详见：</p>
+
+      <nav class="post-prev-next"><a href="#post-9" class="pn-link">← 10.计算属性</a><a href="#post-11" class="pn-link">12.模板引用 →</a></nav>
+    </div>
+
+    <div id="post-11" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;获取 DOM 元素&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;访问时机 — mounted&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;在 v-for 中获取多个元素&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;获取组件实例&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;什么时候需要直接操作 DOM？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;新手常见问题&quot;}]">
+      <p>大多数时候你用 Vue 的数据绑定就够了。但偶尔你需要<strong>直接操作 DOM 元素</strong>——比如让输入框自动聚焦、获取滚动位置、操作 canvas 画布。
+这时就用 <code>ref</code> 属性配合 <code>$refs</code>。</p>
+<h2>获取 DOM 元素</h2>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;input ref=&quot;inputRef&quot; type=&quot;text&quot; placeholder=&quot;我会自动获得焦点&quot;&gt;
+  &lt;button @click=&quot;focusInput&quot;&gt;手动聚焦&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  methods: {
+    focusInput() {
+      this.$refs.inputRef.focus()     // 直接操作 DOM
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>步骤：</p>
+<ol>
+<li>在元素上加 <code>ref=&quot;名字&quot;</code></li>
+<li>在 JavaScript 中用 <code>this.$refs.名字</code> 获取这个元素</li>
+<li>然后就能调用原生 DOM 方法了（<code>focus()</code>、<code>scrollIntoView()</code> 等）</li>
+</ol>
+<h2>访问时机 — mounted</h2>
+<p><code>$refs</code> 在组件<strong>挂载完成后</strong>才可用。如果在 <code>data</code> 或 <code>created</code> 里访问，拿到的是 <code>undefined</code>。</p>
+<pre class="hljs"><code>&lt;script&gt;
+export default {
+  mounted() {
+    this.$refs.inputRef.focus()     // ✅ 这里可以
+  },
+  created() {
+    // this.$refs.inputRef  → undefined  ❌ 太早了
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p><strong>📝 Note：组件的生命周期顺序</strong>
+<code>data</code> 初始化 → <code>created</code>（数据有了，DOM 还没）→ <code>mounted</code>（DOM 渲染完了）
+<code>$refs</code> 要到 <code>mounted</code> 之后才能用。</p>
+<h2>在 v-for 中获取多个元素</h2>
+<p>在 <code>v-for</code> 的元素上使用 <code>ref</code>，<code>$refs</code> 会返回一个<strong>数组</strong>：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;ul&gt;
+    &lt;li v-for=&quot;item in list&quot; :key=&quot;item&quot; ref=&quot;items&quot;&gt;{{ item }}&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return { list: ['A', 'B', 'C'] }
+  },
+  mounted() {
+    console.log(this.$refs.items)   // [li, li, li]
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p><strong>⚠️ Warning：注意顺序</strong>
+<code>v-for</code> 中 ref 数组的顺序<strong>不一定</strong>和列表顺序一致，取决于你的 <code>:key</code> 和数据变化。不要依赖它们的顺序来做业务逻辑。</p>
+<h2>获取组件实例</h2>
+<p><code>ref</code> 不仅能获取 DOM 元素，还能获取子<strong>组件实例</strong>：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;ChildComponent ref=&quot;childRef&quot; /&gt;
+  &lt;button @click=&quot;callChildMethod&quot;&gt;调用子组件方法&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  methods: {
+    callChildMethod() {
+      this.$refs.childRef.doSomething()    // 调用子组件的方法
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>这样就能&quot;父组件主动调用子组件的方法&quot;。不过这种方式不建议频繁使用，尽量通过 props 和 events 来通信。</p>
+<h2>什么时候需要直接操作 DOM？</h2>
+<p>Vue 的&quot;响应式&quot;已经覆盖了 95% 的情况。以下场景才需要 <code>$refs</code>：
+| 场景 | 示例 |
+| 聚焦输入框 | <code>refs.xxx.focus()</code> |
+| 获取元素尺寸/位置 | <code>refs.xxx.getBoundingClientRect()</code> |
+| Canvas 操作 | <code>refs.canvas.getContext('2d')</code> |
+| 集成第三方 DOM 库 | 如 Chart.js、Swiper |
+| 播放控制（视频/音频） | <code>refs.video.play()</code> |</p>
+<h2>新手常见问题</h2>
+<p><strong>Q：为什么我的 this.$refs.xxx 是 undefined？</strong>
+A：最常见的原因是<strong>在 mounted 之前访问了</strong>。确保你的代码在 <code>mounted</code> 或之后（如按钮点击时）调用。
+<strong>Q：ref 能在组件内部用吗？</strong>
+A：能。组件内任何元素都能用 <code>ref</code> 标记，只要是这个组件渲染的就能通过 <code>this.$refs</code> 访问。
+<strong>Q：<code>ref</code> 和 <code>v-bind</code>（<code>:value</code>）有什么区别？</strong>
+| | <code>v-bind</code>（数据绑定） | <code>ref</code>（模板引用） |
+| <strong>做什么</strong> | 把数据绑定到属性或 prop | 获取 DOM 元素或组件实例 |
+| <strong>数据流</strong> | JS → 模板（声明式） | 模板 → JS（命令式） |
+| <strong>典型场景</strong> | <code>:value=&quot;msg&quot;</code> 显示数据 | <code>ref=&quot;input&quot;</code> 然后 <code>focus()</code> |
+| <strong>何时可用</strong> | 任何时刻 | 只能在 <code>mounted</code> 之后 |</p>
+<ul>
+<li><code>v-bind</code> 是<strong>声明式</strong>的：你说&quot;数据是什么，模板就渲染什么&quot;，Vue 帮你搞定</li>
+<li><code>ref</code> 是<strong>命令式</strong>的：你拿到元素自己操作，就像用 <code>document.querySelector</code></li>
+</ul>
+<blockquote>
+<p>能用 <code>v-bind</code> 解决的，优先用 <code>v-bind</code>。<code>ref</code> 只在你需要<strong>突破数据绑定限制</strong>（比如调用 DOM 方法）时才用。
+下一步：
+<strong>💡 Tip：Composition API 写法（Vue 3）</strong></p>
+</blockquote>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref, onMounted } from 'vue'
+const inputRef = ref(null)
+onMounted(() =&gt; { inputRef.value?.focus() })
+&lt;/script&gt;
+</code></pre>
+<p>组合式 API 中 ref 的变量名要和模板中 <code>ref=&quot;inputRef&quot;</code> 的名字一致。
+详见：</p>
+
+      <nav class="post-prev-next"><a href="#post-10" class="pn-link">← 11.侦听器</a><a href="#post-12" class="pn-link">13.数据变化侦测 →</a></nav>
+    </div>
+
+    <div id="post-12" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;数组的&amp;quot;变更方法&amp;quot;&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;数组的&amp;quot;非变更方法&amp;quot;&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;Vue 2 的限制（已废弃的 Vue.set）&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;响应式原理（通俗版）&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;新手常见问题&quot;}]">
+      <p>Vue 能自动检测数据变化并更新页面——但有些操作它能侦测到，有些不行。这一篇讲清楚规则。</p>
+<h2>数组的&quot;变更方法&quot;</h2>
+<p>Vue 特别对待了 JavaScript 中 7 个会修改原数组的方法。只要用它们操作数组，Vue 就能自动更新视图：
+| 方法 | 做什么 | 示例 |
+| <code>push()</code> | 末尾添加 | <code>list.push('D')</code> |
+| <code>pop()</code> | 末尾删除 | <code>list.pop()</code> |
+| <code>shift()</code> | 开头删除 | <code>list.shift()</code> |
+| <code>unshift()</code> | 开头添加 | <code>list.unshift('A')</code> |
+| <code>splice()</code> | 删除/插入/替换 | <code>list.splice(1, 1, 'X')</code> |
+| <code>sort()</code> | 排序 | <code>list.sort()</code> |
+| <code>reverse()</code> | 反转 | <code>list.reverse()</code> |</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;ul&gt;
+    &lt;li v-for=&quot;item in list&quot; :key=&quot;item&quot;&gt;{{ item }}&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;button @click=&quot;addItem&quot;&gt;添加 D&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return { list: ['A', 'B', 'C'] }
+  },
+  methods: {
+    addItem() {
+      this.list.push('D')      // ✅ Vue 能侦测到，页面自动更新
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h2>数组的&quot;非变更方法&quot;</h2>
+<p>有些方法不会修改原数组，而是<strong>返回一个新数组</strong>：
+| 方法 | 说明 |
+| <code>filter()</code> | 过滤 |
+| <code>concat()</code> | 拼接 |
+| <code>slice()</code> | 截取 |
+| <code>map()</code> | 映射 |
+这些方法不会触发视图更新，因为原数组没变。解决方法是<strong>用新数组替换旧数组</strong>：</p>
+<pre class="hljs"><code><span class="hljs-comment">// ❌ 这样不会更新视图</span>
+<span class="hljs-variable language_">this</span>.<span class="hljs-property">numbers</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> n &gt; <span class="hljs-number">0</span>)
+<span class="hljs-comment">// ✅ 要整体替换</span>
+<span class="hljs-variable language_">this</span>.<span class="hljs-property">numbers</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">numbers</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> n &gt; <span class="hljs-number">0</span>)
+<span class="hljs-variable language_">this</span>.<span class="hljs-property">numbers</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">numbers</span>.<span class="hljs-title function_">concat</span>([<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>])
+</code></pre>
+<p><strong>📝 Note：为什么整体替换可以？</strong>
+Vue 的内部机制会优化这个操作——它不会真的销毁重建整个列表，而是尽可能复用已有的 DOM 元素。所以用 <code>filter</code> 整体替换和用 <code>splice</code> 删除，性能差不多。</p>
+<h2>Vue 2 的限制（已废弃的 Vue.set）</h2>
+<p><strong>⚠️ Warning：Vue 2 中已废弃，Vue 3 已修复</strong>
+以下问题只存在于 Vue 2。在 Vue 3 中，这些问题已经被 Proxy 机制解决了，你<strong>不需要</strong>担心这些限制。
+Vue 2 无法侦测到以下两种操作：</p>
+<pre class="hljs"><code><span class="hljs-comment">// ❌ Vue 2 无法侦测：直接通过索引设置数组元素</span>
+<span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;新值&#x27;</span>
+<span class="hljs-comment">// ❌ Vue 2 无法侦测：直接给对象添加新属性</span>
+<span class="hljs-variable language_">this</span>.<span class="hljs-property">user</span>.<span class="hljs-property">age</span> = <span class="hljs-number">18</span>    <span class="hljs-comment">// 如果 age 不在初始 data 中</span>
+</code></pre>
+<p>Vue 2 需要用 <code>Vue.set()</code> 或 <code>this.$set()</code> 来处理：</p>
+<pre class="hljs"><code><span class="hljs-comment">// Vue 2 的解决方案</span>
+<span class="hljs-variable language_">this</span>.$set(<span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>, <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;新值&#x27;</span>)
+<span class="hljs-variable language_">this</span>.$set(<span class="hljs-variable language_">this</span>.<span class="hljs-property">user</span>, <span class="hljs-string">&#x27;age&#x27;</span>, <span class="hljs-number">18</span>)
+</code></pre>
+<p>但在 <strong>Vue 3</strong> 中直接用 <code>this.items[0] = '新值'</code> 就行，不需要 <code>$set</code>。</p>
+<h2>响应式原理（通俗版）</h2>
+<p>你不需要理解底层实现，但有个概念对以后有帮助：</p>
+<ol>
+<li>Vue 在创建实例时，把你 <code>data</code> 里的数据都&quot;劫持&quot;了</li>
+<li>每次你读写这些数据，Vue 都能感知到</li>
+<li>数据一变，Vue 就知道&quot;哪些页面元素依赖这个数据&quot;，然后自动更新它们
+就像一个管家，你只管说&quot;茶杯放桌子上&quot;，管家会自动把旧杯子拿走、新杯子放上。你不用管&quot;怎么更新页面&quot;，Vue 包了。</li>
+</ol>
+<h2>新手常见问题</h2>
+<p><strong>Q：为什么我的列表改动后页面没反应？</strong>
+A：检查你是否做了以下操作：</p>
+<ol>
+<li>直接改数组索引：<code>this.list[0] = 'X'</code>（Vue 2 不行，Vue 3 可以）</li>
+<li>用了 <code>filter</code> 但没赋值：<code>this.list.filter(...)</code> → 应该是 <code>this.list = this.list.filter(...)</code></li>
+<li>也别忘了在 JavaScript 里组合式 API 用 <code>ref</code> 时需要用 <code>.value</code>
+<strong>Q：对象属性变化能侦测到吗？</strong>
+A：Vue 3 可以，Vue 2 只能在初始 <code>data</code> 中存在的属性才能被侦测。新增属性在 Vue 2 中需要用 <code>$set</code>。
+下一步：
+<strong>💡 Tip：Composition API 写法（Vue 3）</strong></li>
+</ol>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref } from 'vue'
+const list = ref(['A', 'B', 'C'])
+function addItem() { list.value.push('D') }
+&lt;/script&gt;
+</code></pre>
+<p>在 Vue 3 的组合式 API 中，数组操作更直观，没有 Vue 2 的那些限制。
+详见：</p>
+
+      <nav class="post-prev-next"><a href="#post-11" class="pn-link">← 12.模板引用</a><a href="#post-13" class="pn-link">14.动态样式绑定 →</a></nav>
+    </div>
+
+    <div id="post-13" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;Class 绑定&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;对象语法 — 按条件切换&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;把对象放 data 里&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;数组语法 — 直接拼 class&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;混合使用&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;:class 和普通 class 共存&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;Style 绑定&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;对象语法&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;完整对象放 data 里&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;数组语法&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;Class vs Style，什么时候用哪个？&quot;}]">
+      <p>在 Vue 中通过数据驱动 CSS 样式，有两种方式：<strong>Class 绑定</strong> 和 <strong>Style 绑定</strong>。</p>
+<hr>
+<h2>Class 绑定</h2>
+<h3>对象语法 — 按条件切换</h3>
+<p>最常用的方式：class 名写在左边，条件写在右边。</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;p :class=&quot;{ active: isActive, error: hasError }&quot;&gt;状态文本&lt;/p&gt;
+  &lt;button @click=&quot;isActive = !isActive&quot;&gt;切换 active&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      isActive: false,
+      hasError: true
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>当 <code>isActive</code> 为 <code>false</code>、<code>hasError</code> 为 <code>true</code> 时，渲染结果：</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error&quot;</span>&gt;</span>状态文本<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p>规则：<code>{ class名: 条件 }</code> — 条件为真就加这个 class，为假就不加。</p>
+<h3>把对象放 data 里</h3>
+<p>当 class 很多时，把对象放 data 里，模板更干净：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;p :class=&quot;classObject&quot;&gt;文本&lt;/p&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      classObject: {
+        active: false,
+        error: true,
+        'text-large': true     // 带横杠的 class 名要加引号
+      }
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h3>数组语法 — 直接拼 class</h3>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;p :class=&quot;[baseClass, statusClass]&quot;&gt;文本&lt;/p&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      baseClass: 'text-lg',
+      statusClass: 'color-red'
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>渲染结果：<code>&lt;p class=&quot;text-lg color-red&quot;&gt;文本&lt;/p&gt;</code></p>
+<h3>混合使用</h3>
+<p>数组和对象可以组合：</p>
+<pre class="hljs"><code>&lt;p :class=&quot;['base', { active: isActive }]&quot;&gt;文本&lt;/p&gt;
+</code></pre>
+<p><code>'base'</code> 始终存在，<code>active</code> 根据 <code>isActive</code> 决定。</p>
+<h3>:class 和普通 class 共存</h3>
+<p><code>:class</code> 不会覆盖普通 <code>class</code>，它们会合并：</p>
+<pre class="hljs"><code>&lt;button class=&quot;btn&quot; :class=&quot;{ disabled: isDisabled }&quot;&gt;提交&lt;/button&gt;
+&lt;!-- 渲染: &lt;button class=&quot;btn disabled&quot;&gt;提交&lt;/button&gt; --&gt;
+</code></pre>
+<hr>
+<h2>Style 绑定</h2>
+<h3>对象语法</h3>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;p :style=&quot;{ color: textColor, fontSize: size + 'px' }&quot;&gt;彩色文字&lt;/p&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      textColor: 'red',
+      size: 18
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>CSS 属性名有两种写法：</p>
+<ul>
+<li><strong>驼峰式</strong>（推荐）：<code>fontSize</code></li>
+<li><strong>短横线式</strong>（加引号）：<code>'font-size'</code></li>
+</ul>
+<h3>完整对象放 data 里</h3>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;div :style=&quot;styleObj&quot;&gt;带样式的区域&lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      styleObj: {
+        color: 'red',
+        fontSize: '18px',
+        fontWeight: 'bold'
+      }
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h3>数组语法</h3>
+<pre class="hljs"><code>&lt;p :style=&quot;[baseStyle, highlightStyle]&quot;&gt;文本&lt;/p&gt;
+&lt;!-- 后面的样式会覆盖前面的同名属性 --&gt;
+</code></pre>
+<hr>
+<h2>Class vs Style，什么时候用哪个？</h2>
+<p>| 用 Class 绑定 | 用 Style 绑定 |
+| 样式是<strong>预定义好的</strong>（在 CSS 里写好） | 样式是<strong>动态算出来的</strong>（如用户滑条调颜色） |
+| 切换多个 class | 改个别属性 |
+| 更利于维护（样式和逻辑分离） | 需要精确控制像素值 |</p>
+<p><strong>💡 Tip：优先用 Class 绑定。</strong> 大部分场景用 Class 绑定就够了，Style 绑定只在需要动态计算数值时才用。</p>
+
+      <nav class="post-prev-next"><a href="#post-12" class="pn-link">← 13.数据变化侦测</a><a href="#post-14" class="pn-link">15.组件基础 →</a></nav>
+    </div>
+
+    <div id="post-14" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;什么是组件？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;单文件组件（SFC）的结构&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;组件嵌套关系&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;父组件写法&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;数据流向：从上到下&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;组件注册方式&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;局部注册（推荐）&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;全局注册&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;组件命名规范&quot;}]">
+      <h2>什么是组件？</h2>
+<p>组件是 Vue 的核心概念。<strong>把页面拆成一个个独立、可复用的小块，每个小块就是一个组件。</strong></p>
+<pre class="hljs"><code>页面 = 拼积木
+┌──────────────────────────────┐
+│  Header（顶部导航组件）        │
+├──────────────────────────────┤
+│  Main（主要内容区组件）        │
+├──────────────────────────────┤
+│  Footer（底部组件）            │
+└──────────────────────────────┘
+</code></pre>
+<p>每个组件就是一个 <code>.vue</code> 文件，封装了 HTML、JavaScript 和 CSS。</p>
+<h2>单文件组件（SFC）的结构</h2>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;!-- 这个组件的 HTML --&gt;
+&lt;/template&gt;
+&lt;script&gt;
+// 这个组件的 JavaScript 逻辑
+&lt;/script&gt;
+&lt;style scoped&gt;
+/* 这个组件的 CSS 样式 */
+&lt;/style&gt;
+</code></pre>
+<hr>
+<h2>组件嵌套关系</h2>
+<p>Vue 应用本质上是一棵<strong>组件树</strong>——一个组件里放另一个组件，层层嵌套。</p>
+<pre class="hljs"><code>App.vue（根组件）
+├── Header.vue（顶部导航）
+├── Main.vue（主内容区）
+│   ├── Article.vue（文章卡片）
+│   └── Article.vue（文章卡片...复用多次）
+└── Footer.vue（底部）
+</code></pre>
+<h3>父组件写法</h3>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;div class=&quot;layout&quot;&gt;
+    &lt;Header /&gt;
+    &lt;Main /&gt;
+    &lt;Aside /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import Header from './components/Header.vue'
+import Main from './components/Main.vue'
+import Aside from './components/Aside.vue'
+export default {
+  components: { Header, Main, Aside }
+}
+&lt;/script&gt;
+</code></pre>
+<p><strong>三个步骤</strong>：<code>import</code> 导入 → <code>components</code> 注册 → <code>&lt;template&gt;</code> 中使用。</p>
+<h3>数据流向：从上到下</h3>
+<p>数据从父组件流向子组件，从根往叶子流。父组件通过 props 把数据传给子组件，子组件不能直接改父组件的数据——这是 Vue 的核心设计原则。</p>
+<hr>
+<h2>组件注册方式</h2>
+<h3>局部注册（推荐）</h3>
+<p>只在当前组件内可用：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;MyButton /&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import MyButton from './MyButton.vue'
+export default {
+  components: { MyButton }
+}
+&lt;/script&gt;
+</code></pre>
+<p><strong>优点</strong>：依赖关系清晰，支持 tree-shaking，好维护。</p>
+<h3>全局注册</h3>
+<p>在 <code>main.js</code> 中注册，整个应用任何地方都能用：</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MyButton</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./components/MyButton.vue&#x27;</span>
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">createApp</span>(<span class="hljs-title class_">App</span>)
+app.<span class="hljs-title function_">component</span>(<span class="hljs-string">&#x27;MyButton&#x27;</span>, <span class="hljs-title class_">MyButton</span>)
+app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#x27;#app&#x27;</span>)
+</code></pre>
+<p><strong>缺点</strong>：<code>main.js</code> 会越来越臃肿，无法 tree-shaking。</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>用哪种</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>通用组件（按钮、弹窗...到处用）</td>
+<td>全局注册</td>
+</tr>
+<tr>
+<td>特定页面的组件</td>
+<td>局部注册</td>
+</tr>
+<tr>
+<td>不确定是否会复用</td>
+<td>先局部，需要时再提升</td>
+</tr>
+</tbody>
+</table>
+<p><strong>💡 Tip：先用局部注册，等这个组件确实在 3 个以上地方被引用了，再考虑全局注册。</strong></p>
+<hr>
+<h2><code>&lt;slot&gt;</code> — 预留的&quot;内容洞&quot;</h2>
+<p>组件里的 <code>&lt;slot&gt;</code> 就像是一个&quot;占位符&quot;：</p>
+<pre class="hljs"><code>&lt;!-- MyCard.vue --&gt;
+&lt;template&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;slot&gt;&lt;/slot&gt;               &lt;!-- 默认插槽 --&gt;
+    &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt; &lt;!-- 具名插槽 --&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+<pre class="hljs"><code>&lt;!-- 使用时 --&gt;
+&lt;MyCard&gt;
+  &lt;p&gt;这是卡片的内容&lt;/p&gt;
+  &lt;template v-slot:footer&gt;
+    &lt;button&gt;查看详情&lt;/button&gt;
+  &lt;/template&gt;
+&lt;/MyCard&gt;
+</code></pre>
+<h2><code>scoped</code> — 组件样式隔离</h2>
+<pre class="hljs"><code>&lt;style scoped&gt;
+.title { color: red; }    /* 只影响本组件内的 .title */
+&lt;/style&gt;
+</code></pre>
+<p>不加 <code>scoped</code> = 全局样式 = 影响整个应用。开发时默认加 <code>scoped</code> 是个好习惯。</p>
+<h2>组件命名规范</h2>
+<ul>
+<li>用<strong>多个单词</strong>：<code>MyButton</code> 而不是 <code>Button</code>（避免冲突）</li>
+<li>PascalCase：<code>MyButton</code>、<code>UserProfile</code></li>
+<li>模板中 <code>&lt;MyButton /&gt;</code> 或 <code>&lt;my-button&gt;&lt;/my-button&gt;</code> 都行</li>
+</ul>
+
+      <nav class="post-prev-next"><a href="#post-13" class="pn-link">← 14.动态样式绑定</a><a href="#post-15" class="pn-link">16.Props详解 →</a></nav>
+    </div>
+
+    <div id="post-15" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;props — 父传子的&amp;quot;快递通道&amp;quot;&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;最简单的例子&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;动态绑定 — 传变量而不是固定值&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;单向数据流&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;传递多种数据类型&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;数字&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;数组&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;对象&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;布尔值&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;Props 校验&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;从简单到完整&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;完整示例&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;支持多种类型&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;类型校验&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;新手常见问题&quot;}]">
+      <h2>props — 父传子的&quot;快递通道&quot;</h2>
+<p><code>props</code> 是父组件向子组件传递数据的机制，<strong>单向</strong>：父传子，子不能直接改。</p>
+<pre class="hljs"><code>父组件（有数据）
+  │
+  │  props（单向）
+  ↓
+子组件（接收数据，用在自己的模板里）
+</code></pre>
+<h2>最简单的例子</h2>
+<p><strong>父组件</strong>：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;Child title=&quot;来自父组件的数据&quot; /&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import Child from './Child.vue'
+export default {
+  components: { Child }
+}
+&lt;/script&gt;
+</code></pre>
+<p><strong>子组件（Child.vue）</strong>：</p>
+<pre class="hljs"><code>&lt;template&gt;
+  &lt;p&gt;父组件说的是：{{ title }}&lt;/p&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  props: ['title']
+}
+&lt;/script&gt;
+</code></pre>
+<h2>动态绑定 — 传变量而不是固定值</h2>
+<p>传变量时加冒号：</p>
+<pre class="hljs"><code>&lt;Child :title=&quot;parentMsg&quot; /&gt;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>传给子组件的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title=&quot;hello&quot;</code></td>
+<td>字符串 <code>&quot;hello&quot;</code></td>
+</tr>
+<tr>
+<td><code>:title=&quot;hello&quot;</code></td>
+<td>变量 <code>hello</code> 的值</td>
+</tr>
+<tr>
+<td><code>:title=&quot;'hello'&quot;</code></td>
+<td>字符串 <code>&quot;hello&quot;</code>（表达式）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>加了冒号，等号后面的是 JavaScript 表达式，不是字符串。</strong></p>
+<h2>单向数据流</h2>
+<p>props 是单向的，子不能直接改父传过来的值：</p>
+<pre class="hljs"><code><span class="hljs-comment">// ❌ 错误</span>
+<span class="hljs-variable language_">this</span>.<span class="hljs-property">title</span> = <span class="hljs-string">&#x27;新标题&#x27;</span>      <span class="hljs-comment">// 会导致 Vue 报错</span>
+</code></pre>
+<p>子组件确实需要改时：</p>
+<ol>
+<li>把 prop 赋给本地 data（子组件内部自己用）</li>
+<li>通过事件通知父组件改</li>
+</ol>
+<h2>传递多种数据类型</h2>
+<p><strong>规则：传非字符串类型必须加冒号 <code>:</code>。</strong></p>
+<h3>数字</h3>
+<pre class="hljs"><code>&lt;Child :age=&quot;25&quot; /&gt;           &lt;!-- ✅ 传数字 --&gt;
+&lt;Child age=&quot;25&quot; /&gt;            &lt;!-- ❌ 传字符串 &quot;25&quot; --&gt;
+</code></pre>
+<h3>数组</h3>
+<pre class="hljs"><code>&lt;Child :names=&quot;['张三', '李四', '王五']&quot; /&gt;
+</code></pre>
+<h3>对象</h3>
+<pre class="hljs"><code>&lt;Child :user=&quot;userInfo&quot; /&gt;
+</code></pre>
+<h3>布尔值</h3>
+<pre class="hljs"><code>&lt;Child :is-admin=&quot;true&quot; /&gt;
+</code></pre>
+<hr>
+<h2>Props 校验</h2>
+<p>给 prop 加上类型、必填、默认值等规则，让组件更健壮。</p>
+<h3>从简单到完整</h3>
+<pre class="hljs"><code><span class="hljs-comment">// 第 1 级：只声明名字</span>
+<span class="hljs-attr">props</span>: [<span class="hljs-string">&#x27;title&#x27;</span>]
+
+<span class="hljs-comment">// 第 2 级：指定类型</span>
+<span class="hljs-attr">props</span>: {
+  <span class="hljs-attr">title</span>: <span class="hljs-title class_">String</span>
+}
+
+<span class="hljs-comment">// 第 3 级：加更多规则</span>
+<span class="hljs-attr">props</span>: {
+  <span class="hljs-attr">title</span>: {
+    <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,
+    <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">default</span>: <span class="hljs-string">&#x27;默认标题&#x27;</span>
+  }
+}
+</code></pre>
+<h3>完整示例</h3>
+<pre class="hljs"><code><span class="hljs-attr">props</span>: {
+  <span class="hljs-attr">title</span>: {
+    <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,
+    <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>
+  },
+  <span class="hljs-attr">age</span>: {
+    <span class="hljs-attr">type</span>: <span class="hljs-title class_">Number</span>,
+    <span class="hljs-attr">default</span>: <span class="hljs-number">18</span>
+  },
+  <span class="hljs-attr">tags</span>: {
+    <span class="hljs-attr">type</span>: <span class="hljs-title class_">Array</span>,
+    <span class="hljs-title function_">default</span>(<span class="hljs-params"></span>) {              <span class="hljs-comment">// ⚠️ 对象/数组必须用函数返回</span>
+      <span class="hljs-keyword">return</span> []
+    }
+  },
+  <span class="hljs-attr">status</span>: {
+    <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,
+    <span class="hljs-title function_">validator</span>(<span class="hljs-params">value</span>) {
+      <span class="hljs-keyword">return</span> [<span class="hljs-string">&#x27;active&#x27;</span>, <span class="hljs-string">&#x27;inactive&#x27;</span>].<span class="hljs-title function_">includes</span>(value)
+    }
+  }
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>期望的类型：<code>String</code>, <code>Number</code>, <code>Boolean</code>, <code>Array</code>, <code>Object</code>, <code>Date</code>, <code>Function</code></td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td>是否必传</td>
+</tr>
+<tr>
+<td><code>default</code></td>
+<td>默认值（对象/数组必须用函数返回）</td>
+</tr>
+<tr>
+<td><code>validator</code></td>
+<td>自定义校验函数，返回 <code>true</code> 通过</td>
+</tr>
+</tbody>
+</table>
+<h3>支持多种类型</h3>
+<pre class="hljs"><code><span class="hljs-attr">width</span>: {
+  <span class="hljs-attr">type</span>: [<span class="hljs-title class_">Number</span>, <span class="hljs-title class_">String</span>],
+  <span class="hljs-attr">default</span>: <span class="hljs-number">100</span>
+}
+</code></pre>
+<h3>类型校验</h3>
+<p>当 prop 类型不对时，控制台会打印 warning（不是 error，页面仍能运行）：</p>
+<pre class="hljs"><code>[Vue warn]: Invalid prop: type check failed for prop &quot;age&quot;.
+Expected Number, got String with value &quot;25&quot;.
+</code></pre>
+<p><strong>💡 Tip：type 校验只在开发环境生效，不影响生产性能。</strong></p>
+<h2>新手常见问题</h2>
+<p><strong>Q：我的 prop 传了但子组件拿不到？</strong></p>
+<ul>
+<li>子组件有没有在 <code>props</code> 里声明</li>
+<li>父组件传的时候有没有写冒号</li>
+<li>prop 名字拼写是否一致</li>
+</ul>
+<p><strong>Q：prop 名字在父模板里怎么写？</strong></p>
+<ul>
+<li>父模板用小写横杠：<code>my-title</code></li>
+<li>子组件 JS 用驼峰：<code>myTitle</code></li>
+</ul>
+<p><strong>Q：为什么对象/数组的 default 必须是函数？</strong></p>
+<ul>
+<li>确保每个组件实例拿到的是独立副本，而不是共享同一个引用</li>
+</ul>
+
+      <nav class="post-prev-next"><a href="#post-14" class="pn-link">← 15.组件基础</a><a href="#post-16" class="pn-link">1.setup语法糖 →</a></nav>
+    </div>
+
+    <div id="post-16" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;从&amp;quot;老写法&amp;quot;到&amp;quot;语法糖&amp;quot;&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;核心规则&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;defineProps — 接收父组件数据&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;defineEmits — 向父组件发事件&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;useSlots / useAttrs&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;基础篇所有知识在这里的对照&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;新手常见问题&quot;}]">
+      <p><code>&lt;script setup&gt;</code> 是 Vue 3 的推荐写法，它是组合式 API 的&quot;语法糖&quot;——把繁琐的样板代码省掉了，代码更简洁。</p>
+<h2>从&quot;老写法&quot;到&quot;语法糖&quot;</h2>
+<pre class="hljs"><code>&lt;!-- ❌ 老写法（组合式 API 但不用语法糖） --&gt;
+&lt;script&gt;
+import { ref } from 'vue'
+export default {
+  setup() {
+    const count = ref(0)
+    function addOne() {
+      count.value++
+    }
+    return { count, addOne }     // 必须手动 return 才能在模板中用
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<pre class="hljs"><code>&lt;!-- ✅ 语法糖（&lt;script setup&gt;） --&gt;
+&lt;script setup&gt;
+import { ref } from 'vue'
+const count = ref(0)
+function addOne() {
+  count.value++
+}
+// 不用 return！顶层的变量和函数自动暴露给模板
+&lt;/script&gt;
+</code></pre>
+<p><strong>💡 Tip：&quot;语法糖&quot;是什么意思？</strong>
+语法糖 = 写起来更甜的语法。功能没变，就是让你少写几行代码。<code>&lt;script setup&gt;</code> 做的事和老写法完全一样，只是帮你去掉了 <code>export default</code>、<code>setup()</code>、<code>return</code> 这些样板。</p>
+<h2>核心规则</h2>
+<p>用 <code>&lt;script setup&gt;</code> 后，记住这几点：</p>
+<ol>
+<li><strong>导入即注册</strong> — <code>import</code> 组件后直接能用，无需 <code>components: {}</code></li>
+<li><strong>顶层变量自动暴露</strong> — 模板中直接使用，不用 <code>return</code></li>
+<li><strong>顶层的 <code>await</code></strong> — 可以直接用 <code>const data = await fetch(...)</code>（需要组件外层包 <code>&lt;Suspense&gt;</code>）</li>
+</ol>
+<h2>defineProps — 接收父组件数据</h2>
+<pre class="hljs"><code>&lt;script setup&gt;
+const props = defineProps&lt;{
+  title: string
+  count?: number       // ? 表示可选
+}&gt;()
+// JS 中用 props.title 访问（不用 .value）
+console.log(props.title)
+&lt;/script&gt;
+&lt;template&gt;
+  &lt;p&gt;{{ title }}&lt;/p&gt;     &lt;!-- 模板中可以解构，直接写 title --&gt;
+&lt;/template&gt;
+</code></pre>
+<p>对比选项式 API：<code>props: ['title']</code> → 现在写成 <code>defineProps&lt;{ title: string }&gt;()</code>。</p>
+<h2>defineEmits — 向父组件发事件</h2>
+<pre class="hljs"><code>&lt;script setup&gt;
+const emit = defineEmits&lt;{
+  (e: 'update', id: number): void
+  (e: 'delete', name: string): void
+}&gt;()
+function handleClick() {
+  emit('update', 1)          // 触发 update 事件，带参数 1
+}
+&lt;/script&gt;
+&lt;template&gt;
+  &lt;button @click=&quot;handleClick&quot;&gt;点我更新&lt;/button&gt;
+&lt;/template&gt;
+</code></pre>
+<p>对比选项式 API：在 <code>methods</code> 里用 <code>this.$emit('event')</code> → 现在用 <code>defineEmits</code> 声明并得到 <code>emit</code> 函数。</p>
+<h2>useSlots / useAttrs</h2>
+<p>当你不通过 props 传数据，而是用插槽或额外属性时：</p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { useSlots, useAttrs } from 'vue'
+const slots = useSlots()
+const attrs = useAttrs()
+console.log(slots.default?.())      // 默认插槽的内容
+console.log(attrs.class)            // 父组件传进来的 class
+&lt;/script&gt;
+</code></pre>
+<p>这两个用得比较少，初期了解即可。</p>
+<h2>基础篇所有知识在这里的对照</h2>
+<p>| 选项式 API | <code>&lt;script setup&gt;</code> |
+| <code>data() { return { x: 1 } }</code> | <code>const x = ref(1)</code> |
+| <code>props: ['title']</code> | <code>defineProps&lt;{ title: string }&gt;()</code> |
+| <code>methods: { fn() {} }</code> | <code>function fn() {}</code> |
+| <code>computed: { val() {} }</code> | <code>const val = computed(() =&gt; ...)</code> |
+| <code>watch: { x() {} }</code> | <code>watch(x, (newVal) =&gt; ...)</code> |
+| <code>this.$emit('e')</code> | <code>const emit = defineEmits(); emit('e')</code> |
+| <code>components: { Comp }</code> | 不用写，import 即可 |</p>
+<h2>新手常见问题</h2>
+<p><strong>Q：<code>&lt;script setup&gt;</code> 比选项式 API 快吗？</strong>
+A：性能几乎一样。<code>&lt;script setup&gt;</code> 的好处是<strong>开发体验</strong>（更少代码、更好 TS 支持、更好逻辑复用）。
+<strong>Q：能在同一个 .vue 文件里同时用 <code>&lt;script&gt;</code> 和 <code>&lt;script setup&gt;</code> 吗？</strong>
+A：可以，但很少需要这样做。一个文件里只有一个 <code>&lt;script setup&gt;</code>。
+下一步：
+<strong>📝 Note：基础篇回顾</strong>
+如果你对 Vue 核心概念（条件渲染、事件处理、组件通信等）还不太熟，建议先回到 基础篇 看完，再来深入这里。</p>
+
+      <nav class="post-prev-next"><a href="#post-15" class="pn-link">← 16.Props详解</a><a href="#post-17" class="pn-link">2.响应式核心ref与reactive →</a></nav>
+    </div>
+
+    <div id="post-17" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;为什么需要 ref？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;ref vs reactive 全景对比&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;快速选择指南&quot;}]">
+      <p>Vue 3 的响应式系统有多种工具函数，每个有特定的用途。本文详细介绍。</p>
+<h2>为什么需要 ref？</h2>
+<p>在 JavaScript 中，普通变量没有&quot;通知机制&quot;：</p>
+<pre class="hljs"><code><span class="hljs-keyword">let</span> count = <span class="hljs-number">0</span>
+count++    <span class="hljs-comment">// 变了，但没人知道</span>
+</code></pre>
+<p>Vue 需要在<strong>数据变化时自动更新 UI</strong>。普通变量做不到这一点，所以 Vue 提供了 <code>ref</code> —— 给变量包一层&quot;响应式外壳&quot;：</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> count = <span class="hljs-title function_">ref</span>(<span class="hljs-number">0</span>)
+count.<span class="hljs-property">value</span>++  <span class="hljs-comment">// ✅ 变了，Vue 知道，UI 自动更新</span>
+</code></pre>
+<p><strong>ref 的本质</strong>：一个带有 <code>.value</code> 属性的响应式对象。<code>ref(0)</code> 返回的不是 <code>0</code>，而是 <code>{ value: 0 }</code> 的代理对象。</p>
+<blockquote>
+<p>可以把 ref 想象成<strong>快递追踪号</strong>——包裹还是那个包裹（值不变），但有了追踪号（ref），你就能实时知道它的状态变化。</p>
+</blockquote>
+<h2><code>ref</code> — 基础类型首选</h2>
+<p><code>ref</code> 创建一个<strong>响应式引用</strong>，适用于基本类型（数字、字符串、布尔值）。</p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref } from 'vue'
+const count = ref(0)
+const name = ref('张三')
+function increment() {
+  count.value++      // ⚠️ JS 中必须用 .value
+}
+&lt;/script&gt;
+&lt;template&gt;
+  &lt;p&gt;{{ count }}&lt;/p&gt;   &lt;!-- 模板中自动解包，不用 .value --&gt;
+  &lt;button @click=&quot;increment&quot;&gt;+1&lt;/button&gt;
+&lt;/template&gt;
+</code></pre>
+<p><strong>⚠️ Warning：ref 的关键规则</strong></p>
+<ul>
+<li><strong>JS 代码里</strong>：访问/修改需要 <code>.value</code>（<code>count.value++</code>）</li>
+<li><strong>模板里</strong>：自动解包，直接写 <code>{{ count }}</code></li>
+<li>这是新手最容易忘的地方！</li>
+</ul>
+<h2><code>reactive</code> — 对象类型独家</h2>
+<p><code>reactive</code> 创建一个<strong>响应式对象</strong>，适合包含多个属性的数据。</p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { reactive } from 'vue'
+const user = reactive({
+  name: '张三',
+  age: 25,
+  hobbies: ['读书', '运动']
+})
+function growUp() {
+  user.age++          // ✅ 无需 .value，直接访问属性
+}
+&lt;/script&gt;
+&lt;template&gt;
+  &lt;p&gt;{{ user.name }} - {{ user.age }}岁&lt;/p&gt;
+  &lt;button @click=&quot;growUp&quot;&gt;长大一岁&lt;/button&gt;
+&lt;/template&gt;
+</code></pre>
+<h2>ref vs reactive 全景对比</h2>
+<p>| | ref | reactive |
+| <strong>适用类型</strong> | 任何类型，但更推荐基础类型 | 对象、数组 |
+| <strong>访问方式</strong> | JS 中要 <code>.value</code>，模板中自动解包 | 直接访问属性，无 <code>.value</code> |
+| <strong>重新赋值</strong> | <code>count.value = 5</code> ✅ | <code>state = { x: 1 }</code> ❌ 会丢失响应式 |
+| <strong>解构</strong> | 可以（配合 <code>toRefs</code>） | 不能直接解构（会丢响应式） |
+| <strong>底层原理</strong> | <code>reactive</code> 包装一层 | Proxy 直接代理 |</p>
+<h2><code>computed</code> — 派生数据</h2>
+<p>和选项式 API 的 computed 一样，但写成函数调用：</p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref, computed } from 'vue'
+const price = ref(100)
+const tax = computed(() =&gt; price.value * 0.1)        // 只读
+const total = computed({                             // 可读写
+  get: () =&gt; price.value + tax.value,
+  set: (val) =&gt; { price.value = val / 1.1 }
+})
+&lt;/script&gt;
+</code></pre>
+<h2><code>watch</code> — 监听变化</h2>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref, watch } from 'vue'
+const keyword = ref('')
+// 监听单个
+watch(keyword, (newVal, oldVal) =&gt; {
+  console.log(`${oldVal} → ${newVal}`)
+})
+// 监听多个
+const a = ref(1)
+const b = ref(2)
+watch([a, b], ([newA, newB]) =&gt; {
+  console.log(newA, newB)
+})
+// 深度监听
+watch(user, (newVal) =&gt; {}, { deep: true })
+// 立即执行
+watch(keyword, (val) =&gt; {}, { immediate: true })
+&lt;/script&gt;
+</code></pre>
+<h2><code>watchEffect</code> — 自动追踪 + 立即执行</h2>
+<p><code>watchEffect</code> 比 <code>watch</code> 更&quot;智能&quot;：它自动追踪内部用到的所有响应式数据，并且立即执行一次。</p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref, watchEffect } from 'vue'
+const count = ref(0)
+const doubled = ref(0)
+watchEffect(() =&gt; {
+  doubled.value = count.value * 2    // 自动追踪 count
+  console.log(`count 变了：${count.value}`)
+})
+// 组件创建时立即执行一次
+// 之后 count 每变一次，就执行一次
+&lt;/script&gt;
+</code></pre>
+<p><code>watch</code> vs <code>watchEffect</code>：</p>
+<ul>
+<li><code>watch</code>：你知道要监听谁，明确指定</li>
+<li><code>watchEffect</code>：你不知道依赖了谁，让 Vue 自己追踪</li>
+</ul>
+<h2><code>shallowRef</code> — 浅响应（性能优化）</h2>
+<p><code>ref</code> 会深层追踪，对大对象可能浪费性能。<code>shallowRef</code> 只追踪 <code>.value</code> 的变化：</p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { shallowRef } from 'vue'
+const data = shallowRef({ name: 'Vue', version: 3 })
+data.value = { name: 'New' }      // ✅ 触发更新（整个 .value 换了）
+data.value.name = 'New'           // ❌ 不触发（内部属性变化不管）
+// 需要强制更新时：
+import { triggerRef } from 'vue'
+data.value.name = 'New'
+triggerRef(data)                  // 手动触发
+&lt;/script&gt;
+</code></pre>
+<h2><code>readonly</code> — 只读保护</h2>
+<p>把数据变成只读，防止意外修改：</p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { reactive, readonly } from 'vue'
+const original = reactive({ count: 0 })
+const copy = readonly(original)
+original.count++     // ✅ 改原始对象可以
+copy.count++         // ❌ 警告：只读，不能改
+&lt;/script&gt;
+</code></pre>
+<h2><code>toRef</code> / <code>toRefs</code> — 保持响应式的解构</h2>
+<p><code>reactive</code> 对象解构会丢失响应式，用 <code>toRef</code> / <code>toRefs</code> 保持连接：</p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { reactive, toRef, toRefs } from 'vue'
+const state = reactive({
+  name: 'Vue',
+  version: 3
+})
+const name = toRef(state, 'name')     // 取出单个属性
+const { version } = toRefs(state)     // 取出多个属性（解构）
+// name 和 state.name 保持同步
+state.name = 'Vue 3'
+console.log(name.value)          // 'Vue 3'
+&lt;/script&gt;
+</code></pre>
+<h2>快速选择指南</h2>
+<p>| 场景 | 用什么 |
+| 基本类型（数字、字符串、布尔） | <code>ref</code> |
+| 普通对象 | <code>reactive</code> 或 <code>ref</code>（看个人偏好） |
+| 根据其他数据计算 | <code>computed</code> |
+| 监听数据变化做操作 | <code>watch</code> / <code>watchEffect</code> |
+| 大对象、性能敏感 | <code>shallowRef</code> |
+| 防止修改 | <code>readonly</code> |
+| reactive 解构保持响应 | <code>toRef</code> / <code>toRefs</code> |
+<strong>💡 Tip：一句话口诀</strong></p>
+<ul>
+<li>基本类型用 ref，对象用 reactive</li>
+<li>计算用 computed，变化做 watch</li>
+<li>reactive 解构加 toRefs，组件传参记得 defineProps
+<strong>📝 Note：从选项式迁移过来？</strong>
+如果你之前学的是选项式 API，建议对着 vue代码风格 里的对照表，把基础篇的概念逐一映射到组合式写法。</li>
+</ul>
+
+      <nav class="post-prev-next"><a href="#post-16" class="pn-link">← 1.setup语法糖</a><a href="#post-18" class="pn-link">3.ref进阶技巧 →</a></nav>
+    </div>
+
+    <div id="post-18" class="post-article" data-headings="[{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;典型场景&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;在 v-for 中使用&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;函数式 ref&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;TypeScript 类型安全&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;ref 类型&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;组件 ref 类型&quot;},{&quot;level&quot;:3,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;模板 ref 类型&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;速查表&quot;}]">
+      <p>除了基础的 <code>ref()</code> / <code>reactive()</code>，Vue 还提供了一批 <strong>ref 工具函数</strong> 来处理特殊场景。</p>
+<h2><code>isRef</code> / <code>unref</code> — 类型判断与自动解包</h2>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref, isRef, unref } from 'vue'
+const count = ref(0)
+const plain = 42
+console.log(isRef(count))     // true
+console.log(isRef(plain))     // false
+// unref：如果是 ref 则返回 .value，否则返回原始值
+console.log(unref(count))     // 0
+console.log(unref(plain))     // 42
+// 等价于：
+function myUnref(r) {
+  return isRef(r) ? r.value : r
+}
+&lt;/script&gt;
+</code></pre>
+<p>适用于<strong>工具函数</strong>——你不想限制参数必须是 ref 还是普通值：</p>
+<pre class="hljs"><code>&lt;script setup&gt;
+function formatMsg(msg) {
+  return `消息：${unref(msg)}`
+}
+const msgRef = ref('Hello')
+console.log(formatMsg(msgRef))   // 消息：Hello
+console.log(formatMsg('World'))  // 消息：World
+&lt;/script&gt;
+</code></pre>
+<h2><code>shallowRef</code> — 浅响应优化</h2>
+<p><code>ref</code> 会递归地把整个数据变成响应式。如果数据<strong>很大</strong>或<strong>不需要深层响应</strong>，用 <code>shallowRef</code> 省性能。</p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { shallowRef, triggerRef } from 'vue'
+const logs = shallowRef([])
+// 直接推入元素：数组变了，但 shallowRef 没检测到
+logs.value.push('新日志')    // ❌ 不触发更新
+// 替换整个引用：检测到
+logs.value = [...logs.value, '新日志']  // ✅ 触发更新
+// 或者用 triggerRef 手动通知
+logs.value.push('新日志')
+triggerRef(logs)            // ✅ 手动触发更新
+&lt;/script&gt;
+</code></pre>
+<h3>典型场景</h3>
+<p>| 场景 | 说明 |
+| 大型列表 | 几千条日志、表格数据，不需要逐条追踪 |
+| 第三方数据 | 从外部库拿到的不可变数据 |
+| 频繁替换 | 每次都重新赋值整个对象 |</p>
+<blockquote>
+<p><code>shallowRef</code> + <code>triggerRef</code> 搭配使用，兼顾性能和灵活性。</p>
+</blockquote>
+<h2><code>customRef</code> — 自定义 ref</h2>
+<p><code>customRef</code> 让你完全控制 ref 的<strong>依赖追踪</strong>和<strong>触发更新</strong>时机。最常见的场景是<strong>防抖</strong>：</p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { customRef } from 'vue'
+function debouncedRef(value, delay = 300) {
+  let timer
+  return customRef((track, trigger) =&gt; {
+    return {
+      get() {
+        track()          // 告诉 Vue：这个值被依赖了
+        return value
+      },
+      set(newValue) {
+        clearTimeout(timer)
+        timer = setTimeout(() =&gt; {
+          value = newValue
+          trigger()      // 告诉 Vue：值变了，通知依赖方
+        }, delay)
+      }
+    }
+  })
+}
+const keyword = debouncedRef('', 500)  // 500ms 防抖
+&lt;/script&gt;
+&lt;template&gt;
+  &lt;input v-model=&quot;keyword&quot; placeholder=&quot;防抖搜索&quot; /&gt;
+&lt;/template&gt;
+</code></pre>
+<p><code>customRef</code> 接收一个工厂函数，参数是 <code>track</code> 和 <code>trigger</code>：</p>
+<ul>
+<li><code>track()</code> — 在 <code>get</code> 里调用，标记依赖追踪</li>
+<li><code>trigger()</code> — 在 <code>set</code> 里调用，触发更新通知</li>
+</ul>
+<h2><code>useTemplateRef</code> — 模板引用新写法（Vue 3.5+）</h2>
+<p>Vue 3.5 引入了 <code>useTemplateRef</code>，统一了模板 ref 的声明方式，不再要求<strong>变量名和模板 ref 名一致</strong>。</p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { useTemplateRef, onMounted } from 'vue'
+const input = useTemplateRef('myInput')
+// 等价于 &lt;script setup&gt; 中 const input = ref(null) + ref=&quot;myInput&quot;
+onMounted(() =&gt; {
+  input.value?.focus()
+})
+&lt;/script&gt;
+&lt;template&gt;
+  &lt;input ref=&quot;myInput&quot; type=&quot;text&quot; /&gt;
+&lt;/template&gt;
+</code></pre>
+<p>优点：</p>
+<ul>
+<li>变量名和 ref 名可以不同</li>
+<li>类型推导更好</li>
+<li>语义清晰：一看就知道是模板引用</li>
+</ul>
+<h3>在 v-for 中使用</h3>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { useTemplateRef, onMounted } from 'vue'
+const items = useTemplateRef('items')
+onMounted(() =&gt; {
+  console.log(items.value)  // HTMLElement[]
+})
+&lt;/script&gt;
+&lt;template&gt;
+  &lt;li v-for=&quot;item in list&quot; :key=&quot;item&quot; ref=&quot;items&quot;&gt;{{ item }}&lt;/li&gt;
+&lt;/template&gt;
+</code></pre>
+<h2><code>defineExpose</code> — 控制子组件暴露的内容</h2>
+<p>父组件通过 <code>ref</code> 获取子组件实例时，默认什么都拿不到（<code>&lt;script setup&gt;</code> 是关闭的）。
+需要用 <code>defineExpose</code> <strong>显式暴露</strong>：</p>
+<pre class="hljs"><code>&lt;!-- Child.vue --&gt;
+&lt;script setup&gt;
+import { ref } from 'vue'
+const count = ref(0)
+const internal = ref('秘密')  // 不暴露
+function reset() { count.value = 0 }
+defineExpose({ count, reset })
+&lt;/script&gt;
+</code></pre>
+<pre class="hljs"><code>&lt;!-- Parent.vue --&gt;
+&lt;script setup&gt;
+import { useTemplateRef } from 'vue'
+import Child from './Child.vue'
+const childRef = useTemplateRef('child')
+function handleClick() {
+  childRef.value?.reset()
+  console.log(childRef.value?.count)
+}
+&lt;/script&gt;
+&lt;template&gt;
+  &lt;Child ref=&quot;child&quot; /&gt;
+  &lt;button @click=&quot;handleClick&quot;&gt;重置&lt;/button&gt;
+&lt;/template&gt;
+</code></pre>
+<blockquote>
+<p>选项式 API 中，<code>$refs</code> 会自动暴露所有 <code>data</code> 和 <code>methods</code>，不需要 <code>defineExpose</code>。</p>
+</blockquote>
+<h2>函数式 ref</h2>
+<p><code>ref</code> 属性也可以传一个<strong>函数</strong>，在元素挂载或卸载时调用：</p>
+<pre class="hljs"><code>&lt;script setup&gt;
+import { ref } from 'vue'
+const divEl = ref(null)
+function setRef(el) {
+  divEl.value = el
+  console.log('元素挂载了', el)
+}
+&lt;/script&gt;
+&lt;template&gt;
+  &lt;div :ref=&quot;setRef&quot;&gt;内容&lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+<p>函数接收元素本身作为参数，卸载时传 <code>null</code>。适合在需要<strong>动态处理 ref</strong> 时使用。</p>
+<h2>TypeScript 类型安全</h2>
+<h3>ref 类型</h3>
+<pre class="hljs"><code>&lt;script setup lang=&quot;ts&quot;&gt;
+import { ref, type Ref } from 'vue'
+const count = ref&lt;number&gt;(0)
+const user = ref&lt;{ name: string; age: number } | null&gt;(null)
+// 显式标注 Ref 类型（不常用）
+const message: Ref&lt;string&gt; = ref('hello')
+&lt;/script&gt;
+</code></pre>
+<h3>组件 ref 类型</h3>
+<p>用 <code>InstanceType</code> 获取组件实例类型：</p>
+<pre class="hljs"><code>&lt;script setup lang=&quot;ts&quot;&gt;
+import { useTemplateRef } from 'vue'
+import MyInput from './MyInput.vue'
+type MyInputInstance = InstanceType&lt;typeof MyInput&gt;
+const inputRef = useTemplateRef&lt;MyInputInstance&gt;('input')
+onMounted(() =&gt; {
+  inputRef.value?.focus()
+})
+&lt;/script&gt;
+&lt;template&gt;
+  &lt;MyInput ref=&quot;input&quot; /&gt;
+&lt;/template&gt;
+</code></pre>
+<p>或者用 <code>typeof</code> + <code>defineExpose</code> 配合：</p>
+<pre class="hljs"><code>&lt;script setup lang=&quot;ts&quot;&gt;
+// 只声明暴露的类型，不暴露实现细节
+defineExpose({
+  count: ref(0),
+  reset: () =&gt; {}
+})
+&lt;/script&gt;
+</code></pre>
+<h3>模板 ref 类型</h3>
+<pre class="hljs"><code>&lt;script setup lang=&quot;ts&quot;&gt;
+const divRef = useTemplateRef&lt;HTMLDivElement&gt;('div')
+const inputRef = useTemplateRef&lt;HTMLInputElement&gt;('input')
+const canvasRef = useTemplateRef&lt;HTMLCanvasElement&gt;('canvas')
+&lt;/script&gt;
+&lt;template&gt;
+  &lt;div ref=&quot;div&quot;&gt;块&lt;/div&gt;
+  &lt;input ref=&quot;input&quot; /&gt;
+  &lt;canvas ref=&quot;canvas&quot;&gt;&lt;/canvas&gt;
+&lt;/template&gt;
+</code></pre>
+<h2>速查表</h2>
+<p>| API | 用途 | 层级 |
+| <code>isRef()</code> | 判断是否是 ref | 工具 |
+| <code>unref()</code> | 自动解包（ref 取 .value，否则原值） | 工具 |
+| <code>shallowRef()</code> | 浅响应，大对象性能优化 | 响应式 |
+| <code>triggerRef()</code> | 手动触发 shallowRef 更新 | 响应式 |
+| <code>customRef()</code> | 自定义追踪/触发逻辑（防抖等） | 自定义 |
+| <code>useTemplateRef()</code> | 声明模板引用（Vue 3.5+） | 模板 |
+| <code>defineExpose()</code> | 控制组件暴露给父级的属性 | 组件 |
+| 函数式 <code>:ref</code> | 动态处理 ref 回调 | 模板 |
+<strong>📝 Note</strong>
+基础 <code>ref()</code> 用法见 ，模板 ref 基础见 。</p>
+
+      <nav class="post-prev-next"><a href="#post-17" class="pn-link">← 2.响应式核心ref与reactive</a><a href="#post-19" class="pn-link">1.插件扩展 →</a></nav>
+    </div>
+
+    <div id="post-19" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;Vue - Official（必装）&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;能获得什么？&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;其他推荐插件&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;与 ESLint 配合&quot;}]">
+      <p>推荐几个 Vue 开发必备的 VSCode 插件。</p>
+<h2>Vue - Official（必装）</h2>
+<p>这是 Vue 官方出品的 VSCode 插件，提供：</p>
+<ul>
+<li><code>.vue</code> 文件语法高亮（模板、脚本、样式分颜色显示）</li>
+<li>代码智能提示（输入时自动补全组件名、属性名）</li>
+<li>类型检查（TypeScript 集成）</li>
+<li><code>&lt;slot&gt;</code> 名称提示</li>
+<li>CSS 类名补全
+<strong>安装：</strong> VSCode 扩展商店搜索 <strong>Vue - Official</strong>。</li>
+</ul>
+<h2>能获得什么？</h2>
+<p>安装后：</p>
+<ol>
+<li>输入 <code>v-</code> 会提示所有 Vue 指令（<code>v-if</code>、<code>v-for</code>、<code>v-model</code>...）</li>
+<li>写 <code>&lt;MyButton</code> 自动提示导入路径</li>
+<li><code>defineProps</code> 的类型会即时检查</li>
+<li>模板中鼠标悬停变量显示类型
+<img src="%E6%8F%92%E4%BB%B6%E6%89%A9%E5%B1%95.png" alt=""></li>
+</ol>
+<h2>其他推荐插件</h2>
+<p>| 插件 | 作用 |
+| <strong>Error Lens</strong> | 把错误信息直接显示在行尾，不用鼠标悬停 |
+| <strong>Auto Rename Tag</strong> | 改标签名时自动同步改闭合标签 |
+| <strong>ESLint</strong> | 代码规范检查和自动修复 |
+| <strong>Prettier</strong> | 代码自动格式化 |
+| <strong>Path Intellisense</strong> | 文件路径自动补全 |</p>
+<h2>与 ESLint 配合</h2>
+<p>Vue - Official 内置了格式化能力，但如果你同时装了 Prettier，建议在 VSCode 设置中指定：
+<code>.vscode/settings.json</code>：</p>
+<pre class="hljs"><code><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Vue.volar&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;[javascript]&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;editor.defaultFormatter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Vue.volar&quot;</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>这样 <code>.vue</code> 文件就用 Vue - Official 的格式化，避免和 Prettier 打架。</p>
+
+      <nav class="post-prev-next"><a href="#post-18" class="pn-link">← 3.ref进阶技巧</a><a href="#post-20" class="pn-link">2.常见报错 →</a></nav>
+    </div>
+
+    <div id="post-20" class="post-article" data-headings="[{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;reactive 整体替换丢失响应式&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;defineProps 类型声明错误&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;组件命名冲突&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;v-html 没有任何内容显示&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;双向绑定不生效&quot;},{&quot;level&quot;:2,&quot;id&quot;:&quot;&quot;,&quot;text&quot;:&quot;快速排错清单&quot;}]">
+      <p>整理 Vue 开发中最常遇到的报错，帮你快速定位问题。</p>
+<h2>找不到模块 <code>./App.vue</code> 的声明文件</h2>
+<pre class="hljs"><code>无法找到模块&quot;./App.vue&quot;的声明文件。&quot;path/App.vue&quot;隐式拥有 &quot;any&quot; 类型。
+</code></pre>
+<p>这是 TypeScript 不认识 <code>.vue</code> 文件导致的。在 <code>src/</code> 下创建文件 <code>env.d.ts</code>：</p>
+<pre class="hljs"><code><span class="hljs-keyword">declare</span> <span class="hljs-variable language_">module</span> <span class="hljs-string">&#x27;*.vue&#x27;</span> {
+  <span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">DefineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>
+  <span class="hljs-keyword">const</span> <span class="hljs-attr">component</span>: <span class="hljs-title class_">DefineComponent</span>&lt;{}, {}, <span class="hljs-built_in">any</span>&gt;
+  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> component
+}
+</code></pre>
+<p>如果项目是用 <code>npm create vue@latest</code> 创建的，这个文件已经自带了，不用手动加。</p>
+<h2>ref 忘了用 <code>.value</code></h2>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> count = <span class="hljs-title function_">ref</span>(<span class="hljs-number">0</span>)
+<span class="hljs-comment">// ❌ console.log(count)       // 打印 RefImpl { ... } 对象，不是数字</span>
+<span class="hljs-comment">// ✅ console.log(count.value)  // 打印 0</span>
+<span class="hljs-comment">// ❌ count++                   // 语法上能过但不会触发响应式</span>
+<span class="hljs-comment">// ✅ count.value++</span>
+</code></pre>
+<p><strong>💡 Tip：记住</strong>
+在 <code>&lt;script&gt;</code> 里操作 ref 必须用 <code>.value</code>，模板里不需要。</p>
+<h2>reactive 整体替换丢失响应式</h2>
+<pre class="hljs"><code><span class="hljs-comment">// ❌ 这样会丢响应式</span>
+<span class="hljs-keyword">let</span> state = <span class="hljs-title function_">reactive</span>({ <span class="hljs-attr">count</span>: <span class="hljs-number">0</span> })
+state = { <span class="hljs-attr">count</span>: <span class="hljs-number">1</span> }           <span class="hljs-comment">// state 指向了新对象，Proxy 包装没了</span>
+<span class="hljs-comment">// ✅ 修改属性</span>
+state.<span class="hljs-property">count</span> = <span class="hljs-number">1</span>
+<span class="hljs-comment">// 或者用 ref 代替，支持整体替换</span>
+<span class="hljs-keyword">const</span> state = <span class="hljs-title function_">ref</span>({ <span class="hljs-attr">count</span>: <span class="hljs-number">0</span> })
+state.<span class="hljs-property">value</span> = { <span class="hljs-attr">count</span>: <span class="hljs-number">1</span> }     <span class="hljs-comment">// ✅ ref 支持替换</span>
+</code></pre>
+<h2>defineProps 类型声明错误</h2>
+<pre class="hljs"><code><span class="hljs-comment">// ✅ 纯类型声明</span>
+<span class="hljs-keyword">const</span> props = defineProps&lt;{ <span class="hljs-attr">title</span>: <span class="hljs-built_in">string</span> }&gt;()
+<span class="hljs-comment">// ✅ 运行时声明（不用 TS 时可以这样）</span>
+<span class="hljs-keyword">const</span> props = <span class="hljs-title function_">defineProps</span>({ <span class="hljs-attr">title</span>: { <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>, <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span> } })
+<span class="hljs-comment">// ❌ 不能混合使用</span>
+<span class="hljs-keyword">const</span> props = <span class="hljs-title function_">defineProps</span>({ <span class="hljs-attr">title</span>: <span class="hljs-title class_">String</span> })&lt;{ <span class="hljs-attr">title</span>: <span class="hljs-built_in">string</span> }&gt;
+</code></pre>
+<p>两种声明方式只能选一种。</p>
+<h2><code>v-for</code> 缺少 <code>:key</code></h2>
+<pre class="hljs"><code>[vue/require-v-for-key] Elements in iteration expect to have 'v-bind:key' directives.
+</code></pre>
+<p>写 <code>v-for</code> 但没加 <code>:key</code>。加上就好了：</p>
+<pre class="hljs"><code>&lt;li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;&gt;{{ item.name }}&lt;/li&gt;
+</code></pre>
+<h2>组件命名冲突</h2>
+<pre class="hljs"><code>[Vue warn]: Do not use built-in or reserved HTML elements as component id: header
+</code></pre>
+<p>组件名和 HTML 原生标签重名了。解决：用多单词命名，如 <code>AppHeader</code> 而不是 <code>Header</code>。</p>
+<h2><code>$refs</code> 访问时机错误</h2>
+<pre class="hljs"><code>TypeError: Cannot read properties of undefined (reading 'focus')
+</code></pre>
+<p>在 <code>mounted</code> 之前访问了 <code>$refs</code>。确保在 <code>mounted()</code> 生命周期或之后（如事件回调中）访问。</p>
+<h2>v-html 没有任何内容显示</h2>
+<pre class="hljs"><code>&lt;div v-html=&quot;htmlContent&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>检查 <code>htmlContent</code> 的值——如果它是 <code>null</code> 或空字符串，自然什么都不显示。另外注意：<code>v-html</code> 会<strong>覆盖元素内的所有内容</strong>。</p>
+<h2>双向绑定不生效</h2>
+<pre class="hljs"><code>&lt;input v-model=&quot;formData.name&quot; /&gt;   &lt;!-- ❌ formData 不是响应式的 --&gt;
+</code></pre>
+<p><code>formData</code> 必须是用 <code>reactive</code> 创建的，或 <code>formData.name</code> 是 <code>ref</code>。如果 <code>formData</code> 是个普通对象，v-model 不会生效。</p>
+<h2>快速排错清单</h2>
+<p>| 症状 | 首先检查 |
+| 页面没更新 | 数据是不是响应式的（ref/reactive/data） |
+| 子组件收不到数据 | props 声明了吗？传值加冒号了吗？ |
+| 事件不触发 | 方法名拼写对不对？<code>@click</code> 写了吗？ |
+| 样式不生效 | <code>scoped</code> 了吗？class 名对不对？ |
+| 组件报错不显示 | 检查浏览器控制台（F12）的错误信息 |</p>
+
+      <nav class="post-prev-next"><a href="#post-19" class="pn-link">← 1.插件扩展</a><span class="pn-link disabled">已是最后一篇 →</span></nav>
+    </div>
+      </main>
+
+      <aside class="outline-sidebar" id="outlineSidebar">
+        <div class="ol-sidebar-title">目录</div>
+        <ul class="ol-list" id="olSidebarList"></ul>
+      </aside>
+    </div>
+  </div>
+
+  <div class="float-btns" id="floatBtns">
+    <button class="fb-btn" id="btn-scrolltop" title="返回顶部">&#x2191;</button>
+    <button class="fb-btn" id="btn-outline" title="大纲">&#x2630;</button>
+  </div>
+
+  <div class="outline-popup" id="outlinePopup">
+    <div class="ol-popup-inner">
+      <ul class="ol-list" id="olPopupList"></ul>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <script>
+(function() {
+  var articles = document.querySelectorAll('.post-article');
+  var filetree = document.getElementById('filetree');
+  var overlay = document.getElementById('overlay');
+  var floatBtns = document.getElementById('floatBtns');
+  var postItems = document.querySelectorAll('.post-item');
+  var olSidebarList = document.getElementById('olSidebarList');
+  var outlinePopup = document.getElementById('outlinePopup');
+
+  function renderOutline(article) {
+    if (!olSidebarList) return;
+    var headings = [];
+    try { headings = JSON.parse(article.getAttribute('data-headings') || '[]'); } catch(e) {}
+    var html = headings.map(function(h) {
+      return '<li class="ol-item ol-h' + h.level + '"><a href="#' + article.id + '" data-heading="' + h.text.replace(/"/g, '&quot;') + '">' + h.text + '</a></li>';
+    }).join('');
+    olSidebarList.innerHTML = html;
+  }
+
+  function scrollToHeading(postId, headingText) {
+    var article = document.getElementById(postId);
+    if (!article) return;
+    if (!article.classList.contains('active')) {
+      window.location.hash = postId;
+    }
+    var headings = article.querySelectorAll('h2, h3');
+    for (var i = 0; i < headings.length; i++) {
+      if (headings[i].textContent.trim() === headingText) {
+        headings[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        break;
+      }
+    }
+  }
+
+  // 侧栏大纲点击
+  if (olSidebarList) {
+    olSidebarList.addEventListener('click', function(e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      e.preventDefault();
+      var postId = a.getAttribute('href').slice(1);
+      var headingText = a.getAttribute('data-heading');
+      scrollToHeading(postId, headingText);
+    });
+  }
+
+  function showPost(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    articles.forEach(function(a) { a.classList.remove('active'); });
+    target.classList.add('active');
+    postItems.forEach(function(item) { item.classList.remove('active'); });
+    var link = document.querySelector('.post-item a[href="#' + id + '"]');
+    if (link) link.parentElement.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var pa = document.getElementById('postarea');
+    if (pa) pa.scrollTo({ top: 0, behavior: 'smooth' });
+    renderOutline(target);
+    closeFiletree();
+  }
+
+  function handleHash() {
+    var hash = window.location.hash.slice(1);
+    if (hash && document.getElementById(hash)) {
+      showPost(hash);
+    } else if (articles.length > 0) {
+      window.location.hash = articles[0].id;
+    }
+  }
+
+  window.addEventListener('hashchange', handleHash);
+
+  // 初始加载
+  handleHash();
+  var active = document.querySelector('.post-article.active');
+  if (active) renderOutline(active);
+
+  var btnFiletree = document.getElementById('btn-filetree');
+  if (btnFiletree) btnFiletree.addEventListener('click', function() {
+    if (filetree) filetree.classList.toggle('open');
+    if (overlay) overlay.classList.toggle('show');
+  });
+
+  function closeFiletree() {
+    if (filetree) filetree.classList.remove('open');
+    if (overlay) overlay.classList.remove('show');
+  }
+
+  if (overlay) overlay.addEventListener('click', closeFiletree);
+
+  function checkScroll() {
+    if (!floatBtns) return;
+    if (window.scrollY > window.innerHeight) {
+      floatBtns.classList.add('visible');
+    } else {
+      floatBtns.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', checkScroll, { passive: true });
+  checkScroll();
+
+  var btnScrollTop = document.getElementById('btn-scrolltop');
+  if (btnScrollTop) btnScrollTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var pa = document.getElementById('postarea');
+    if (pa) pa.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var olPopupList = document.getElementById('olPopupList');
+  var btnOutline = document.getElementById('btn-outline');
+  if (btnOutline) btnOutline.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (olSidebarList && olPopupList) {
+      olPopupList.innerHTML = olSidebarList.innerHTML;
+    }
+    if (outlinePopup) outlinePopup.classList.toggle('show');
+  });
+
+  // 弹窗大纲点击
+  if (olPopupList) {
+    olPopupList.addEventListener('click', function(e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      e.preventDefault();
+      var postId = a.getAttribute('href').slice(1);
+      var headingText = a.getAttribute('data-heading');
+      scrollToHeading(postId, headingText);
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!outlinePopup) return;
+    if (!outlinePopup.contains(e.target) && e.target !== document.getElementById('btn-outline')) {
+      outlinePopup.classList.remove('show');
+    }
+  });
+
+  if (typeof mermaid !== 'undefined') mermaid.run();
+
+})();
+</script>
+</body>
+</html>
