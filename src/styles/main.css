@@ -310,6 +310,8 @@
 .post-article {
   visibility: hidden;
   position: absolute;
+  top: 0;
+  left: 0;
   pointer-events: none;
   max-width: 720px;
   line-height: 1.85;
@@ -702,7 +704,6 @@
   .page-container {
     max-width: 100%;
     height: auto;
-    min-height: 100vh;
     box-shadow: none;
     border-radius: 0;
   }
@@ -726,7 +727,7 @@
   }
 
   .post-area {
-    padding: 24px 16px;
+    padding: 20px 20px 32px;
   }
 
   .float-btns {
@@ -744,6 +745,7 @@
   .post-prev-next {
     flex-direction: column;
     gap: 8px;
+    margin-top: 32px;
   }
 
   .pn-link {
