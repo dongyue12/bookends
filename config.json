@@ -1,0 +1,14 @@
+{
+  "order": ["HTML", "CSS", "JavaScript", "VUE", "Python", "Git"],
+  "labels": {
+    "JavaScript": "JS"
+  },
+  "subtitles": {
+    "HTML": "基础",
+    "CSS": "布局",
+    "JavaScript": "高级",
+    "VUE": "实战",
+    "Python": "入门",
+    "Git": "指南"
+  }
+}
